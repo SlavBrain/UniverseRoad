@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public abstract class Spawner : ObjectPool
+public class Spawner : ObjectPool
 {
-    [SerializeField] GameObject[] _templates;
+    [SerializeField] protected GameObject[] _templates;
 
     private void OnEnable()
     {
@@ -11,11 +11,17 @@ public abstract class Spawner : ObjectPool
             Initialize(template);
         }
     }
-
-    protected void SetObjectInParent(GameObject template, Transform parent)
+    public GameObject SpawnObjectInParent(Transform parent)
     {
-        template.transform.SetParent(parent);
-        SetObject(template, parent.position);
+        var spawned = SpawnObject(parent.position);
+        spawned.transform.SetParent(parent);
+        return spawned;
+    }
+    public virtual GameObject SpawnObject(Vector3 spawnPosition)
+    {
+        var spawned=GetObject();
+        SetObject(spawned, spawnPosition);
+        return spawned;
     }
 
     protected void SetObject(GameObject template, Vector3 spawnPosition)
