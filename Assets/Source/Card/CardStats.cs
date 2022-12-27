@@ -6,5 +6,4 @@ public class CardStats : ScriptableObject
 {
     [SerializeField] private CardRarity _rarity;
     [SerializeField] private Sprite _image;
-
 }
