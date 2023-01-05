@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &98922382996050180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6499765251855100187}
+  m_Layer: 0
+  m_Name: ShootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6499765251855100187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98922382996050180}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0014, z: 0.357}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5648606999247728212}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5653425314829026698
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5648606999247728212}
   - component: {fileID: 5221078051801191134}
+  - component: {fileID: 8100038576433561789}
   m_Layer: 0
   m_Name: Russian Light AssaultRifle
   m_TagString: Untagged
@@ -200,6 +232,7 @@ Transform:
   - {fileID: 5655773831610128604}
   - {fileID: 5648294727281072328}
   - {fileID: 5648231246534567440}
+  - {fileID: 6499765251855100187}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -216,6 +249,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.33, z: 0.76}
   m_Center: {x: 0, y: -0.09, z: 0}
+--- !u!114 &8100038576433561789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654062188491573372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47ceb417d5658e4a963c03a4501be31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootingPoint: {fileID: 6499765251855100187}
+  _bullet: {fileID: 7490219200771951011, guid: 692bd2deec50c8a49942dbe2085793c5, type: 3}
+  _shootDelay: 0.5
+  _reloadTime: 1
+  _numberOfMissle: 1
+  _maxBulletCountInHorn: 10
+  _bulletsCountBeforeReload: 0
 --- !u!1 &5654159700923160884
 GameObject:
   m_ObjectHideFlags: 0
