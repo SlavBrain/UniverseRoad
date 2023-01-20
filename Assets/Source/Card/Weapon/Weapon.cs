@@ -13,16 +13,11 @@ public class Weapon : MonoBehaviour
     //[SerializeField] private Transform _target;
     Vector3 _target = new Vector3(0, 0, 40);
 
-    [SerializeField] private int _bulletsCountBeforeReload = 30;
+    private int _bulletsCountBeforeReload = 30;
     private int _bulletInQueue = 0;
     private bool _isShooting = false;
     private bool _isReloading = false;
     private Coroutine Shooting;
-
-    private void OnStart()
-    {
-        _bulletsCountBeforeReload = _maxBulletCountInHorn;
-    }
 
     private void Update()
     {
@@ -58,6 +53,7 @@ public class Weapon : MonoBehaviour
     {
         _bulletsCountBeforeReload--;
     }
+
     private void Shoot()
     {        
         _bulletInQueue++;
