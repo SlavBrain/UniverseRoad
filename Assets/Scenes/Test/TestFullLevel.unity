@@ -926,7 +926,7 @@ MonoBehaviour:
   _roadWidth: 30
   _offRoadWidth: 30
   _viewDistanceForward: 50
-  _viewDistanceBackward: 220
+  _viewDistanceBackward: 400
   _viewPoint: {fileID: 707928137}
   _roadGenerator: {fileID: 1836626402}
   _offRoadGenerator: {fileID: 1481390393}
@@ -1134,8 +1134,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  far clip plane: 500
+  field of view: 50.5
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1160,14 +1160,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067913787}
-  m_LocalRotation: {x: 0.3139924, y: 0, z: 0, w: 0.9494256}
-  m_LocalPosition: {x: 0, y: 22.8, z: -25.2}
+  m_LocalRotation: {x: 0.24733722, y: 0, z: 0, w: 0.96892947}
+  m_LocalPosition: {x: 0, y: 22.8, z: -32.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 707928137}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 36.6, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 28.64, y: 0, z: 0}
 --- !u!1 &1195780489
 GameObject:
   m_ObjectHideFlags: 0

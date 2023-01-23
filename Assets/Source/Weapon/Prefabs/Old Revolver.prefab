@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootingPoint: {fileID: 3324814660588916720}
   _targetFind: {fileID: 6933571983536974720}
-  _bullet: {fileID: 7490219200771951011, guid: 692bd2deec50c8a49942dbe2085793c5, type: 3}
+  _bullet: {fileID: -5161552957241028074, guid: 692bd2deec50c8a49942dbe2085793c5, type: 3}
   _shootDelay: 0.5
   _reloadTime: 1
   _numberOfMissle: 1

@@ -9,11 +9,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int _maxHealth;
     [SerializeField] private float _maxSpeed;
 
-    private int _currentHealth;
+    [SerializeField]private int _currentHealth;
     private Vector3 _targetPoint;
     private Coroutine _moving;
 
     public event Action Died;
+
+    private void OnEnable()
+    {
+        _currentHealth = _maxHealth;
+    }
 
     private void OnDisable()
     {

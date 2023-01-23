@@ -4,7 +4,7 @@ using UnityEngine;
 public class Bullet : Missile
 {
     [SerializeField] private float _speed=1;
-    [SerializeField] private float _damage=1;
+    [SerializeField] protected int _damage=1;
 
     private Vector3 target;
 
@@ -21,7 +21,7 @@ public class Bullet : Missile
 
     }
 
-    private void Destroy()
+    protected void Destroy()
     {
         gameObject.SetActive(false);
     }
