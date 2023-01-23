@@ -1,12 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private int _reward;
+    [SerializeField] private int _maxHealth;
     [SerializeField] private float _maxSpeed;
-    [SerializeField] private Vector3 _targetPoint;
+
+    private int _currentHealth;
+    private Vector3 _targetPoint;
     private Coroutine _moving;
+
+    public event Action Died;
 
     private void OnDisable()
     {
@@ -18,6 +25,25 @@ public class Enemy : MonoBehaviour
     {
         _targetPoint = target;
         StartMoving();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (damage < 0)
+        {
+            Debug.LogError(gameObject.name+": damage error");
+        }
+
+        _currentHealth -= damage;
+
+        if (_currentHealth <= 0)
+            Die();
+    }
+
+    private void Die()
+    {
+        Died?.Invoke();
+        gameObject.SetActive(false);
     }
 
     private void StartMoving()
@@ -35,5 +61,7 @@ public class Enemy : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, _targetPoint, Time.deltaTime * _maxSpeed);
             yield return null;
         }
+
+        Die();
     }
 }

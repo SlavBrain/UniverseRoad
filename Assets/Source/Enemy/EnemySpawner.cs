@@ -31,7 +31,6 @@ public class EnemySpawner : Spawner
         return transform.position + new Vector3(Random.Range(-_spawningWidth / 2, _spawningWidth / 2),0,0);
     }
 
-
     private void OnValidate()
     {
         foreach(GameObject template in _templates)

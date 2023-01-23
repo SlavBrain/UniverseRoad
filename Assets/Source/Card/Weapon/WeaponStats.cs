@@ -11,7 +11,7 @@ public class WeaponStats : CardStats
     [SerializeField] private int _numberOfMissle=1;
     [Header("ActionStats")]
     [SerializeField] private IShoot _shootAction;
-    [SerializeField] private IFindTarget _findTargetAction;
+    [SerializeField] private ITargetFind _findTargetAction;
 
     private void OnValidate()
     {

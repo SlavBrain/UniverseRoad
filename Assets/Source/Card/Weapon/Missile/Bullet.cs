@@ -21,6 +21,12 @@ public class Bullet : Missile
 
     }
 
+    private void Destroy()
+    {
+        gameObject.SetActive(false);
+    }
+
+
     private void StartMoveToPoint()
     {
         if (_moving != null)
@@ -38,5 +44,7 @@ public class Bullet : Missile
             transform.position = Vector3.MoveTowards(transform.position,target,_speed*Time.deltaTime);
             yield return null;
         }
+
+        Destroy();
     }
 }

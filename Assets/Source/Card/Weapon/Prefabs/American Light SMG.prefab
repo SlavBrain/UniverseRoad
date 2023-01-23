@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 4270475813160065610}
   - component: {fileID: 4086793530991415372}
   - component: {fileID: 3078744974775171573}
+  - component: {fileID: -385932671227744487}
   m_Layer: 0
   m_Name: American Light SMG
   m_TagString: Untagged
@@ -229,12 +230,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootingPoint: {fileID: 4326967053772800643}
+  _targetFind: {fileID: -385932671227744487}
   _bullet: {fileID: 7490219200771951011, guid: 692bd2deec50c8a49942dbe2085793c5, type: 3}
   _shootDelay: 0.5
   _reloadTime: 1
   _numberOfMissle: 1
   _maxBulletCountInHorn: 10
-  _bulletsCountBeforeReload: 0
+--- !u!114 &-385932671227744487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4272381716744611778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704147259a402e842adfce2d8b25fca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4272489494624125706
 GameObject:
   m_ObjectHideFlags: 0

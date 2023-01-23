@@ -6,8 +6,9 @@ public class ObjectPool : MonoBehaviour
 {
     [SerializeField] private GameObject _container;
     [SerializeField] private int _capacity;
-    [SerializeField] int _created=0;
     private List<GameObject> _pool = new List<GameObject>();
+
+    public IReadOnlyList<GameObject> Pool => _pool;
 
     protected void Initialize(GameObject prefab)
     {
@@ -42,7 +43,6 @@ public class ObjectPool : MonoBehaviour
         GameObject spawned = Instantiate(prefab, _container.transform);
         spawned.SetActive(false);
         _pool.Add(spawned);
-        Debug.Log(gameObject.name+" "+_created++);
         return spawned;
     }
 

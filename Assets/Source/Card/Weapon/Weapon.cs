@@ -5,13 +5,13 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private Transform _shootingPoint;
+    [SerializeField] private TargetFind _targetFind;
     [SerializeField] private Bullet _bullet;
     [SerializeField] private float _shootDelay = 0.5f;
     [SerializeField] private float _reloadTime = 2;
     [SerializeField] private int _numberOfMissle = 1;
     [SerializeField] private int _maxBulletCountInHorn = 30;
-    //[SerializeField] private Transform _target;
-    Vector3 _target = new Vector3(0, 0, 40);
+    [SerializeField] private GameObject _target;
 
     private int _bulletsCountBeforeReload = 30;
     private int _bulletInQueue = 0;
@@ -19,11 +19,21 @@ public class Weapon : MonoBehaviour
     private bool _isReloading = false;
     private Coroutine Shooting;
 
+    public TargetFind TargetFind => _targetFind;
+
+    public void SetTarget(GameObject target)
+    {
+        _target = target;
+    }
+
     private void Update()
     {
         if (IsBulletsHave())
         {
-            Shoot();
+            if (_target != null)
+            {
+                Shoot();
+            }
         }
         else
         {
@@ -38,7 +48,7 @@ public class Weapon : MonoBehaviour
 
     private void Reload()
     {
-        if (!_isShooting&&!_isReloading)
+        if (!_isShooting && !_isReloading)
         {
             if (Shooting != null)
             {
@@ -55,7 +65,7 @@ public class Weapon : MonoBehaviour
     }
 
     private void Shoot()
-    {        
+    {
         _bulletInQueue++;
 
         if (!_isShooting)
@@ -74,11 +84,11 @@ public class Weapon : MonoBehaviour
         _isShooting = true;
         WaitForSeconds delay = new WaitForSeconds(_shootDelay);
 
-        while (_bulletInQueue > 0&&IsBulletsHave())
+        while (_bulletInQueue > 0 && IsBulletsHave())
         {
             TakeBullet();
             Bullet bullet = Instantiate(_bullet, _shootingPoint.position, Quaternion.identity);
-            bullet.Initialization(_target);
+            bullet.Initialization(_target.transform.position);
             yield return delay;
         }
 
@@ -87,7 +97,6 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator Reloading()
     {
-        Debug.Log("Reload");
         _isReloading = true;
         yield return new WaitForSeconds(_reloadTime);
         _bulletsCountBeforeReload = _maxBulletCountInHorn;

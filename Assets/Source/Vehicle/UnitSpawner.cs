@@ -8,7 +8,7 @@ public class UnitSpawner : MonoBehaviour
     [SerializeField] private UnitSpawnDot[] _spawnDots;
     [SerializeField] private Button _spawnButton;
     [SerializeField] private int _currentSpawnCost;
-    [SerializeField] private Unit _unitTemplate;
+    [SerializeField] private Unit _unitTemplate;    
 
     private void OnEnable()
     {

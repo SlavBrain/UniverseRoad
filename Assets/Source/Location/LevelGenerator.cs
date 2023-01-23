@@ -35,9 +35,9 @@ public class LevelGenerator : MonoBehaviour
         var cellCountOnAxisX = WorldDistanseToGridDistanse(_roadWidth + _offRoadWidth);
         var cellCountOnAxisZForward = WorldDistanseToGridDistanse(_viewDistanceForward);
         var cellCountOnAxisZBackward = WorldDistanseToGridDistanse(_viewDistanceBackward);
-        var fillAreaCenter = WorldToGridPosition(center);
+        var fillAreaCenter = WorldToGridPosition(center-transform.position);
 
-        for (int z = -cellCountOnAxisZBackward; z < cellCountOnAxisZForward; z++)
+        for (int z = cellCountOnAxisZBackward; z > -cellCountOnAxisZForward; z--)
         {
             for (int x = -cellCountOnAxisX; x <= cellCountOnAxisX; x++)
             {
@@ -48,14 +48,13 @@ public class LevelGenerator : MonoBehaviour
 
     private void TryCreateField(Vector3Int gridPosition)
     {
-
         if (_mapMatrix.Contains(gridPosition))
             return;
         else
         {
             _mapMatrix.Add(gridPosition);
-            Vector3 spawnPosition = GridToWorldPosition(gridPosition);
-            GameObject template = null;            
+            Vector3 spawnPosition = GridToWorldPosition(gridPosition)+transform.position;
+            GameObject template = null;
 
             if (Mathf.Abs(gridPosition.x) <= _roadWidth / _cellSize)
             {
@@ -65,7 +64,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 template = _offRoadGenerator.SpawnObject(spawnPosition);
             }
-
+            
             _visibleCell.Enqueue(template);
             CheckPresenceUnnessaseryCells();
         }
