@@ -392,7 +392,7 @@ MonoBehaviour:
   _templates:
   - {fileID: 8509681702844106101, guid: 7e07ccdc167c0b3459de03f66ce73ee1, type: 3}
   - {fileID: 606948297403852033, guid: 3991843e38e4fe74382a76e9566fa2f3, type: 3}
-  _spawningDelay: 2
+  _spawningDelay: 0.8
   _target: {fileID: 707928136}
   _spawningWidth: 30
 --- !u!1 &603799946 stripped

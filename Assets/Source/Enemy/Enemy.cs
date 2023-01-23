@@ -9,11 +9,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int _maxHealth;
     [SerializeField] private float _maxSpeed;
 
-    [SerializeField]private int _currentHealth;
+    private int _currentHealth;
     private Vector3 _targetPoint;
     private Coroutine _moving;
 
     public event Action Died;
+
+    public int CurrentHealth => _currentHealth;
 
     private void OnEnable()
     {
@@ -36,7 +38,7 @@ public class Enemy : MonoBehaviour
     {
         if (damage < 0)
         {
-            Debug.LogError(gameObject.name+": damage error");
+            Debug.LogError(gameObject.name + ": damage error");
         }
 
         _currentHealth -= damage;
