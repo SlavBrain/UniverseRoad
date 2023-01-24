@@ -7,7 +7,7 @@ public class Unit : MonoBehaviour
     [SerializeField] private Transform _rightHand;
     [SerializeField] private Weapon _weapon;
 
-    [SerializeField]private EnemySpawner _enemySpawner;
+    [SerializeField] private EnemySpawner _enemySpawner;
     private GameObject _currentTarget;
 
     private void OnEnable()
@@ -15,26 +15,29 @@ public class Unit : MonoBehaviour
         _enemySpawner = GetComponentInParent<LevelConfiguration>().EnemySpawner;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        if (_currentTarget == null)
-        {
-            FindTarget();
-        }
+        _weapon.RequiredNewTarget -= FindTarget;
     }
 
     public void Initialize(GameObject weapon)
     {
+        if (_weapon != null)
+        {
+            _weapon.RequiredNewTarget -= FindTarget;
+        }
+
         _weapon = Instantiate(weapon, _rightHand.position, Quaternion.identity, _rightHand).GetComponent<Weapon>();
+        _weapon.RequiredNewTarget += FindTarget;
     }
 
-    private void FindTarget()
+    private void FindTarget(Weapon weapon)
     {
-        _currentTarget = _weapon.TargetFind.FindTarget(_enemySpawner.Pool);
+        _currentTarget = weapon.TargetFind.FindTarget(_enemySpawner.Pool);
 
         if (_currentTarget != null)
         {
-            _weapon.SetTarget(_currentTarget);
+            weapon.SetTarget(_currentTarget);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,17 +14,20 @@ public class Weapon : MonoBehaviour
     [SerializeField] private int _maxBulletCountInHorn = 30;
     [SerializeField] private GameObject _target;
 
+    private Unit _parentUnit;
     private int _bulletsCountBeforeReload = 30;
     private int _bulletInQueue = 0;
     private bool _isShooting = false;
     private bool _isReloading = false;
     private Coroutine Shooting;
 
+    public event Action<Weapon> RequiredNewTarget;
+
     public TargetFind TargetFind => _targetFind;
 
-    public void SetTarget(GameObject target)
+    private void OnEnable()
     {
-        _target = target;
+        _parentUnit = GetComponentInParent<Unit>();
     }
 
     private void Update()
@@ -34,11 +38,20 @@ public class Weapon : MonoBehaviour
             {
                 Shoot();
             }
+            else
+            {
+                RequiredNewTarget?.Invoke(this);
+            }
         }
         else
         {
             Reload();
         }
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        _target = target;
     }
 
     private bool IsBulletsHave()

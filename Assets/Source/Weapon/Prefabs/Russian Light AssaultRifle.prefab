@@ -265,8 +265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootingPoint: {fileID: 6499765251855100187}
   _targetFind: {fileID: -7671122722337712562}
-  _bullet: {fileID: -5161552957241028074, guid: 692bd2deec50c8a49942dbe2085793c5, type: 3}
-  _shootDelay: 0.5
+  _bullet: {fileID: -8047618467494510105, guid: 692bd2deec50c8a49942dbe2085793c5, type: 3}
+  _shootDelay: 0.15
   _reloadTime: 1
   _numberOfMissle: 1
   _maxBulletCountInHorn: 10

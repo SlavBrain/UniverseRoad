@@ -5,23 +5,18 @@ public class Bullet : Missile
 {
     [SerializeField] private float _speed=1;
     [SerializeField] protected int _damage=1;
-
+    [SerializeField] private AfterHitAction _afterHitAction;
     private Vector3 target;
 
     private Coroutine _moving;
 
     public void Initialization(Vector3 newTarget)
-    {
+    {        
         target = newTarget;
         StartMoveToPoint();
     }
 
-    private void Hit()
-    {
-
-    }
-
-    protected void Destroy()
+    public void Destroy()
     {
         gameObject.SetActive(false);
     }
@@ -46,5 +41,19 @@ public class Bullet : Missile
         }
 
         Destroy();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.collider.TryGetComponent<Enemy>(out Enemy enemy))
+        {
+            enemy.TakeDamage(_damage);
+        }
+        else
+        {
+            enemy = null;
+        }
+
+        _afterHitAction.Action(this,enemy);
     }
 }

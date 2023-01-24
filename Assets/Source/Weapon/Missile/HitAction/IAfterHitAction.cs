@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IHit
+public interface IAfterHitAction
 {
-    abstract void Hit();
+    abstract void Action(Bullet bullet,Enemy enemy);
 }
