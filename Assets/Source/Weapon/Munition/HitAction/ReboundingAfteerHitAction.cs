@@ -43,7 +43,6 @@ public class ReboundingAfteerHitAction : AfterHitAction
         }
         else
         {
-            Debug.Log("not enemy");
             return false;
         }
 

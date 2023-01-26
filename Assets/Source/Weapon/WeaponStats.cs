@@ -4,13 +4,12 @@ using UnityEngine;
 public class WeaponStats : CardStats
 {
     [Header("VisualizationStats")]
-    [SerializeField] private Missile _missile;
+    [SerializeField] private Munition _missile;
     [Header("GameStats")]
     [SerializeField] private float _shootDelay=0.5f;
     [SerializeField] private float _reloadTime=1;
     [SerializeField] private int _numberOfMissle=1;
     [Header("ActionStats")]
-    [SerializeField] private IShoot _shootAction;
     [SerializeField] private ITargetFind _findTargetAction;
 
     private void OnValidate()

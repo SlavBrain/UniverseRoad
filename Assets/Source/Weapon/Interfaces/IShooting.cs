@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IShoot
+public interface IShooting
 {
-    protected abstract void Shoot();
+    public void Shoot();
 }

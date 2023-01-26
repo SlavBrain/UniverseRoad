@@ -125,8 +125,9 @@ GameObject:
   - component: {fileID: 7826989354650547388}
   - component: {fileID: 4304905150836226148}
   - component: {fileID: 4311724839876568946}
-  - component: {fileID: 6933571983536974720}
   - component: {fileID: 4606219821573452887}
+  - component: {fileID: 4394786069601282432}
+  - component: {fileID: 7104238194371183548}
   m_Layer: 0
   m_Name: Old Revolver
   m_TagString: Untagged
@@ -181,24 +182,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootingPoint: {fileID: 3324814660588916720}
   _targetFind: {fileID: 4606219821573452887}
+  _shooting: {fileID: 4394786069601282432}
+  _reloading: {fileID: 7104238194371183548}
   _bullet: {fileID: -8047618467494510105, guid: 692bd2deec50c8a49942dbe2085793c5, type: 3}
   _shootDelay: 0.15
   _reloadTime: 1
-  _numberOfMissle: 1
-  _maxBulletCountInHorn: 10
-  _target: {fileID: 0}
---- !u!114 &6933571983536974720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7824290131009241056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 704147259a402e842adfce2d8b25fca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _maxBulletCount: 5
+  _bulletsCountBeforeReload: 0
 --- !u!114 &4606219821573452887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +199,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce7b6f9174fa5e74bb455d0aab1930da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4394786069601282432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7824290131009241056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ede36e05251754aafbe48638e31d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletInQueue: 0
+--- !u!114 &7104238194371183548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7824290131009241056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561f8505ef91c3a4a8a01acc03d30624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7824361515437690910

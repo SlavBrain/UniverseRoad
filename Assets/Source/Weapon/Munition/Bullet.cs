@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Bullet : Missile
+public class Bullet : Munition
 {
     [SerializeField] private float _speed=1;
     [SerializeField] protected int _damage=1;

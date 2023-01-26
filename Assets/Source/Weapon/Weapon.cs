@@ -6,46 +6,58 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private Transform _shootingPoint;
+
     [SerializeField] private TargetFind _targetFind;
+    [SerializeField] private Shooting _shooting;
+    [SerializeField] private Reloading _reloading;
     [SerializeField] private Bullet _bullet;
+
     [SerializeField] private float _shootDelay = 0.5f;
     [SerializeField] private float _reloadTime = 2;
-    [SerializeField] private int _numberOfMissle = 1;
-    [SerializeField] private int _maxBulletCountInHorn = 30;
-    [SerializeField] private GameObject _target;
+    [SerializeField] private int _maxBulletCount = 30;
 
-    private Unit _parentUnit;
-    private int _bulletsCountBeforeReload = 30;
-    private int _bulletInQueue = 0;
-    private bool _isShooting = false;
-    private bool _isReloading = false;
-    private Coroutine Shooting;
+    private GameObject _target;
+    [SerializeField]private int _bulletsCountBeforeReload;
 
     public event Action<Weapon> RequiredNewTarget;
-
+    public event Action BulletsEnded;
+    public event Action DoShoot;
+    
+    public float ReloadTime => _reloadTime;
+    public float ShootDelay => _shootDelay;
     public TargetFind TargetFind => _targetFind;
+    public Vector3 ShootingPoint => _shootingPoint.position;
+    public Bullet Bullet => _bullet;
+    public Vector3 TargetPoint => _target.transform.position;
+    private bool IsBulletsHave=>_bulletsCountBeforeReload > 0;
 
     private void OnEnable()
     {
-        _parentUnit = GetComponentInParent<Unit>();
+        FillOfBullet();
+        _reloading.Reloaded += FillOfBullet;
+        _shooting.TookBullet += TakeBullet;
+        _shooting.ShootingEnded += Reload;
+    }
+
+    private void OnDisable()
+    {
+        _reloading.Reloaded -= FillOfBullet;
+        _shooting.TookBullet -= TakeBullet;
+        _shooting.ShootingEnded -= Reload;
     }
 
     private void Update()
     {
-        if (IsBulletsHave())
+        if (IsBulletsHave)
         {
             if (_target != null)
             {
-                Shoot();
+                DoShoot?.Invoke();
             }
             else
             {
                 RequiredNewTarget?.Invoke(this);
             }
-        }
-        else
-        {
-            Reload();
         }
     }
 
@@ -54,22 +66,9 @@ public class Weapon : MonoBehaviour
         _target = target;
     }
 
-    private bool IsBulletsHave()
-    {
-        return _bulletsCountBeforeReload > 0;
-    }
-
     private void Reload()
     {
-        if (!_isShooting && !_isReloading)
-        {
-            if (Shooting != null)
-            {
-                StopCoroutine(Shooting);
-            }
-
-            Shooting = StartCoroutine(Reloading());
-        }
+        BulletsEnded?.Invoke();
     }
 
     private void TakeBullet()
@@ -77,42 +76,9 @@ public class Weapon : MonoBehaviour
         _bulletsCountBeforeReload--;
     }
 
-    private void Shoot()
+    private void FillOfBullet()
     {
-        _bulletInQueue++;
-
-        if (!_isShooting)
-        {
-            if (Shooting != null)
-            {
-                StopCoroutine(Shooting);
-            }
-
-            Shooting = StartCoroutine(CreatingBullets());
-        }
-    }
-
-    private IEnumerator CreatingBullets()
-    {
-        _isShooting = true;
-        WaitForSeconds delay = new WaitForSeconds(_shootDelay);
-
-        while (_bulletInQueue > 0 && IsBulletsHave())
-        {
-            TakeBullet();
-            Bullet bullet = Instantiate(_bullet, _shootingPoint.position, Quaternion.identity);
-            bullet.Initialization(_target.transform.position);
-            yield return delay;
-        }
-
-        _isShooting = false;
-    }
-
-    private IEnumerator Reloading()
-    {
-        _isReloading = true;
-        yield return new WaitForSeconds(_reloadTime);
-        _bulletsCountBeforeReload = _maxBulletCountInHorn;
-        _isReloading = false;
+        Debug.LogWarning("fill");
+        _bulletsCountBeforeReload = _maxBulletCount;
     }
 }

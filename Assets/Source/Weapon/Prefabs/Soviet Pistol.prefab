@@ -343,8 +343,9 @@ GameObject:
   - component: {fileID: 3062181763025970800}
   - component: {fileID: 8003625764913741244}
   - component: {fileID: 2523395495385656449}
-  - component: {fileID: 6753008248234470104}
   - component: {fileID: -7439174741152478786}
+  - component: {fileID: 6858607774991604074}
+  - component: {fileID: -985654038375368060}
   m_Layer: 0
   m_Name: Soviet Pistol
   m_TagString: Untagged
@@ -399,24 +400,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootingPoint: {fileID: 5042003736408466952}
   _targetFind: {fileID: -7439174741152478786}
+  _shooting: {fileID: 6858607774991604074}
+  _reloading: {fileID: -985654038375368060}
   _bullet: {fileID: -8047618467494510105, guid: 692bd2deec50c8a49942dbe2085793c5, type: 3}
   _shootDelay: 0.15
   _reloadTime: 1
-  _numberOfMissle: 1
-  _maxBulletCountInHorn: 10
-  _target: {fileID: 0}
---- !u!114 &6753008248234470104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3060185947809764168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 704147259a402e842adfce2d8b25fca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _maxBulletCount: 5
+  _bulletsCountBeforeReload: 0
 --- !u!114 &-7439174741152478786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +417,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce7b6f9174fa5e74bb455d0aab1930da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6858607774991604074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060185947809764168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ede36e05251754aafbe48638e31d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletInQueue: 0
+--- !u!114 &-985654038375368060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060185947809764168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561f8505ef91c3a4a8a01acc03d30624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7541977974331360731
