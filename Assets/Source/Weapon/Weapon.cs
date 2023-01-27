@@ -29,6 +29,7 @@ public class Weapon : MonoBehaviour
     public Vector3 ShootingPoint => _shootingPoint.position;
     public Bullet Bullet => _bullet;
     public Vector3 TargetPoint => _target.transform.position;
+    public int MaxBulletCount => _maxBulletCount;
     private bool IsBulletsHave=>_bulletsCountBeforeReload > 0;
 
     private void OnEnable()

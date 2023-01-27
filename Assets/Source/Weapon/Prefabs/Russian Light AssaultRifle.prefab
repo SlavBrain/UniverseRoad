@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: -7671122722337712562}
   - component: {fileID: 2178627398643252422}
   - component: {fileID: -6158901198163491198}
+  - component: {fileID: 2398919286987161738}
   m_Layer: 0
   m_Name: Russian Light AssaultRifle
   m_TagString: Untagged
@@ -297,7 +298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ede36e05251754aafbe48638e31d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletInQueue: 0
 --- !u!114 &-6158901198163491198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +310,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561f8505ef91c3a4a8a01acc03d30624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2398919286987161738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654062188491573372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf9c98465ef4324684be17f28db2ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 0}
+  _capacity: 0
+  _templates:
+  - {fileID: 0}
 --- !u!1 &5654159700923160884
 GameObject:
   m_ObjectHideFlags: 0

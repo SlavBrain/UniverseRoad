@@ -6,6 +6,8 @@ public class Spawner : ObjectPool
 
     private void OnEnable()
     {
+        GetExternalData();
+
         foreach(GameObject template in _templates)
         {
             Initialize(template);
@@ -28,6 +30,11 @@ public class Spawner : ObjectPool
     {
         template.SetActive(true);
         template.transform.position = spawnPosition;
+    }
+
+    protected virtual void GetExternalData()
+    {
+
     }
 
     private void OnValidate()

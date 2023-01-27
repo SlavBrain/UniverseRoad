@@ -4,18 +4,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Weapon))]
+[RequireComponent(typeof(BulletSpawner))]
 public class Shooting : MonoBehaviour, IShooting
 {
     private Weapon _weapon;
-    [SerializeField]private int _bulletInQueue = 0;
+    [SerializeField]private BulletSpawner _bulletSpawner;
+    private int _bulletInQueue = 0;
     private bool _isShooting = false;
+
     protected Coroutine _munitionLaunching;
+
     public event Action ShootingEnded;
     public event Action TookBullet;
 
     private void OnEnable()
     {
         _weapon = GetComponent<Weapon>();
+        _bulletSpawner = GetComponent<BulletSpawner>();
         _weapon.DoShoot += Shoot;
     }
 
@@ -50,7 +55,7 @@ public class Shooting : MonoBehaviour, IShooting
         {
             if (_weapon.TargetPoint != null)
             {
-                Bullet bullet = Instantiate(_weapon.Bullet, _weapon.ShootingPoint, Quaternion.identity);
+                Bullet bullet = _bulletSpawner.SpawnObjectInParent(transform).GetComponent<Bullet>();//Instantiate(_weapon.Bullet, _weapon.ShootingPoint, Quaternion.identity);
                 _bulletInQueue--;
                 bullet.Initialization(_weapon.TargetPoint);
                 yield return delay;
