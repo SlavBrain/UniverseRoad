@@ -26,16 +26,27 @@ public class UnitSpawner : MonoBehaviour
         {
             if(TryFindEmptyDot(out UnitSpawnDot emptyDot))
             {
-                Spawn(GetAvailableWeapon(), emptyDot);
+                SpawnNewUnit(GetAvailableWeapon(), emptyDot);
                 ChangeSpawnCost();
             }
         }
     }
 
-    private void Spawn(GameObject weapon,UnitSpawnDot emptyDot)
+    private void SpawnNewUnit(GameObject weapon,UnitSpawnDot emptyDot)
     {
         Unit newUnit= Instantiate(_unitTemplate, emptyDot.transform.position, Quaternion.identity, emptyDot.transform);
-        newUnit.Initialize(weapon);
+        newUnit.Merged += UpgradeUnit;
+        newUnit.Initialize(weapon,1);
+    }
+
+    private void UpgradeUnit(Unit firstUnit, Unit secondUnit)
+    {
+        UnitSpawnDot currentSpawnDot = secondUnit.GetComponentInParent<UnitSpawnDot>();
+        Unit upgradedUnit = Instantiate(_unitTemplate, currentSpawnDot.transform.position, Quaternion.identity, currentSpawnDot.transform);
+        firstUnit.Destoy();
+        secondUnit.Destoy();
+        upgradedUnit.Merged += UpgradeUnit;
+        upgradedUnit.Initialize(GetAvailableWeapon(), secondUnit.Level+1);
     }
 
     private bool IsEnoughMoney()

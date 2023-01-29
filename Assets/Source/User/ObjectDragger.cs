@@ -53,6 +53,7 @@ public class ObjectDragger : MonoBehaviour
     private void StopDragging()
     {
         _isDragging = false;
+        _selectedObject.GetComponent<Unit>().Merge();
         _selectedObject.transform.position = _previousTargetPosition;
     }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6196291290042271744}
   - component: {fileID: 7975216083644003982}
   - component: {fileID: 3485949852568390639}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1995217894277591534}
   - component: {fileID: 3847932441821567667}
+  - component: {fileID: -6817990798982602366}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -145,8 +146,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rightHand: {fileID: 3070581038055762245}
-  _weapon: {fileID: 0}
-  _enemySpawner: {fileID: 0}
+  _unitLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _level: 0
+  nearUnits: []
+  _nearUnit: {fileID: 0}
+--- !u!135 &-6817990798982602366
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7190404044829046260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 1.19, z: 0}
 --- !u!1 &8528419817529937638
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +174,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3070581038055762245}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
