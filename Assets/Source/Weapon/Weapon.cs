@@ -79,7 +79,6 @@ public class Weapon : MonoBehaviour
 
     private void FillOfBullet()
     {
-        Debug.LogWarning("fill");
         _bulletsCountBeforeReload = _maxBulletCount;
     }
 }

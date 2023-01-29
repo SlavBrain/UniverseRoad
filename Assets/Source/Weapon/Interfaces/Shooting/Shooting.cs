@@ -36,7 +36,6 @@ public class Shooting : MonoBehaviour, IShooting
 
         if (!_isShooting)
         {
-            Debug.Log("startShoot");
             if (_munitionLaunching != null)
             {
                 StopCoroutine(_munitionLaunching);

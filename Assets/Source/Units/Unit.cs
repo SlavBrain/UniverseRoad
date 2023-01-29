@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] private Transform _rightHand;
-    [SerializeField] private Weapon _weapon;
-
-    [SerializeField] private EnemySpawner _enemySpawner;
+    [SerializeField]private Transform _rightHand;
+    private Weapon _weapon;
+    private EnemySpawner _enemySpawner;
     private GameObject _currentTarget;
 
     private void OnEnable()

@@ -22,7 +22,6 @@ public class Reloading : MonoBehaviour, IReloading
 
     public void Reload()
     {
-        Debug.Log("reload");
         if (_reloading != null)
         {
             StopCoroutine(_reloading);
