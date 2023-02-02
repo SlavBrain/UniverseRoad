@@ -12,7 +12,7 @@ public class Bullet : Munition
 
     public void Initialization(Vector3 newTarget)
     {        
-        target = newTarget;
+        target = newTarget+new Vector3(0,0.5f,0);
         StartMoveToPoint();
     }
 
@@ -47,6 +47,7 @@ public class Bullet : Munition
     {
         if (other.collider.TryGetComponent<Enemy>(out Enemy enemy))
         {
+            Debug.Log("bull");
             enemy.TakeDamage(_damage);
         }
         else

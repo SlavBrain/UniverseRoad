@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class ObjectPool : MonoBehaviour
 
     private bool TryGetObject(out GameObject result)
     {
-        result = _pool.FirstOrDefault(objectInPool => objectInPool.activeSelf == false);
+        result = _pool.OrderBy(objectInPool =>  Guid.NewGuid()).FirstOrDefault(objectInPool => objectInPool.activeSelf == false);
 
         return result != null;
     }
@@ -51,7 +52,7 @@ public class ObjectPool : MonoBehaviour
         if (_pool.Count == 0)
           throw new System.Exception();
 
-        GameObject spawned = Instantiate(_pool[Random.Range(0,_pool.Count)], _container.transform);
+        GameObject spawned = Instantiate(_pool[UnityEngine.Random.Range(0,_pool.Count)], _container.transform);
         spawned.SetActive(false);
         _pool.Add(spawned);
         return spawned;

@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float _reloadTime = 2;
     [SerializeField] private int _maxBulletCount = 30;
 
-    private GameObject _target;
+    [SerializeField]private GameObject _target;
     [SerializeField]private int _bulletsCountBeforeReload;
 
     public event Action<Weapon> RequiredNewTarget;
@@ -51,7 +51,7 @@ public class Weapon : MonoBehaviour
     {
         if (IsBulletsHave)
         {
-            if (_target != null)
+            if (_target!=null&&_target.activeSelf)
             {
                 DoShoot?.Invoke();
             }
