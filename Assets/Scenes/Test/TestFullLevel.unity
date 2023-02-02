@@ -390,9 +390,12 @@ MonoBehaviour:
   _container: {fileID: 585228992}
   _capacity: 10
   _templates:
-  - {fileID: 8509681702844106101, guid: 7e07ccdc167c0b3459de03f66ce73ee1, type: 3}
-  - {fileID: 606948297403852033, guid: 3991843e38e4fe74382a76e9566fa2f3, type: 3}
-  _spawningDelay: 0.8
+  - {fileID: 6277727085753241465, guid: 768580ec9ca60484bbfe6a110cbac3e0, type: 3}
+  - {fileID: 8215238046368174893, guid: 70f409bde6c009d46aaccc2e0c0cece5, type: 3}
+  - {fileID: 8797415940400411051, guid: a18110415599a2248a5e531e7289658e, type: 3}
+  - {fileID: 1473867235753639793, guid: bce3548498ade62449647c04c0fe8586, type: 3}
+  - {fileID: 7142194764878272141, guid: 78f49549ff4bbd24da3f63138e4f619e, type: 3}
+  _spawningDelay: 1.15
   _target: {fileID: 707928136}
   _spawningWidth: 30
 --- !u!1 &603799946 stripped
@@ -1236,9 +1239,7 @@ MonoBehaviour:
     m_Bits: 128
   _isDragging: 0
   _camera: {fileID: 0}
-  _selectedUnit: {fileID: 0}
-  _screenPosition: {x: 0, y: 0, z: 0}
-  _offset: {x: 0, y: 0, z: 0}
+  _selectedObject: {fileID: 0}
 --- !u!114 &1372344005
 MonoBehaviour:
   m_ObjectHideFlags: 0
