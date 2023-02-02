@@ -14,7 +14,7 @@ public class ObjectDragger : MonoBehaviour
     [SerializeField] private GameObject _selectedObject;
 
     private Vector3 _previousTargetPosition;
-
+    private Vector3 _offset;
     private Coroutine _dragging;
 
     private void OnEnable()
@@ -60,12 +60,14 @@ public class ObjectDragger : MonoBehaviour
     private bool TryTakeObject(out GameObject selectedObject)
     {
         selectedObject = null;
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        Vector3 mousePosition = Input.mousePosition;
+        Ray ray = _camera.ScreenPointToRay(mousePosition);
         RaycastHit hit;
 
         if(Physics.Raycast(ray.origin, ray.direction,out hit,_maxRayDistance,_unitLayer))
         {
             _selectedObject = hit.collider.gameObject;
+            _offset = _selectedObject.transform.position - hit.point;
         }
 
         return _selectedObject != null;
@@ -73,9 +75,11 @@ public class ObjectDragger : MonoBehaviour
 
     private IEnumerator DraggingTest()
     {
+        Vector3 newPosition;
         _previousTargetPosition = _selectedObject.transform.position;
         LayerMask _ignoreUnitMask = ~_unitLayer;        
         RaycastHit hit;
+
 
         while (_isDragging)
         {
@@ -83,7 +87,8 @@ public class ObjectDragger : MonoBehaviour
 
             if (Physics.Raycast(ray,out hit,1000, _ignoreUnitMask))
             {
-                _selectedObject.transform.position = new Vector3(hit.point.x, _previousTargetPosition.y, hit.point.z);
+                newPosition = hit.point + _offset;
+                _selectedObject.transform.position = new Vector3(newPosition.x,_previousTargetPosition.y,newPosition.z);//hit.point.x, _previousTargetPosition.y, hit.point.z);
             }
 
             yield return null;
