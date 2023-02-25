@@ -16,3 +16,6 @@ MonoBehaviour:
   _weapon: {fileID: 8100038576433561789, guid: 33209291bc434d743a87b8e429bd5114, type: 3}
   _icon: {fileID: 21300000, guid: 09f1c332200207f4c9a3ef67a753820d, type: 3}
   _name: Rifle
+  _count: 0
+  _rang: 1
+  _isSelected: 0

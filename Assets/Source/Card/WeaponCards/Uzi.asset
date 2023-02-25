@@ -16,3 +16,6 @@ MonoBehaviour:
   _weapon: {fileID: 3078744974775171573, guid: 7bbc40ea750df664f94a9a0538afa9ca, type: 3}
   _icon: {fileID: 21300000, guid: 99c5ed3cad3c2ca4988e335fadd32a2f, type: 3}
   _name: Uzi
+  _count: 0
+  _rang: 1
+  _isSelected: 0

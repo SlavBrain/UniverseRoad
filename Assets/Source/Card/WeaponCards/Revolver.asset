@@ -16,3 +16,6 @@ MonoBehaviour:
   _weapon: {fileID: 4311724839876568946, guid: 63807f3144ebe9645a45865f10e4cd61, type: 3}
   _icon: {fileID: 21300000, guid: 5c1e212d0cb64c8409a2213a0fa2177f, type: 3}
   _name: Revolver
+  _count: 0
+  _rang: 1
+  _isSelected: 0

@@ -89,7 +89,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8592998982242408465}
-  - component: {fileID: 3790983234171754698}
+  - component: {fileID: 6415355914858729888}
   m_Layer: 5
   m_Name: WeaponView
   m_TagString: Untagged
@@ -118,7 +118,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3790983234171754698
+--- !u!114 &6415355914858729888
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,12 +127,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5548786587406293992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c93911a1481813b4a97bea8c5ab5a7b9, type: 3}
+  m_Script: {fileID: 11500000, guid: e4b57d80067d1744e880e4e160041cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponCard: {fileID: 0}
   _weaponIcon: {fileID: 7801572544609306355}
   _weaponNameView: {fileID: 7128811828168546943}
+  _selectButton: {fileID: 7375790431751435664}
 --- !u!1 &5601211153052281532
 GameObject:
   m_ObjectHideFlags: 0

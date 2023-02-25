@@ -16,3 +16,6 @@ MonoBehaviour:
   _weapon: {fileID: 2523395495385656449, guid: d0fed1f01a9ae984684385b69ac70d5d, type: 3}
   _icon: {fileID: 21300000, guid: 5ae5aacbca2d2c1458b04b9d52680671, type: 3}
   _name: Pistol
+  _count: 0
+  _rang: 1
+  _isSelected: 1
