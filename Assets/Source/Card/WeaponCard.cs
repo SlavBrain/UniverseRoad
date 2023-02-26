@@ -19,6 +19,7 @@ public class WeaponCard : ScriptableObject
     public event Action<WeaponCard> TryingUnselecting;
     public event Action<WeaponCard> SelectChanged;
 
+    public Weapon Weapon => _weapon;
     public Sprite Icon => _icon;
     public string Name => name;
     public int Count => _count;

@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using IJunior.TypedScenes;
+using System.Collections.Generic;
 
 public class LevelConfiguration : MonoBehaviour
 {
@@ -24,5 +24,5 @@ public class LevelConfiguration : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    }    
 }

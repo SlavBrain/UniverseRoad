@@ -1,14 +1,21 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using IJunior.TypedScenes;
+using System.Collections.Generic;
 
-public class UnitSpawner : MonoBehaviour
+public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
 {
-    [SerializeField] private GameObject[] _availableWeapon;
+    [SerializeField] private List<Weapon> _availableWeapon;
     [SerializeField] private UnitSpawnDot[] _spawnDots;
     [SerializeField] private Button _spawnButton;
     [SerializeField] private int _currentSpawnCost;
-    [SerializeField] private Unit _unitTemplate;    
+    [SerializeField] private Unit _unitTemplate;
+
+    public void OnSceneLoaded(GameConfig argument)
+    {
+        SetWeapon(argument.SelectedWeapon);
+    }
 
     private void OnEnable()
     {
@@ -32,7 +39,7 @@ public class UnitSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnNewUnit(GameObject weapon,UnitSpawnDot emptyDot)
+    private void SpawnNewUnit(Weapon weapon,UnitSpawnDot emptyDot)
     {
         Unit newUnit= Instantiate(_unitTemplate, emptyDot.transform.position, Quaternion.identity, emptyDot.transform);
         newUnit.Merged += UpgradeUnit;
@@ -60,9 +67,9 @@ public class UnitSpawner : MonoBehaviour
         Debug.Log("SpawnCostChange");
     }
 
-    private GameObject GetAvailableWeapon()
+    private Weapon GetAvailableWeapon()
     {
-        return _availableWeapon[Random.Range(0, _availableWeapon.Length)];
+        return _availableWeapon[Random.Range(0, _availableWeapon.Count)];
     }
 
     private bool TryFindEmptyDot(out UnitSpawnDot emptySpawnDot)
@@ -76,5 +83,16 @@ public class UnitSpawner : MonoBehaviour
         }
 
         return emptySpawnDot != null;
+    }
+
+    private void SetWeapon(IReadOnlyList<Weapon> weapons)
+    {
+        Debug.Log("old" + weapons.Count);
+        foreach (Weapon weapon in weapons)
+        {
+            _availableWeapon.Add(weapon);
+        }
+
+        Debug.Log("nwe" + _availableWeapon.Count);
     }
 }

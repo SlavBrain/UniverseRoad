@@ -32,7 +32,7 @@ public class Unit : MonoBehaviour
         Merged = null;
     }
 
-    public void Initialize(GameObject weapon, int level)
+    public void Initialize(Weapon weapon, int level)
     {
         _level = Math.Clamp(level, 0, _maxLevel);
         Debug.Log(_level);
@@ -42,7 +42,7 @@ public class Unit : MonoBehaviour
             _weapon.RequiredNewTarget -= FindTarget;
         }
 
-        _weapon = Instantiate(weapon, _rightHand.position, Quaternion.identity, _rightHand).GetComponent<Weapon>();
+        _weapon = Instantiate(weapon, _rightHand.position, Quaternion.identity, _rightHand);
         _weapon.RequiredNewTarget += FindTarget;
     }
     public void Merge()
