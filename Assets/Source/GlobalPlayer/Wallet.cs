@@ -9,7 +9,6 @@ public class Wallet : MonoBehaviour
 
     private void Start()
     {
-        _value = 100;
         ValueChanged?.Invoke(_value);
     }
 
