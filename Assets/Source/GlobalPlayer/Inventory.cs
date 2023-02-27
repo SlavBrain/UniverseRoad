@@ -5,21 +5,26 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<WeaponCard> _availableWeapon;
-    [SerializeField] private WeaponCard[] _selectedWeapon;
+    private List<WeaponCard> _selectedWeapon=new List<WeaponCard>();
     [SerializeField] private int _maxSelectedWeapon;
 
     public event Action SelectedWeaponChanged;
     public IReadOnlyList<WeaponCard> AvailableWeapon => _availableWeapon;
-    public IReadOnlyCollection<WeaponCard> SelectedWeapon => _selectedWeapon;
+    public IReadOnlyList<WeaponCard> SelectedWeapon => _selectedWeapon;
 
     private void OnEnable()
     {
-        _selectedWeapon = new WeaponCard[_maxSelectedWeapon];
+        _selectedWeapon.Clear();
 
         foreach(WeaponCard card in _availableWeapon)
         {
             card.TryingSelecting += AddCardInSelected;
             card.TryingUnselecting += RemoveCardFromSelected;
+
+            if (card.IsSelected)
+            {
+                _selectedWeapon.Add(card);
+            }
         }
     }
 
@@ -34,9 +39,9 @@ public class Inventory : MonoBehaviour
 
     private void AddCardInSelected(WeaponCard weaponCard)
     {
-        if(TryFindEmptySelectSlot(out int slotNumber))
+        if(_selectedWeapon.Count<_maxSelectedWeapon)
         {
-            _selectedWeapon[slotNumber] = weaponCard;
+            _selectedWeapon.Add(weaponCard);
             weaponCard.Select();
             SelectedWeaponChanged?.Invoke();
         }
@@ -44,30 +49,14 @@ public class Inventory : MonoBehaviour
 
     private void RemoveCardFromSelected(WeaponCard weaponCard)
     {
-        for(int i=0;i<_selectedWeapon.Length;i++)
+        for(int i=0;i<_selectedWeapon.Count;i++)
         {
             if (_selectedWeapon[i] == weaponCard)
             {
-                _selectedWeapon[i] = null;
+                _selectedWeapon.RemoveAt(i);
             }
         }
 
         SelectedWeaponChanged?.Invoke();
-    }
-
-    private bool TryFindEmptySelectSlot(out int slotNumber)
-    {
-        slotNumber = 0;
-
-        for(int i = 0; i < _selectedWeapon.Length; i++)
-        {
-            if (_selectedWeapon[i] == null)
-            {
-                slotNumber = i;
-                return true;
-            }
-        }
-
-        return false;
     }
 }

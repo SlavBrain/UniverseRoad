@@ -1,10 +1,11 @@
-using System;
 using UnityEngine;
+using System.Linq;
 
 public class SelectedWeaponViewer : MonoBehaviour
 {
     [SerializeField] private Inventory _inventory;
-    [SerializeField] private WeaponView _weaponViewTemplate;
+    //[SerializeField] private WeaponView _weaponViewTemplate;
+    [SerializeField] private WeaponView[] _weaponViews;
     [SerializeField] private GameObject _viewContainer;
 
     private void OnEnable()
@@ -22,24 +23,41 @@ public class SelectedWeaponViewer : MonoBehaviour
     {
         Clean();
 
-        foreach (WeaponCard weaponCard in _inventory.SelectedWeapon)
+        if (_inventory.SelectedWeapon.Count > 0)
         {
-            if (weaponCard != null)
-                CreateNewCard(weaponCard);
+            foreach (WeaponCard weaponCard in _inventory.SelectedWeapon)
+            {
+                if (weaponCard != null)
+                    SetWeaponView(weaponCard);
+            }
         }
     }
 
-    private void CreateNewCard(WeaponCard weaponCard)
+    private void SetWeaponView(WeaponCard weaponCard)
     {
-        WeaponView newView = Instantiate(_weaponViewTemplate, _viewContainer.transform);
-        newView.Initialize(weaponCard);
+        if (TryFindEmptyView(out WeaponView view))
+        {
+            view.Initialize(weaponCard);
+        }
+    }
+
+    private bool TryFindEmptyView(out WeaponView emptyView)
+    {
+        emptyView = _weaponViews.FirstOrDefault(view => view.WeaponCard == null);
+
+        return emptyView != null;
+    }
+
+    private void FillEmptyView(WeaponView view)
+    {
+        view.ResetToDefault();
     }
 
     private void Clean()
     {
-        foreach (Transform child in _viewContainer.transform)
+        foreach (WeaponView view in _weaponViews)
         {
-            Destroy(child.gameObject);
+            view.ResetToDefault();
         }
     }
 }
