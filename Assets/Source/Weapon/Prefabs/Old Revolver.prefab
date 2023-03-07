@@ -189,6 +189,7 @@ MonoBehaviour:
   _shootDelay: 0.15
   _reloadTime: 1
   _maxBulletCount: 5
+  _target: {fileID: 0}
   _bulletsCountBeforeReload: 0
 --- !u!114 &4606219821573452887
 MonoBehaviour:
@@ -214,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ede36e05251754aafbe48638e31d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bulletSpawner: {fileID: 0}
 --- !u!114 &7104238194371183548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,10 +240,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf9c98465ef4324684be17f28db2ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 0}
-  _capacity: 0
-  _templates:
-  - {fileID: 0}
+  Container: {fileID: 0}
+  Capacity: 20
+  Templates:
+  - {fileID: 9215422234736643232, guid: 692bd2deec50c8a49942dbe2085793c5, type: 3}
+  Weapon: {fileID: 0}
 --- !u!1 &7824361515437690910
 GameObject:
   m_ObjectHideFlags: 0

@@ -54,7 +54,7 @@ public class LevelGenerator : MonoBehaviour
         {
             _mapMatrix.Add(gridPosition);
             Vector3 spawnPosition = GridToWorldPosition(gridPosition)+transform.position;
-            GameObject template = null;
+            GameObject template;
 
             if (Mathf.Abs(gridPosition.x) <= _roadWidth / _cellSize)
             {

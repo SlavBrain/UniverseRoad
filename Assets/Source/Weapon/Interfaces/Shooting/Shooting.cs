@@ -54,8 +54,7 @@ public class Shooting : MonoBehaviour, IShooting
         {
             if (_weapon.TargetPoint != null)
             {
-                Bullet bullet = _bulletSpawner.SpawnObjectInParent(transform).GetComponent<Bullet>();//Instantiate(_weapon.Bullet, _weapon.ShootingPoint, Quaternion.identity);
-                _bulletInQueue--;
+                Bullet bullet = _bulletSpawner.SpawnObject(transform.position).GetComponent<Bullet>();
                 bullet.Initialization(_weapon.TargetPoint);
                 yield return delay;
             }

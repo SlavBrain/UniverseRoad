@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb42c2a9f8542cd40888fd9a4147d743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 6623286219751286094}
-  _capacity: 10
-  _templates:
+  Container: {fileID: 0}
+  Capacity: 0
+  Templates:
   - {fileID: 7917950752878421723, guid: f61a6960b87b82c49b32b90d3f4d8772, type: 3}
   - {fileID: 1954466724641919848, guid: 0cb1e38d83b1a6e43a2eb733fcfe6a73, type: 3}
   - {fileID: 8348480084736666428, guid: d18de8755cb24624e9a7d3e12de33ca1, type: 3}

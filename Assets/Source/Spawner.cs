@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Spawner : ObjectPool
 {
-    [SerializeField] protected GameObject[] _templates;
+    [SerializeField] protected GameObject[] Templates;
 
     private void OnEnable()
     {
         GetExternalData();
 
-        foreach(GameObject template in _templates)
+        foreach(GameObject template in Templates)
         {
             Initialize(template);
         }
@@ -34,12 +34,12 @@ public class Spawner : ObjectPool
 
     protected virtual void GetExternalData()
     {
-
+        return;
     }
 
     private void OnValidate()
     {
-        if (_templates.Length == 0)
+        if (Templates.Length == 0)
         {
             Debug.LogError(gameObject.name + ": need add templates for spawn");
         }

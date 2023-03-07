@@ -24,7 +24,7 @@ public class FieldWithEnviromentGenerator : Spawner
 
     private void OnValidate()
     {
-        foreach(GameObject template in _templates)
+        foreach(GameObject template in Templates)
         {
             if(!template.TryGetComponent<FieldWithEnviroment>(out FieldWithEnviroment field))
             {

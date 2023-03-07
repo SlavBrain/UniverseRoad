@@ -62,11 +62,12 @@ public class ObjectDragger : MonoBehaviour
         selectedObject = null;
         Vector3 mousePosition = Input.mousePosition;
         Ray ray = _camera.ScreenPointToRay(mousePosition);
-        RaycastHit hit;
+        Debug.Log("touch");
 
-        if(Physics.Raycast(ray.origin, ray.direction,out hit,_maxRayDistance,_unitLayer))
+        if(Physics.Raycast(ray.origin, ray.direction,out RaycastHit hit,_maxRayDistance,_unitLayer))
         {
             _selectedObject = hit.collider.gameObject;
+            Debug.Log(_selectedObject.name+"touch");
             _offset = _selectedObject.transform.position - hit.point;
         }
 
@@ -77,15 +78,14 @@ public class ObjectDragger : MonoBehaviour
     {
         Vector3 newPosition;
         _previousTargetPosition = _selectedObject.transform.position;
-        LayerMask _ignoreUnitMask = ~_unitLayer;        
-        RaycastHit hit;
+        LayerMask _ignoreUnitMask = ~_unitLayer;
 
 
         while (_isDragging)
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray,out hit,1000, _ignoreUnitMask))
+            if (Physics.Raycast(ray,out RaycastHit hit,1000, _ignoreUnitMask))
             {
                 newPosition = hit.point + _offset;
                 _selectedObject.transform.position = new Vector3(newPosition.x,_previousTargetPosition.y,newPosition.z);//hit.point.x, _previousTargetPosition.y, hit.point.z);

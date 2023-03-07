@@ -19,3 +19,9 @@ MonoBehaviour:
   _count: 0
   _rang: 1
   _isSelected: 1
+  RankedStats:
+  - {fileID: 11400000, guid: 11b1b2c9180fc4344aab18f958a9339d, type: 2}
+  - {fileID: 11400000, guid: e06a05c2ae943054da737e2794905cf4, type: 2}
+  - {fileID: 11400000, guid: d92cc6f587d8ab740a5df1af69df7b42, type: 2}
+  - {fileID: 11400000, guid: a7354b3fb7cd33242bc685a1fd329e82, type: 2}
+  - {fileID: 11400000, guid: 9948c15b9052f6f49943dd4b8a1648e3, type: 2}

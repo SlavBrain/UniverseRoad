@@ -15,11 +15,11 @@ public class SDKInitializer : MonoBehaviour
 #endif
 
 #if YANDEX_GAMES
-        yield return YandexGamesSdk.Initialize(OnYandexSDKInitialize);
+       // yield return YandexGamesSdk.Initialize(OnYandexSDKInitialize);
 #endif
 
 #if VK_GAMES
-        yield return Agava.VKGames.VKGamesSdk.Initialize(OnVKSDKInitialize);
+       // yield return Agava.VKGames.VKGamesSdk.Initialize(OnVKSDKInitialize);
 #endif
     }
 

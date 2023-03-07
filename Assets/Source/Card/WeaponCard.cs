@@ -14,6 +14,7 @@ public class WeaponCard : ScriptableObject
     [SerializeField] private int _count=0;
     [SerializeField] private int _rang = 0;
     [SerializeField] private bool _isSelected=false;
+    [SerializeField] private List<WeaponStats> RankedStats;
 
     public event Action<WeaponCard> TryingSelecting;
     public event Action<WeaponCard> TryingUnselecting;
@@ -49,5 +50,13 @@ public class WeaponCard : ScriptableObject
     {
         _isSelected = false;
         SelectChanged?.Invoke(this);
+    }
+
+    private void OnValidate()
+    {
+        if (RankedStats.Count == 0)
+        {
+            Debug.LogWarning(this.name + ": RankedStats is empty");
+        }
     }
 }

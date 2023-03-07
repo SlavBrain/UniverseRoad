@@ -33,7 +33,7 @@ public class EnemySpawner : Spawner
 
     private void OnValidate()
     {
-        foreach(GameObject template in _templates)
+        foreach(GameObject template in Templates)
         {
             if (!template.GetComponent<Enemy>())
             {

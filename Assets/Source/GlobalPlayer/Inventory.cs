@@ -5,10 +5,12 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<WeaponCard> _availableWeapon;
-    private List<WeaponCard> _selectedWeapon=new List<WeaponCard>();
     [SerializeField] private int _maxSelectedWeapon;
 
+    private List<WeaponCard> _selectedWeapon=new List<WeaponCard>();
+
     public event Action SelectedWeaponChanged;
+
     public IReadOnlyList<WeaponCard> AvailableWeapon => _availableWeapon;
     public IReadOnlyList<WeaponCard> SelectedWeapon => _selectedWeapon;
 
