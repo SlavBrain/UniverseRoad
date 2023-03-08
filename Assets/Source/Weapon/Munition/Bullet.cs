@@ -47,7 +47,6 @@ public class Bullet : Munition
     {
         if (other.collider.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            Debug.Log("bull");
             enemy.TakeDamage(_damage);
         }
         else

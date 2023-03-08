@@ -34,6 +34,7 @@ public class Weapon : MonoBehaviour
 
     private void OnEnable()
     {
+        transform.SetLocalPositionAndRotation(transform.localPosition, Quaternion.Euler(Vector3.zero));
         FillOfBullet();
         _reloading.Reloaded += FillOfBullet;
         _shooting.TookBullet += TakeBullet;

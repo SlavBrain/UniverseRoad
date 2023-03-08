@@ -7,18 +7,19 @@ using UnityEngine;
 [RequireComponent(typeof(BulletSpawner))]
 public class Shooting : MonoBehaviour, IShooting
 {
+    private BulletSpawner _bulletSpawner;
     private Weapon _weapon;
-    [SerializeField]private BulletSpawner _bulletSpawner;
     private int _bulletInQueue = 0;
     private bool _isShooting = false;
-
-    protected Coroutine _munitionLaunching;
-
+    private Animator _unitAnimator;
+    private Coroutine _munitionLaunching;
+    private string HashAnimatorIsShoot = "IsShoot";
     public event Action ShootingEnded;
     public event Action TookBullet;
 
     private void OnEnable()
     {
+        GetComponentInParent<Unit>().TryGetComponent<Animator>(out _unitAnimator);
         _weapon = GetComponent<Weapon>();
         _bulletSpawner = GetComponent<BulletSpawner>();
         _weapon.DoShoot += Shoot;
@@ -45,6 +46,12 @@ public class Shooting : MonoBehaviour, IShooting
         }
     }
 
+    private void PlayShootAnimation()
+    {
+        if (_unitAnimator != null)
+            _unitAnimator.SetTrigger(HashAnimatorIsShoot);
+    }
+
     private IEnumerator CreatingBullets()
     {
         _isShooting = true;
@@ -54,8 +61,10 @@ public class Shooting : MonoBehaviour, IShooting
         {
             if (_weapon.TargetPoint != null)
             {
-                Bullet bullet = _bulletSpawner.SpawnObject(transform.position).GetComponent<Bullet>();
+                _bulletInQueue--;
+                Bullet bullet = _bulletSpawner.SpawnObject(_weapon.ShootingPoint).GetComponent<Bullet>();
                 bullet.Initialization(_weapon.TargetPoint);
+                PlayShootAnimation();
                 yield return delay;
             }
             else
@@ -63,6 +72,7 @@ public class Shooting : MonoBehaviour, IShooting
                 yield return null;
             }
         }
+
         ShootingEnded.Invoke();
         _isShooting = false;
     }

@@ -62,12 +62,10 @@ public class ObjectDragger : MonoBehaviour
         selectedObject = null;
         Vector3 mousePosition = Input.mousePosition;
         Ray ray = _camera.ScreenPointToRay(mousePosition);
-        Debug.Log("touch");
 
         if(Physics.Raycast(ray.origin, ray.direction,out RaycastHit hit,_maxRayDistance,_unitLayer))
         {
             _selectedObject = hit.collider.gameObject;
-            Debug.Log(_selectedObject.name+"touch");
             _offset = _selectedObject.transform.position - hit.point;
         }
 

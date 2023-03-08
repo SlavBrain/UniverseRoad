@@ -45,7 +45,7 @@ public class Unit : MonoBehaviour
             _weapon.RequiredNewTarget -= FindTarget;
         }
 
-        _weapon = Instantiate(weapon, _rightHand.position, Quaternion.identity, _rightHand);
+        _weapon = Instantiate(weapon, _rightHand.position, Quaternion.Euler(Vector3.zero), _rightHand);
         _weapon.RequiredNewTarget += FindTarget;
     }
 

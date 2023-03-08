@@ -21,6 +21,7 @@ public class SDKInitializer : MonoBehaviour
 #if VK_GAMES
        // yield return Agava.VKGames.VKGamesSdk.Initialize(OnVKSDKInitialize);
 #endif
+        yield break;
     }
 
     private void OnYandexSDKInitialize()

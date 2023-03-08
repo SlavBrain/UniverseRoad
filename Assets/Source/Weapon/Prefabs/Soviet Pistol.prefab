@@ -404,7 +404,7 @@ MonoBehaviour:
   _shooting: {fileID: 6858607774991604074}
   _reloading: {fileID: -985654038375368060}
   _bullet: {fileID: -8047618467494510105, guid: 692bd2deec50c8a49942dbe2085793c5, type: 3}
-  _shootDelay: 0.15
+  _shootDelay: 0.5
   _reloadTime: 1
   _maxBulletCount: 5
   _target: {fileID: 0}
@@ -433,7 +433,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ede36e05251754aafbe48638e31d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletSpawner: {fileID: 0}
 --- !u!114 &-985654038375368060
 MonoBehaviour:
   m_ObjectHideFlags: 0

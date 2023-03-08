@@ -90,12 +90,9 @@ public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
 
     private void SetWeapon(IReadOnlyList<Weapon> weapons)
     {
-        Debug.Log("old" + weapons.Count);
         foreach (Weapon weapon in weapons)
         {
             _availableWeapon.Add(weapon);
         }
-
-        Debug.Log("nwe" + _availableWeapon.Count);
     }
 }

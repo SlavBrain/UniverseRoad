@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100632}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 413872}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!95 &9531452
 Animator:
   serializedVersion: 4
@@ -49,7 +49,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 07857ba1cf9210c44b8fa3d4e265d73d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -74,8 +74,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _level: 0
-  nearUnits: []
-  _nearUnit: {fileID: 0}
 --- !u!136 &-169365961303766010
 CapsuleCollider:
   m_ObjectHideFlags: 0
