@@ -22,8 +22,8 @@ public class BulletSpawner : Spawner
     {
         if (Weapon != null)
         {
-            Debug.Log("createcont");
-            Container = Instantiate(new GameObject(), Weapon.GetComponentInParent<UnitSpawnDot>().transform);
+            Container = new GameObject();
+            Container.transform.SetParent(Weapon.GetComponentInParent<UnitSpawnDot>().transform);
         }
     }
 }

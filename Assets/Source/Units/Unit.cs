@@ -15,11 +15,14 @@ public class Unit : MonoBehaviour
     private EnemySpawner _enemySpawner;
     private GameObject _currentTarget;
     private float _merdgeRadius = 1;
-    [SerializeField] private Collider[] nearUnits;
-    [SerializeField] private Unit _nearUnit;
+    private Collider[] nearUnits;
+    private Unit _nearUnit;
+    private bool _isCanUpgrade = true;
+
     public event Action<Unit, Unit> Merged;
 
     public int Level => _level;
+    public Weapon Weapon => _weapon;
 
     private void OnEnable()
     {
@@ -32,10 +35,10 @@ public class Unit : MonoBehaviour
         Merged = null;
     }
 
-    public void Initialize(Weapon weapon, int level)
+    public void Initialize(Weapon weapon, int level, bool isCanUpgrade)
     {
-        _level = Math.Clamp(level, 0, _maxLevel);
-        Debug.Log(_level);
+        _level = level;
+        _isCanUpgrade = isCanUpgrade;
 
         if (_weapon != null)
         {
@@ -45,9 +48,10 @@ public class Unit : MonoBehaviour
         _weapon = Instantiate(weapon, _rightHand.position, Quaternion.identity, _rightHand);
         _weapon.RequiredNewTarget += FindTarget;
     }
+
     public void Merge()
     {
-        if (HasSimilarUnitsAround(out _nearUnit))
+        if (_isCanUpgrade && HasSimilarUnitsAround(out _nearUnit))
         {
             Merged?.Invoke(this, _nearUnit);
         }
@@ -62,6 +66,7 @@ public class Unit : MonoBehaviour
     private bool HasSimilarUnitsAround(out Unit nearestUnit)
     {
         nearUnits = Physics.OverlapSphere(transform.position, _merdgeRadius, _unitLayer);
+
         var nearestUnitCollider = nearUnits.OrderBy(collider => Vector3.Distance(transform.position, collider.transform.position))
             .Where(collider => collider.TryGetComponent(out Unit nearUnits)).ToList()
             .Except(new Collider[] { this.GetComponent<Collider>() }).ToList()

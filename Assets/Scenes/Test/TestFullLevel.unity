@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _availableWeapon:
   - {fileID: 2523395495385656449, guid: d0fed1f01a9ae984684385b69ac70d5d, type: 3}
-  - {fileID: 3078744974775171573, guid: 7bbc40ea750df664f94a9a0538afa9ca, type: 3}
+  - {fileID: 8100038576433561789, guid: 33209291bc434d743a87b8e429bd5114, type: 3}
   _spawnDots:
   - {fileID: 774667734}
   - {fileID: 774667733}
@@ -1291,7 +1291,10 @@ MonoBehaviour:
   - {fileID: 774667729}
   _spawnButton: {fileID: 671115915}
   _currentSpawnCost: 0
-  _unitTemplate: {fileID: 2703287354824395349, guid: aa05473e4d04e834eb7a29b53251c8cf, type: 3}
+  _unitTemplates:
+  - {fileID: 2703287354824395349, guid: aa05473e4d04e834eb7a29b53251c8cf, type: 3}
+  - {fileID: -3753526391263160724, guid: 789396300d039cc4fa674d36eddb10a7, type: 3}
+  - {fileID: 3641715139224443329, guid: c119a327e0fdf4f4890b2d98da9e2914, type: 3}
 --- !u!1 &1409817169
 GameObject:
   m_ObjectHideFlags: 0

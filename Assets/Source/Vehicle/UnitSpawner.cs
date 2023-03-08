@@ -10,7 +10,9 @@ public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
     [SerializeField] private UnitSpawnDot[] _spawnDots;
     [SerializeField] private Button _spawnButton;
     [SerializeField] private int _currentSpawnCost;
-    [SerializeField] private Unit _unitTemplate;
+    [SerializeField] private List<Unit> _unitTemplates;
+
+    public int MaxUnitLevel => _unitTemplates.Count;
 
     public void OnSceneLoaded(GameConfig argument)
     {
@@ -41,19 +43,20 @@ public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
 
     private void SpawnNewUnit(Weapon weapon,UnitSpawnDot emptyDot)
     {
-        Unit newUnit= Instantiate(_unitTemplate, emptyDot.transform.position, Quaternion.identity, emptyDot.transform);
+        Unit newUnit= Instantiate(_unitTemplates[0], emptyDot.transform.position, Quaternion.identity, emptyDot.transform);
         newUnit.Merged += UpgradeUnit;
-        newUnit.Initialize(weapon,1);
+        newUnit.Initialize(weapon,1,_unitTemplates.Count>1);
     }
 
     private void UpgradeUnit(Unit firstUnit, Unit secondUnit)
     {
+        int newUnitLevel = secondUnit.Level + 1;
         UnitSpawnDot currentSpawnDot = secondUnit.GetComponentInParent<UnitSpawnDot>();
-        Unit upgradedUnit = Instantiate(_unitTemplate, currentSpawnDot.transform.position, Quaternion.identity, currentSpawnDot.transform);
+        Unit upgradedUnit = Instantiate(_unitTemplates[newUnitLevel-1], currentSpawnDot.transform.position, Quaternion.identity, currentSpawnDot.transform);
         firstUnit.Destoy();
         secondUnit.Destoy();
         upgradedUnit.Merged += UpgradeUnit;
-        upgradedUnit.Initialize(GetAvailableWeapon(), secondUnit.Level+1);
+        upgradedUnit.Initialize(GetAvailableWeapon(), newUnitLevel,_unitTemplates.Count>newUnitLevel);
     }
 
     private bool IsEnoughMoney()
