@@ -1288,6 +1288,7 @@ GameObject:
   - component: {fileID: 1195780493}
   - component: {fileID: 1195780495}
   - component: {fileID: 1195780494}
+  - component: {fileID: 1195780496}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -1372,7 +1373,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endGamePanel: {fileID: 516031555}
-  _levelTask: {fileID: 1195780494}
+  _levelTask: {fileID: 1195780496}
+--- !u!114 &1195780496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195780489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d7eccd7b15d99a4f8c3ee525fe4a240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numberOfKills: 5
+  _enemySpawner: {fileID: 585228994}
+  _currentNumberOfKills: 0
 --- !u!114 &1372344005
 MonoBehaviour:
   m_ObjectHideFlags: 0

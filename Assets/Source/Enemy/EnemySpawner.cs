@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemySpawner : Spawner
@@ -8,6 +9,7 @@ public class EnemySpawner : Spawner
 
     private float _elapsedTime = 0;
 
+    public event Action<Enemy> EnemyKilled;
 
     private void Update()
     {
@@ -23,12 +25,18 @@ public class EnemySpawner : Spawner
     private void SpawnEnemy()
     {
         var spawnedEnemy=SpawnObject(GetSpawnPoint()).GetComponent<Enemy>();
+        spawnedEnemy.Died += OnEnemyDied;
         spawnedEnemy.Initialization(_target.transform.position);
+    }
+
+    private void OnEnemyDied(Enemy enemy)
+    {
+        EnemyKilled?.Invoke(enemy);
     }
 
     private Vector3 GetSpawnPoint()
     {
-        return transform.position + new Vector3(Random.Range(-_spawningWidth / 2, _spawningWidth / 2),0,0);
+        return transform.position + new Vector3(UnityEngine.Random.Range(-_spawningWidth / 2, _spawningWidth / 2),0,0);
     }
 
     private void OnValidate()

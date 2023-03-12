@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private Vector3 _targetPoint;
     private Coroutine _moving;
 
-    public event Action Died;
+    public event Action<Enemy> Died;
 
     public int CurrentHealth => _currentHealth;
 
@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        Died?.Invoke();
+        Died?.Invoke(this);
         gameObject.SetActive(false);
     }
 
