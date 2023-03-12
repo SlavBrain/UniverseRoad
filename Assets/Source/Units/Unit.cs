@@ -10,7 +10,6 @@ public class Unit : MonoBehaviour
     [SerializeField] private Transform _rightHand;
     [SerializeField] private LayerMask _unitLayer;
     [SerializeField] private int _level;
-    private int _maxLevel = 5;
     private Weapon _weapon;
     private EnemySpawner _enemySpawner;
     private GameObject _currentTarget;

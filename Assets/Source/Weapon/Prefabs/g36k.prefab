@@ -17,7 +17,7 @@ GameObject:
   m_Layer: 0
   m_Name: g36k
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -29,9 +29,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6579992550013223314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9837651, y: 0.96945024, z: 4.5444384}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4562828202903377415}
   m_Father: {fileID: 0}
@@ -160,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6834887643420791853, guid: 99ddf2fe575eb0945b6f3b05ba4ef9e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.087
       objectReference: {fileID: 0}
     - target: {fileID: 6834887643420791853, guid: 99ddf2fe575eb0945b6f3b05ba4ef9e2, type: 3}
       propertyPath: m_LocalPosition.y

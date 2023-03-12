@@ -1307,9 +1307,12 @@ MonoBehaviour:
   _spawnButton: {fileID: 671115915}
   _currentSpawnCost: 0
   _unitTemplates:
-  - {fileID: 2703287354824395349, guid: aa05473e4d04e834eb7a29b53251c8cf, type: 3}
-  - {fileID: -3753526391263160724, guid: 789396300d039cc4fa674d36eddb10a7, type: 3}
-  - {fileID: 3641715139224443329, guid: c119a327e0fdf4f4890b2d98da9e2914, type: 3}
+  - {fileID: -4982324981600834307, guid: 69d228b1d4fa5c34db3aa1f6fc051d99, type: 3}
+  - {fileID: 2986723690762599248, guid: 609b95ae209062e488d54af597eabd1a, type: 3}
+  - {fileID: 7219488425306664272, guid: 2ac54bc1493255641bface46b364edcb, type: 3}
+  - {fileID: 679760244443834527, guid: 0892ef78fadd3ae47abf315b27f0f737, type: 3}
+  - {fileID: 5569735377457347686, guid: 8a8c131d462fdb543b4ff4b4a2d6ee22, type: 3}
+  unitRotation: 45
 --- !u!1 &1409817169
 GameObject:
   m_ObjectHideFlags: 0

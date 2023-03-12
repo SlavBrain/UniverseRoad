@@ -11,6 +11,7 @@ public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
     [SerializeField] private Button _spawnButton;
     [SerializeField] private int _currentSpawnCost;
     [SerializeField] private List<Unit> _unitTemplates;
+    [SerializeField] private float unitRotation = 0f;
 
     public int MaxUnitLevel => _unitTemplates.Count;
 
@@ -43,7 +44,7 @@ public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
 
     private void SpawnNewUnit(Weapon weapon,UnitSpawnDot emptyDot)
     {
-        Unit newUnit= Instantiate(_unitTemplates[0], emptyDot.transform.position, Quaternion.identity, emptyDot.transform);
+        Unit newUnit= Instantiate(_unitTemplates[0], emptyDot.transform.position, Quaternion.Euler(0,unitRotation,0), emptyDot.transform);
         newUnit.Merged += UpgradeUnit;
         newUnit.Initialize(weapon,1,_unitTemplates.Count>1);
     }
@@ -52,7 +53,7 @@ public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
     {
         int newUnitLevel = secondUnit.Level + 1;
         UnitSpawnDot currentSpawnDot = secondUnit.GetComponentInParent<UnitSpawnDot>();
-        Unit upgradedUnit = Instantiate(_unitTemplates[newUnitLevel-1], currentSpawnDot.transform.position, Quaternion.identity, currentSpawnDot.transform);
+        Unit upgradedUnit = Instantiate(_unitTemplates[newUnitLevel-1], currentSpawnDot.transform.position, Quaternion.Euler(0, unitRotation, 0), currentSpawnDot.transform);
         firstUnit.Destoy();
         secondUnit.Destoy();
         upgradedUnit.Merged += UpgradeUnit;
