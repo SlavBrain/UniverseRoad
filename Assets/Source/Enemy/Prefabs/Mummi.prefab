@@ -851,7 +851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reward: 10
   _maxHealth: 50
-  _maxSpeed: 1
+  _maxSpeed: 10
   _currentHealth: 0
 --- !u!136 &9057225084472131987
 CapsuleCollider:
