@@ -813,6 +813,7 @@ GameObject:
   - component: {fileID: 4309784625631986410}
   - component: {fileID: 9057225084472131987}
   - component: {fileID: -2600590397650368988}
+  - component: {fileID: 3102169193313946512}
   m_Layer: 0
   m_Name: Mummi
   m_TagString: Untagged
@@ -850,9 +851,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: 10
-  _maxHealth: 50
   _maxSpeed: 10
-  _currentHealth: 0
+  _health: {fileID: 3102169193313946512}
+  _damage: 1
 --- !u!136 &9057225084472131987
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -883,6 +884,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &3102169193313946512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215238046368174893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 470c14bc9bbdbff4d9a94b67874cd16c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxValue: 10
 --- !u!1 &8791146006250441129
 GameObject:
   m_ObjectHideFlags: 0

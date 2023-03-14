@@ -26,9 +26,9 @@ public class Wallet : MonoBehaviour
 
     public bool TrySpendMoney(int value)
     {
-        if (value <= 0)
+        if (value < 0)
         {
-            Debug.LogError(gameObject.name + ": addingValue <=0");
+            Debug.LogError(gameObject.name + ": removingValue <=0");
             return false;
         }
 

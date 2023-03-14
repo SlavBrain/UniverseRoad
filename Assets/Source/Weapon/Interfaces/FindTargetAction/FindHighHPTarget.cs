@@ -7,6 +7,6 @@ public class FindHighHPTarget : TargetFind
 {
     public override GameObject FindTarget(IReadOnlyList<GameObject> objects)
     {
-        return objects.OrderByDescending(enemy => enemy.GetComponent<Enemy>().CurrentHealth).FirstOrDefault();
+        return objects.OrderByDescending(enemy => enemy.GetComponent<Enemy>().Health.CurrentValue).FirstOrDefault();
     }
 }

@@ -1164,6 +1164,7 @@ GameObject:
   - component: {fileID: 576597255747491766}
   - component: {fileID: 453118339235578000}
   - component: {fileID: 5481868732478431343}
+  - component: {fileID: -8732450178322702113}
   m_Layer: 0
   m_Name: PlagueDoctor
   m_TagString: Untagged
@@ -1204,9 +1205,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: 10
-  _maxHealth: 50
   _maxSpeed: 10
-  _currentHealth: 0
+  _health: {fileID: -8732450178322702113}
+  _damage: 1
 --- !u!136 &453118339235578000
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1237,6 +1238,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-8732450178322702113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8797415940400411051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 470c14bc9bbdbff4d9a94b67874cd16c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxValue: 10
 --- !u!1 &9150182400104059370
 GameObject:
   m_ObjectHideFlags: 0

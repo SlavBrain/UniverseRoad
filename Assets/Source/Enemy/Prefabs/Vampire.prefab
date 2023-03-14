@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 8288947297366112367}
   - component: {fileID: 5619910532224625201}
   - component: {fileID: -684431095144232866}
+  - component: {fileID: 6892555289593161645}
   m_Layer: 0
   m_Name: Vampire
   m_TagString: Untagged
@@ -175,9 +176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: 10
-  _maxHealth: 50
   _maxSpeed: 10
-  _currentHealth: 0
+  _health: {fileID: 6892555289593161645}
+  _damage: 1
 --- !u!136 &5619910532224625201
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -208,6 +209,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &6892555289593161645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473867235753639793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 470c14bc9bbdbff4d9a94b67874cd16c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxValue: 10
 --- !u!1 &2146307544475615625
 GameObject:
   m_ObjectHideFlags: 0

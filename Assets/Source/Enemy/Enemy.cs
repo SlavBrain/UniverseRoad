@@ -1,50 +1,41 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _reward;
-    [SerializeField] private int _maxHealth;
     [SerializeField] private float _maxSpeed;
-
-    [SerializeField]private int _currentHealth;
-    private Vector3 _targetPoint;
-    private Coroutine _moving;
+    [SerializeField] private Health _health;
+    [SerializeField] private int _damage = 1;
+    private float _minDistanseToTarget = 0.01f;
+    private Health _target;
 
     public event Action<Enemy> Died;
 
-    public int CurrentHealth => _currentHealth;
+    public Health Health => _health;
+    public int Reward => _reward;
 
-    private void OnEnable()
+    private void Update()
     {
-        _currentHealth = _maxHealth;
-    }
-
-    private void OnDisable()
-    {
-        if (_moving != null)
-            StopCoroutine(_moving);
-    }
-
-    public void Initialization(Vector3 target)
-    {
-        _targetPoint = target;
-        StartMoving();
-    }
-
-    public void TakeDamage(int damage)
-    {
-        if (damage < 0)
+        if (Vector3.Distance(_target.transform.position, transform.position) > _minDistanseToTarget)
         {
-            Debug.LogError(gameObject.name + ": damage error");
+            MoveToTarget();
         }
-
-        _currentHealth -= damage;
-
-        if (_currentHealth <= 0)
+        else
+        {
+            TakeDamage();
             Die();
+        }
+    }
+
+    public void Initialization(Health target)
+    {
+        _target = target;
+    }
+
+    private void TakeDamage()
+    {
+        _target.ApplyDamage(_damage);
     }
 
     private void Die()
@@ -53,22 +44,8 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void StartMoving()
+    private void MoveToTarget()
     {
-        if (_moving != null)
-            StopCoroutine(_moving);
-
-        _moving = StartCoroutine(MovingToTarget());
-    }
-
-    private IEnumerator MovingToTarget()
-    {
-        while (Vector3.Distance(_targetPoint, transform.position) > 0.01)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, _targetPoint, Time.deltaTime * _maxSpeed);
-            yield return null;
-        }
-
-        Die();
+        transform.position = Vector3.MoveTowards(transform.position, _target.transform.position, Time.deltaTime * _maxSpeed);
     }
 }

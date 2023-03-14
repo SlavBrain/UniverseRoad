@@ -782,6 +782,7 @@ GameObject:
   - component: {fileID: 4390737417563451954}
   - component: {fileID: 6235213259402230662}
   - component: {fileID: -3816995811165367937}
+  - component: {fileID: 7210821869125752289}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -819,9 +820,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: 10
-  _maxHealth: 50
   _maxSpeed: 10
-  _currentHealth: 0
+  _health: {fileID: 7210821869125752289}
+  _damage: 1
 --- !u!136 &6235213259402230662
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -852,6 +853,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &7210821869125752289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142194764878272141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 470c14bc9bbdbff4d9a94b67874cd16c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxValue: 10
 --- !u!1 &7344808220598803454
 GameObject:
   m_ObjectHideFlags: 0

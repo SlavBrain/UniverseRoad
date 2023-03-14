@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemySpawner : Spawner
 {
     [SerializeField] private float _spawningDelay=1;
-    [SerializeField] private GameObject _target;
+    [SerializeField] private Health _target;
     [SerializeField] private float _spawningWidth=1;
 
     private float _elapsedTime = 0;
@@ -26,7 +26,7 @@ public class EnemySpawner : Spawner
     {
         var spawnedEnemy=SpawnObject(GetSpawnPoint()).GetComponent<Enemy>();
         spawnedEnemy.Died += OnEnemyDied;
-        spawnedEnemy.Initialization(_target.transform.position);
+        spawnedEnemy.Initialization(_target);
     }
 
     private void OnEnemyDied(Enemy enemy)

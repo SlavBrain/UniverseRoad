@@ -3,17 +3,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using IJunior.TypedScenes;
 using System.Collections.Generic;
+using System;
 
-public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
+public class UnitSpawner : MonoBehaviour, ISceneLoadHandler<GameConfig>
 {
     [SerializeField] private List<Weapon> _availableWeapon;
+    [SerializeField] private PlayerWallet _wallet;
     [SerializeField] private UnitSpawnDot[] _spawnDots;
     [SerializeField] private Button _spawnButton;
     [SerializeField] private int _currentSpawnCost;
     [SerializeField] private List<Unit> _unitTemplates;
     [SerializeField] private float unitRotation = 0f;
-
+    private int _addingCostValue = 5;
     public int MaxUnitLevel => _unitTemplates.Count;
+
+    public event Action<int> SpawnCostChanged; 
 
     public void OnSceneLoaded(GameConfig argument)
     {
@@ -23,6 +27,7 @@ public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
     private void OnEnable()
     {
         _spawnButton.onClick.AddListener(TrySpawn);
+        SpawnCostChanged?.Invoke(_currentSpawnCost);
     }
 
     private void OnDisable()
@@ -32,9 +37,10 @@ public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
 
     public void TrySpawn()
     {
-        if (IsEnoughMoney())
+
+        if (TryFindEmptyDot(out UnitSpawnDot emptyDot))
         {
-            if(TryFindEmptyDot(out UnitSpawnDot emptyDot))
+            if (IsEnoughMoney())
             {
                 SpawnNewUnit(GetAvailableWeapon(), emptyDot);
                 ChangeSpawnCost();
@@ -42,38 +48,38 @@ public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
         }
     }
 
-    private void SpawnNewUnit(Weapon weapon,UnitSpawnDot emptyDot)
+    private void SpawnNewUnit(Weapon weapon, UnitSpawnDot emptyDot)
     {
-        Unit newUnit= Instantiate(_unitTemplates[0], emptyDot.transform.position, Quaternion.Euler(0,unitRotation,0), emptyDot.transform);
+        Unit newUnit = Instantiate(_unitTemplates[0], emptyDot.transform.position, Quaternion.Euler(0, unitRotation, 0), emptyDot.transform);
         newUnit.Merged += UpgradeUnit;
-        newUnit.Initialize(weapon,1,_unitTemplates.Count>1);
+        newUnit.Initialize(weapon, 1, _unitTemplates.Count > 1);
     }
 
     private void UpgradeUnit(Unit firstUnit, Unit secondUnit)
     {
         int newUnitLevel = secondUnit.Level + 1;
         UnitSpawnDot currentSpawnDot = secondUnit.GetComponentInParent<UnitSpawnDot>();
-        Unit upgradedUnit = Instantiate(_unitTemplates[newUnitLevel-1], currentSpawnDot.transform.position, Quaternion.Euler(0, unitRotation, 0), currentSpawnDot.transform);
+        Unit upgradedUnit = Instantiate(_unitTemplates[newUnitLevel - 1], currentSpawnDot.transform.position, Quaternion.Euler(0, unitRotation, 0), currentSpawnDot.transform);
         firstUnit.Destoy();
         secondUnit.Destoy();
         upgradedUnit.Merged += UpgradeUnit;
-        upgradedUnit.Initialize(GetAvailableWeapon(), newUnitLevel,_unitTemplates.Count>newUnitLevel);
+        upgradedUnit.Initialize(GetAvailableWeapon(), newUnitLevel, _unitTemplates.Count > newUnitLevel);
     }
 
     private bool IsEnoughMoney()
     {
-        Debug.Log("EnoughMoney");
-        return true;
+        return _wallet.TrySpendMoney(_currentSpawnCost);
     }
 
     private void ChangeSpawnCost()
     {
-        Debug.Log("SpawnCostChange");
+        _currentSpawnCost += _addingCostValue;
+        SpawnCostChanged?.Invoke(_currentSpawnCost);
     }
 
     private Weapon GetAvailableWeapon()
     {
-        return _availableWeapon[Random.Range(0, _availableWeapon.Count)];
+        return _availableWeapon[UnityEngine.Random.Range(0, _availableWeapon.Count)];
     }
 
     private bool TryFindEmptyDot(out UnitSpawnDot emptySpawnDot)
@@ -83,7 +89,7 @@ public class UnitSpawner : MonoBehaviour,ISceneLoadHandler<GameConfig>
 
         if (emptySpawnDots.Length != 0)
         {
-            emptySpawnDot = emptySpawnDots[Random.Range(0,emptySpawnDots.Length)];
+            emptySpawnDot = emptySpawnDots[UnityEngine.Random.Range(0, emptySpawnDots.Length)];
         }
 
         return emptySpawnDot != null;
