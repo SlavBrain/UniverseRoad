@@ -4,23 +4,30 @@ using UnityEngine.UI;
 
 public class GameLoader : MonoBehaviour
 {
-    [SerializeField] private Button _startPlayButton;
     [SerializeField] private Inventory _inventory;
-    [SerializeField] private GameConfig config;
+    [SerializeField] private LevelViewer _levelViewer;
 
     private void OnEnable()
     {
-        _startPlayButton.onClick.AddListener(StartGame);
+        _levelViewer.LevelViewCreated += SignToStartButton;
+        Debug.Log("loaderEnable ");
     }
 
     private void OnDisable()
     {
-        _startPlayButton.onClick.RemoveListener(StartGame);
+        _levelViewer.LevelViewCreated -= SignToStartButton;
     }
 
-    private void StartGame()
+    private void SignToStartButton(LevelView _levelView)
     {
-        config.SetWeapon(_inventory.SelectedWeapon);
-        TestFullLevel.Load(config);
+        Debug.Log("signTo " + _levelView);
+        _levelView.PlayButtonClicked += StartGame;
+    }
+
+    private void StartGame(LevelConfig levelConfig)
+    {
+        Debug.Log("StartGame " + levelConfig.name);
+        levelConfig.SetWeapon(_inventory.SelectedWeapon);
+        TestFullLevel.Load(levelConfig);
     }
 }

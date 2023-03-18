@@ -5,7 +5,7 @@ using IJunior.TypedScenes;
 using System.Collections.Generic;
 using System;
 
-public class UnitSpawner : MonoBehaviour, ISceneLoadHandler<GameConfig>
+public class UnitSpawner : MonoBehaviour, ISceneLoadHandler<LevelConfig>
 {
     [SerializeField] private List<Weapon> _availableWeapon;
     [SerializeField] private PlayerWallet _wallet;
@@ -19,7 +19,7 @@ public class UnitSpawner : MonoBehaviour, ISceneLoadHandler<GameConfig>
 
     public event Action<int> SpawnCostChanged; 
 
-    public void OnSceneLoaded(GameConfig argument)
+    public void OnSceneLoaded(LevelConfig argument)
     {
         SetWeapon(argument.SelectedWeapon);
     }

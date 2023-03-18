@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8948ba2d4b6c414383ae4b5aafc8c8a, type: 3}
+  m_Name: LevelConfig3
+  m_EditorClassIdentifier: 
+  _enveromentConfig: {fileID: 11400000, guid: b9249f92694c4414b92aeb6eb1a275af, type: 2}
+  _enemyConfig: {fileID: 11400000, guid: a5e6c9ebca9c62747bf6ec4b464362fa, type: 2}
+  _selectedWeapon: []
+  _maxHealth: 100
+  _startMoney: 100

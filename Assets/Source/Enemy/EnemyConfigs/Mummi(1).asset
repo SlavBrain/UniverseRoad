@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf2a8f29b0f53941b5b6ea52ef094b7, type: 3}
-  m_Name: Config
+  m_Script: {fileID: 11500000, guid: 3769020c89a88b941ad1255341d9c2d4, type: 3}
+  m_Name: Mummi(1)
   m_EditorClassIdentifier: 
-  _selectedWeapon: []
+  _enemysTemplates:
+  - {fileID: 4309784625631986410, guid: 70f409bde6c009d46aaccc2e0c0cece5, type: 3}
+  _spawnDelay: 1
