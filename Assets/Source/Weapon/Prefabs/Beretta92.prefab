@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Container: {fileID: 0}
-  Capacity: 0
+  Capacity: 5
   Templates:
   - {fileID: 4443684983094370942, guid: bd5235c0ba135ea44bb2bea401df3248, type: 3}
   Weapon: {fileID: 0}

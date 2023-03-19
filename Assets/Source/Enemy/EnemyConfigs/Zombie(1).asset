@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Zombie(1)
   m_EditorClassIdentifier: 
   _enemysTemplates:
-  - {fileID: 4390737417563451954, guid: 78f49549ff4bbd24da3f63138e4f619e, type: 3}
+  - {fileID: 7142194764878272141, guid: 78f49549ff4bbd24da3f63138e4f619e, type: 3}
   _spawnDelay: 1

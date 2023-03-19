@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Mummi(1)
   m_EditorClassIdentifier: 
   _enemysTemplates:
-  - {fileID: 4309784625631986410, guid: 70f409bde6c009d46aaccc2e0c0cece5, type: 3}
+  - {fileID: 8215238046368174893, guid: 70f409bde6c009d46aaccc2e0c0cece5, type: 3}
   _spawnDelay: 1

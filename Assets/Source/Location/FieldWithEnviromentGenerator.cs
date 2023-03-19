@@ -7,10 +7,11 @@ public class FieldWithEnviromentGenerator : Spawner
     [SerializeField] private Spawner _bigObjectSpawner;
     [SerializeField] private Spawner _smallObjectSpawner;
 
-    private void Initialize(Spawner bigObjectSpawner, Spawner smallObjectSpawner)
+    public void Initialize(LevelConfig config)
     {
-        _bigObjectSpawner = bigObjectSpawner;
-        _smallObjectSpawner = smallObjectSpawner;
+        SetTemplates(config.EnviromentConfig.OffRoadTemplates);
+        _bigObjectSpawner.SetTemplates(config.EnviromentConfig.BigObjectTemplates);
+        _smallObjectSpawner.SetTemplates(config.EnviromentConfig.SmallObjectTemplates);
     }
 
     public override GameObject SpawnObject(Vector3 spawnPosition)

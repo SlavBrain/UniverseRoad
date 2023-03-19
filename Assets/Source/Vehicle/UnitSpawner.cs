@@ -5,7 +5,7 @@ using IJunior.TypedScenes;
 using System.Collections.Generic;
 using System;
 
-public class UnitSpawner : MonoBehaviour, ISceneLoadHandler<LevelConfig>
+public class UnitSpawner : MonoBehaviour
 {
     [SerializeField] private List<Weapon> _availableWeapon;
     [SerializeField] private PlayerWallet _wallet;
@@ -14,30 +14,36 @@ public class UnitSpawner : MonoBehaviour, ISceneLoadHandler<LevelConfig>
     [SerializeField] private int _currentSpawnCost;
     [SerializeField] private List<Unit> _unitTemplates;
     [SerializeField] private float unitRotation = 0f;
+
     private int _addingCostValue = 5;
     public int MaxUnitLevel => _unitTemplates.Count;
 
     public event Action<int> SpawnCostChanged; 
 
-    public void OnSceneLoaded(LevelConfig argument)
-    {
-        SetWeapon(argument.SelectedWeapon);
-    }
-
     private void OnEnable()
     {
+        Debug.Log("unitEnable");
         _spawnButton.onClick.AddListener(TrySpawn);
         SpawnCostChanged?.Invoke(_currentSpawnCost);
     }
 
     private void OnDisable()
     {
+        Debug.Log("unitDisable");
         _spawnButton.onClick.RemoveListener(TrySpawn);
+    }
+
+    public void Initialize(LevelConfig config)
+    {
+        foreach (Weapon weapon in config.SelectedWeapon)
+        {
+            _availableWeapon.Add(weapon);
+        }
     }
 
     public void TrySpawn()
     {
-
+        Debug.Log("TRYSPAWN");
         if (TryFindEmptyDot(out UnitSpawnDot emptyDot))
         {
             if (IsEnoughMoney())
@@ -93,13 +99,5 @@ public class UnitSpawner : MonoBehaviour, ISceneLoadHandler<LevelConfig>
         }
 
         return emptySpawnDot != null;
-    }
-
-    private void SetWeapon(IReadOnlyList<Weapon> weapons)
-    {
-        foreach (Weapon weapon in weapons)
-        {
-            _availableWeapon.Add(weapon);
-        }
     }
 }

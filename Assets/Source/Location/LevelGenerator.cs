@@ -30,6 +30,12 @@ public class LevelGenerator : MonoBehaviour
         FillRadius(_viewPoint.position);
     }
 
+    public void Initialize(LevelConfig config)
+    {
+        _roadGenerator.SetTemplates(config.EnviromentConfig.RoadTemplates);
+        _offRoadGenerator.Initialize(config);
+    }
+
     private void FillRadius(Vector3 center)
     {
         var cellCountOnAxisX = WorldDistanseToGridDistanse(_roadWidth + _offRoadWidth);

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Farmer(1)
   m_EditorClassIdentifier: 
   _enemysTemplates:
-  - {fileID: 7716844959638744377, guid: 768580ec9ca60484bbfe6a110cbac3e0, type: 3}
+  - {fileID: 6277727085753241465, guid: 768580ec9ca60484bbfe6a110cbac3e0, type: 3}
   _spawnDelay: 1

@@ -36,6 +36,5 @@ public class LevelView : MonoBehaviour
     private void OnPlayButtonClick()
     {
         PlayButtonClicked?.Invoke(_levelConfig);
-        Debug.Log("ButtonClicked");
     }
 }

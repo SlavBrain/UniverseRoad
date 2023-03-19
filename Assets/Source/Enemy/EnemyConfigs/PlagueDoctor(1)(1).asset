@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlagueDoctor(1)(1)
   m_EditorClassIdentifier: 
   _enemysTemplates:
-  - {fileID: 576597255747491766, guid: a18110415599a2248a5e531e7289658e, type: 3}
+  - {fileID: 8797415940400411051, guid: a18110415599a2248a5e531e7289658e, type: 3}
   _spawnDelay: 1

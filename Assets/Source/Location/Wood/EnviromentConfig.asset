@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 6965884751710224556, guid: 4e96d04324df4a941951626501139129, type: 3}
   _offroadTemplates:
   - {fileID: 5904018668564664452, guid: 315d5fa0429f6fa4c8adc1ec5c582f63, type: 3}
-  _bigObjectTemplates:
+  _bigObjectsTemplates:
   - {fileID: 249835185797809124, guid: 745197f8019916042a22b7775494fa58, type: 3}
   - {fileID: 524816361859851288, guid: 6f3bbe1afe37e7d4aaa4cf225522939a, type: 3}
   - {fileID: 8998992732227393175, guid: 65febf45364b9c44584a318a2258ca45, type: 3}

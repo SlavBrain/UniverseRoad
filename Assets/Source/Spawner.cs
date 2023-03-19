@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : ObjectPool
 {
-    [SerializeField] protected GameObject[] Templates;
+    [SerializeField] protected List<GameObject> Templates;
 
     private void OnEnable()
     {
@@ -10,9 +11,20 @@ public class Spawner : ObjectPool
 
         foreach(GameObject template in Templates)
         {
-            Initialize(template);
+            FillPool(template);
         }
     }
+
+    public void SetTemplates(IReadOnlyCollection<GameObject> templates)
+    {
+        Templates.Clear();
+
+        foreach(GameObject template in templates)
+        {
+            Templates.Add(template);
+        }
+    }
+
     public GameObject SpawnObjectInParent(Transform parent)
     {
         var spawned = SpawnObject(parent.position);
@@ -35,13 +47,5 @@ public class Spawner : ObjectPool
     protected virtual void GetExternalData()
     {
         return;
-    }
-
-    private void OnValidate()
-    {
-        if (Templates.Length == 0)
-        {
-            Debug.LogError(gameObject.name + ": need add templates for spawn");
-        }
     }
 }

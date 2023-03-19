@@ -25,7 +25,7 @@ public class Unit : MonoBehaviour
 
     private void OnEnable()
     {
-        _enemySpawner = GetComponentInParent<LevelConfiguration>().EnemySpawner;
+        _enemySpawner = GetComponentInParent<LevelConfigurator>().EnemySpawner;
     }
 
     private void OnDisable()

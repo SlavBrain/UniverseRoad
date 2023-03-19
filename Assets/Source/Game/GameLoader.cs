@@ -28,6 +28,6 @@ public class GameLoader : MonoBehaviour
     {
         Debug.Log("StartGame " + levelConfig.name);
         levelConfig.SetWeapon(_inventory.SelectedWeapon);
-        TestFullLevel.Load(levelConfig);
+        LevelTemplate.Load(levelConfig);
     }
 }

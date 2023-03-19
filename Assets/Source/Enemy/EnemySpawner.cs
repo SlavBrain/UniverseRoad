@@ -22,6 +22,12 @@ public class EnemySpawner : Spawner
         }
     }
 
+    public void Initialize(LevelConfig config)
+    {
+        SetTemplates(config.EnemyConfig.EnemysTemplates);
+        _spawningDelay = config.EnemyConfig.SpawnDelay;
+    }
+
     private void SpawnEnemy()
     {
         var spawnedEnemy=SpawnObject(GetSpawnPoint()).GetComponent<Enemy>();
