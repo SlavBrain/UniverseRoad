@@ -22,14 +22,12 @@ public class UnitSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("unitEnable");
         _spawnButton.onClick.AddListener(TrySpawn);
         SpawnCostChanged?.Invoke(_currentSpawnCost);
     }
 
     private void OnDisable()
     {
-        Debug.Log("unitDisable");
         _spawnButton.onClick.RemoveListener(TrySpawn);
     }
 
@@ -43,7 +41,6 @@ public class UnitSpawner : MonoBehaviour
 
     public void TrySpawn()
     {
-        Debug.Log("TRYSPAWN");
         if (TryFindEmptyDot(out UnitSpawnDot emptyDot))
         {
             if (IsEnoughMoney())

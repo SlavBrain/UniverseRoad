@@ -10,7 +10,6 @@ public class GameLoader : MonoBehaviour
     private void OnEnable()
     {
         _levelViewer.LevelViewCreated += SignToStartButton;
-        Debug.Log("loaderEnable ");
     }
 
     private void OnDisable()
@@ -20,13 +19,11 @@ public class GameLoader : MonoBehaviour
 
     private void SignToStartButton(LevelView _levelView)
     {
-        Debug.Log("signTo " + _levelView);
         _levelView.PlayButtonClicked += StartGame;
     }
 
     private void StartGame(LevelConfig levelConfig)
     {
-        Debug.Log("StartGame " + levelConfig.name);
         levelConfig.SetWeapon(_inventory.SelectedWeapon);
         LevelTemplate.Load(levelConfig);
     }
