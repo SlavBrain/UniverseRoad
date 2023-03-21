@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "ScriptableObject/Weapon", order = 1)]
 public class WeaponCard : ScriptableObject
@@ -15,11 +13,10 @@ public class WeaponCard : ScriptableObject
     [SerializeField] private Weapon _weapon;
     [SerializeField] private Sprite _icon;
     [SerializeField] private string _name;
-    [SerializeField] private int _count = 0;
-    [SerializeField] private int _rang = 0;
+    [SerializeField] private int _count;
+    [SerializeField] private int _rang;
     [SerializeField] private bool _isSelected = false;
     [SerializeField] private List<WeaponStats> RankedStats;
-    private string _pathToWeaponStatsSO;
     private string _localPathToWeaponStatsSO;
 
     public event Action<WeaponCard> TryingSelecting;
@@ -76,24 +73,21 @@ public class WeaponCard : ScriptableObject
     {
 
         SetPathToFolderWithWeaponStatsSO();
-
-        if (!Directory.Exists(_pathToWeaponStatsSO))
+        
+        if (!Directory.Exists(_localPathToWeaponStatsSO))
         {
-            Directory.CreateDirectory(_pathToWeaponStatsSO);
+            Directory.CreateDirectory(_localPathToWeaponStatsSO);
         }
     }
 
     private void SetPathToFolderWithWeaponStatsSO()
     {
-        
-        _pathToWeaponStatsSO = Environment.CurrentDirectory + PathToWeaponCard + name;
         _localPathToWeaponStatsSO = PathToWeaponCard + name;
-        Debug.Log(_localPathToWeaponStatsSO);
     }
 
     private void CreateWeaponStatsScriptableObjectInFolder()
     {
-        string[] allFileInFolder = Directory.GetFiles(_pathToWeaponStatsSO);
+        string[] allFileInFolder = Directory.GetFiles(_localPathToWeaponStatsSO);
 
         for (int i = 1; i <= MaxWeaponRang; i++)
         {
@@ -104,9 +98,13 @@ public class WeaponCard : ScriptableObject
 
             if (!HasWeaponStatsSO(i))
             {
-                string weaponStatSOName = name + "Rang" + i;
+                string weaponStatSOName = name + "Rang" + i+".asset";
 
-                if (!TryFindExistingFile(allFileInFolder, weaponStatSOName))
+                if (TryFindExistingFile(allFileInFolder, weaponStatSOName,out WeaponStats existWeaponStats))
+                {
+                    RankedStats[i - 1] = existWeaponStats;
+                }
+                else
                 {
                     RankedStats[i-1]=CreateNewWeaponStatsSO(i);
                 }
@@ -114,14 +112,21 @@ public class WeaponCard : ScriptableObject
         }
     }
 
-    private bool TryFindExistingFile(string[] filesInFolder, string nesessaryFile)
+    private bool TryFindExistingFile(string[] filesInFolder, string neсessaryFile,out WeaponStats weaponCard)
     {
+        weaponCard = null;
+        
         foreach (string file in filesInFolder)
         {
-            if (file.Contains(nesessaryFile))
+            if (file.Contains(neсessaryFile))
             {
-                Debug.Log("Find " + nesessaryFile);
-                return true;
+                var necessaryWeaponStats = AssetDatabase.LoadAssetAtPath<WeaponStats>(_localPathToWeaponStatsSO + "/" + neсessaryFile);
+                
+                if (necessaryWeaponStats != null)
+                {
+                    weaponCard = necessaryWeaponStats;
+                    return true;
+                }
             }
         }
 
@@ -140,7 +145,8 @@ public class WeaponCard : ScriptableObject
         Debug.Log(_localPathToWeaponStatsSO + SetWeaponStatsSOName(rang));
         AssetDatabase.CreateAsset(newWeaponStats, _localPathToWeaponStatsSO + SetWeaponStatsSOName(rang));
         AssetDatabase.SaveAssets();
-
+        AssetDatabase.Refresh();
+        
         return newWeaponStats;
     }
 
