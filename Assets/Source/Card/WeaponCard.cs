@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "ScriptableObject/Weapon", order = 1)]
 public class WeaponCard : ScriptableObject
 {
-    private const int maxWeaponRang = 3;
-    private const string pathToWeaponCard = "/Assets/Source/Card/WeaponCards/";
+    private const int MaxWeaponRang = 3;
+    private const string PathToWeaponCard = "Assets/Source/Card/WeaponCards/";
     [SerializeField] private CardRarity _rarity;
     [SerializeField] private Weapon _weapon;
     [SerializeField] private Sprite _icon;
@@ -18,6 +19,9 @@ public class WeaponCard : ScriptableObject
     [SerializeField] private int _rang = 0;
     [SerializeField] private bool _isSelected = false;
     [SerializeField] private List<WeaponStats> RankedStats;
+    private string _pathToWeaponStatsSO;
+    private string _localPathToWeaponStatsSO;
+
     public event Action<WeaponCard> TryingSelecting;
     public event Action<WeaponCard> TryingUnselecting;
     public event Action<WeaponCard> SelectChanged;
@@ -50,7 +54,8 @@ public class WeaponCard : ScriptableObject
 
     public void CreateWeaponStatsSO()
     {
-        CreateWeaponCardScriptableObjectInFolder(FindFolderWithWeaponStatsSO());
+        FindFolderWithWeaponStatsSO();
+        CreateWeaponStatsScriptableObjectInFolder();
     }
 
     private void Unselect()
@@ -67,27 +72,45 @@ public class WeaponCard : ScriptableObject
         }
     }
 
-    private string FindFolderWithWeaponStatsSO()
+    private void FindFolderWithWeaponStatsSO()
     {
-        string currentFileDirection = Environment.CurrentDirectory;
-        string rangStatsSOPath = currentFileDirection + pathToWeaponCard + name;
 
-        if (!Directory.Exists(rangStatsSOPath))
+        SetPathToFolderWithWeaponStatsSO();
+
+        if (!Directory.Exists(_pathToWeaponStatsSO))
         {
-            Directory.CreateDirectory(rangStatsSOPath);
+            Directory.CreateDirectory(_pathToWeaponStatsSO);
         }
-
-        return rangStatsSOPath;
     }
 
-    private void CreateWeaponCardScriptableObjectInFolder(string path)
+    private void SetPathToFolderWithWeaponStatsSO()
     {
-        string[] allFileInFolder = Directory.GetFiles(path);
+        
+        _pathToWeaponStatsSO = Environment.CurrentDirectory + PathToWeaponCard + name;
+        _localPathToWeaponStatsSO = PathToWeaponCard + name;
+        Debug.Log(_localPathToWeaponStatsSO);
+    }
 
-        for (int i = 1; i <= maxWeaponRang; i++)
+    private void CreateWeaponStatsScriptableObjectInFolder()
+    {
+        string[] allFileInFolder = Directory.GetFiles(_pathToWeaponStatsSO);
+
+        for (int i = 1; i <= MaxWeaponRang; i++)
         {
-            string weaponStatSOName = name + "Rang" + i;
-            TryFindExistingFile(allFileInFolder, weaponStatSOName);
+            if (RankedStats.Count < i)
+            {
+                RankedStats.Add(null);
+            }
+
+            if (!HasWeaponStatsSO(i))
+            {
+                string weaponStatSOName = name + "Rang" + i;
+
+                if (!TryFindExistingFile(allFileInFolder, weaponStatSOName))
+                {
+                    RankedStats[i-1]=CreateNewWeaponStatsSO(i);
+                }
+            }
         }
     }
 
@@ -101,7 +124,28 @@ public class WeaponCard : ScriptableObject
                 return true;
             }
         }
-        
+
         return false;
+    }
+
+    private bool HasWeaponStatsSO(int rang)
+    {
+        Debug.Log(rang);
+        return RankedStats[rang - 1] != null;
+    }
+
+    private WeaponStats CreateNewWeaponStatsSO(int rang)
+    {
+        WeaponStats newWeaponStats = ScriptableObject.CreateInstance<WeaponStats>();
+        Debug.Log(_localPathToWeaponStatsSO + SetWeaponStatsSOName(rang));
+        AssetDatabase.CreateAsset(newWeaponStats, _localPathToWeaponStatsSO + SetWeaponStatsSOName(rang));
+        AssetDatabase.SaveAssets();
+
+        return newWeaponStats;
+    }
+
+    private string SetWeaponStatsSOName(int rang)
+    {
+        return "/" + name + "Rang" + rang+".asset";
     }
 }
