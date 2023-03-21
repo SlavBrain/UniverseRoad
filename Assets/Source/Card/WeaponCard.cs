@@ -16,7 +16,7 @@ public class WeaponCard : ScriptableObject
     [SerializeField] private int _count;
     [SerializeField] private int _rang;
     [SerializeField] private bool _isSelected = false;
-    [SerializeField] private List<WeaponStats> RankedStats;
+    [SerializeField] private List<WeaponStats> RankedStats=new List<WeaponStats>();
     private string _localPathToWeaponStatsSO;
 
     public event Action<WeaponCard> TryingSelecting;

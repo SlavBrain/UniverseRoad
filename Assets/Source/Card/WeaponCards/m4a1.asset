@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c32bb0195e522247a4c21bcf4157329, type: 3}
-  m_Name: AK-47
+  m_Name: m4a1
   m_EditorClassIdentifier: 
   _rarity: 0
-  _weapon: {fileID: -8116820981222715738, guid: 26a08802518ab694daab463b127225ce, type: 3}
+  _weapon: {fileID: 108029277354973760, guid: 46c826d384176e4469fb96c22029c0dd, type: 3}
   _icon: {fileID: 0}
-  _name: AK-47
+  _name: M4A1
   _count: 0
   _rang: 0
   _isSelected: 0
   RankedStats:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: dc96ae7e8d8f6fc4499c7feea48135d3, type: 2}
+  - {fileID: 11400000, guid: 6f6a9708abcbdff4a912a76a1560f8d4, type: 2}
+  - {fileID: 11400000, guid: 1b212d6aa495bd34d8b244e7143404c8, type: 2}

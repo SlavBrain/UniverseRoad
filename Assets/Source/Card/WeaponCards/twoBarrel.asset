@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c32bb0195e522247a4c21bcf4157329, type: 3}
-  m_Name: AK-47
+  m_Name: twoBarrel
   m_EditorClassIdentifier: 
   _rarity: 0
-  _weapon: {fileID: -8116820981222715738, guid: 26a08802518ab694daab463b127225ce, type: 3}
+  _weapon: {fileID: 108029277354973760, guid: b96f64f38a96dd141bfc539f46b30267, type: 3}
   _icon: {fileID: 0}
-  _name: AK-47
+  _name: TwoBarrel
   _count: 0
   _rang: 0
   _isSelected: 0
   RankedStats:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d569958088a6c42499e0980a83019b3a, type: 2}
+  - {fileID: 11400000, guid: aabad115e12541842a862840e9292f11, type: 2}
+  - {fileID: 11400000, guid: f02f6c35e6e99144c887c7f2a7830bd3, type: 2}

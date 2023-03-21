@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c32bb0195e522247a4c21bcf4157329, type: 3}
-  m_Name: AK-47
+  m_Name: Beretta92
   m_EditorClassIdentifier: 
   _rarity: 0
-  _weapon: {fileID: -8116820981222715738, guid: 26a08802518ab694daab463b127225ce, type: 3}
+  _weapon: {fileID: 108029277354973760, guid: 0d9f13185dc955042a7c7300791422f6, type: 3}
   _icon: {fileID: 0}
-  _name: AK-47
+  _name: Beretta92
   _count: 0
   _rang: 0
   _isSelected: 0
   RankedStats:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: cf5e4b1d6e3dd3d429216571ca5a6e8a, type: 2}
+  - {fileID: 11400000, guid: cc2b22a1116e7b144861264e163174dd, type: 2}
+  - {fileID: 11400000, guid: b0f1257da1074a04e9eb22f489ccb50c, type: 2}

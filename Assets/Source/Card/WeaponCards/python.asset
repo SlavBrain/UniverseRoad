@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c32bb0195e522247a4c21bcf4157329, type: 3}
-  m_Name: AK-47
+  m_Name: python
   m_EditorClassIdentifier: 
   _rarity: 0
-  _weapon: {fileID: -8116820981222715738, guid: 26a08802518ab694daab463b127225ce, type: 3}
+  _weapon: {fileID: 108029277354973760, guid: 1b2280f77e0649e4ab806143f8527d6f, type: 3}
   _icon: {fileID: 0}
-  _name: AK-47
+  _name: PYTHON
   _count: 0
   _rang: 0
   _isSelected: 0
   RankedStats:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: b17ce210224722148affdb4d2a303853, type: 2}
+  - {fileID: 11400000, guid: a6a85d8f67052f4448f8cb855c042d89, type: 2}
+  - {fileID: 11400000, guid: 5a0d47e9cdbb5fa47be387969897be95, type: 2}

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c32bb0195e522247a4c21bcf4157329, type: 3}
-  m_Name: AK-47
+  m_Name: p90
   m_EditorClassIdentifier: 
   _rarity: 0
-  _weapon: {fileID: -8116820981222715738, guid: 26a08802518ab694daab463b127225ce, type: 3}
+  _weapon: {fileID: 108029277354973760, guid: eb85a0fe45f184441a9844e3cc5b05bd, type: 3}
   _icon: {fileID: 0}
-  _name: AK-47
+  _name: P90
   _count: 0
   _rang: 0
   _isSelected: 0
   RankedStats:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 273e4f2a3a3b0884aa762c6fc10e2892, type: 2}
+  - {fileID: 11400000, guid: 9d3cc26ae4e4c844b88c3b580d0ccf71, type: 2}
+  - {fileID: 11400000, guid: 2d48f66fd6af5894392469fe0d1b63c9, type: 2}

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c32bb0195e522247a4c21bcf4157329, type: 3}
-  m_Name: AK-47
+  m_Name: g36k
   m_EditorClassIdentifier: 
   _rarity: 0
-  _weapon: {fileID: -8116820981222715738, guid: 26a08802518ab694daab463b127225ce, type: 3}
+  _weapon: {fileID: 108029277354973760, guid: 8b3631122d1d04344b01492181733579, type: 3}
   _icon: {fileID: 0}
-  _name: AK-47
+  _name: G36K
   _count: 0
   _rang: 0
   _isSelected: 0
   RankedStats:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 81d773f5a1880724ba09ed124caf7e9e, type: 2}
+  - {fileID: 11400000, guid: 8c8a8720322505847a0cbb875d94a7c0, type: 2}
+  - {fileID: 11400000, guid: 4c5dd7665beb53f45be55057835d896d, type: 2}
