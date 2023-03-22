@@ -64,10 +64,5 @@ public class ObjectPool : MonoBehaviour
         {
             //Debug.LogError(gameObject.name + ": need add pool container for ");
         }
-
-        if (Capacity == 0)
-        {
-            Debug.LogWarning(gameObject.name + ": object pool capacity is 0");
-        }
     }
 }

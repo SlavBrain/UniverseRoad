@@ -1,4 +1,4 @@
-public enum TaskList
+public enum LevelTaskList
 { 
     Time,
     Kills,

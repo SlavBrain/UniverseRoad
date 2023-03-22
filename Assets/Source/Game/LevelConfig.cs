@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName ="LevelConfig",menuName ="Config/LevelConfig")]
 public class LevelConfig : ScriptableObject
@@ -12,8 +13,11 @@ public class LevelConfig : ScriptableObject
     [Header("Player")]
     [SerializeField] private List<Weapon> _selectedWeapon;
     [SerializeField] private int _maxHealth=100;
-    [SerializeField] private int _startMoney = 100;
-    [SerializeReference] private LevelTask _levelTask;
+    [FormerlySerializedAs("_levelTask")]
+    [Header("Level")]
+    [SerializeField] private LevelTaskList levelLevelTask;
+
+    [SerializeField] private int _roadWidth = 30;
     
     public IReadOnlyList<Weapon> SelectedWeapon => _selectedWeapon;
     public EnviromentConfig EnviromentConfig => _enveromentConfig;

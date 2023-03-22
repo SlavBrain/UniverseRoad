@@ -6,8 +6,8 @@ public class KillLevelTask : LevelTask
 {
     [SerializeField] private int _numberOfKills = 1;
     [SerializeField] private EnemySpawner _enemySpawner;
-    [SerializeField]private int _currentNumberOfKills = 0;
-    private int _minNumberOfKills = 1;
+    private int _currentNumberOfKills = 0;
+    private readonly int _minNumberOfKills = 1;
 
     private void OnEnable()
     {

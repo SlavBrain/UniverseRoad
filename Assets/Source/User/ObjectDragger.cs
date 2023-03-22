@@ -9,10 +9,9 @@ public class ObjectDragger : MonoBehaviour
 
     [SerializeField] private LayerMask _unitLayer;
 
-    [SerializeField] private bool _isDragging;
-    [SerializeField] private Camera _camera;
-    [SerializeField] private GameObject _selectedObject;
-
+    private bool _isDragging;
+    private Camera _camera;
+    private GameObject _selectedObject;
     private Vector3 _previousTargetPosition;
     private Vector3 _offset;
     private Coroutine _dragging;
