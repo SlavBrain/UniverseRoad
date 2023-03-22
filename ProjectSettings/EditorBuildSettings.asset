@@ -50,19 +50,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 0b67203576c9f4745a20b6d21b01455e
+  - enabled: 1
+    path: Assets/Scenes/LevelTemplate.unity
+    guid: a883eb2817ce54f4cbb1a42968fc0649
   - enabled: 0
     path: Assets/Scenes/Test/VehicleTest.unity
     guid: d4c178c421b434a45a7bb0ffeeba7c4c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/TestFullLevel.unity
     guid: ab3381e506cf2b44589e5f48366868a8
   - enabled: 0
     path: Assets/Scenes/Test/EnemySpawnerTest.unity
     guid: f40bb76b2d928f8478a788cfc9958071
-  - enabled: 1
+  - enabled: 0
     path: Assets/ToonyTinyPeople/TT_ww1_demo/sample_scene/TT_ww1_sample_scene.unity
     guid: eb4fed3485d830b49810b12950c81666
-  - enabled: 1
-    path: Assets/Scenes/LevelTemplate.unity
-    guid: a883eb2817ce54f4cbb1a42968fc0649
   m_configObjects: {}

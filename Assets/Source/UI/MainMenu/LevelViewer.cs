@@ -22,7 +22,7 @@ public class LevelViewer : MonoBehaviour
     private void CreateNewView(int numberLevel)
     {
         LevelView newView = Instantiate(_template, _viewContainer.transform);
-        newView.Initialize(numberLevel, _levelConfigs[numberLevel]);
+        newView.Initialize(numberLevel+1, _levelConfigs[numberLevel]);
         LevelViewCreated?.Invoke(newView);
         Debug.Log("signTo ");
     }

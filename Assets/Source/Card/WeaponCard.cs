@@ -47,18 +47,19 @@ public class WeaponCard : ScriptableObject
     {
         _isSelected = true;
         SelectChanged?.Invoke(this);
-    }
-
-    public void CreateWeaponStatsSO()
-    {
-        FindFolderWithWeaponStatsSO();
-        CreateWeaponStatsScriptableObjectInFolder();
-    }
+    }    
 
     private void Unselect()
     {
         _isSelected = false;
         SelectChanged?.Invoke(this);
+    }
+#if UNITY_EDITOR
+
+    public void CreateWeaponStatsSO()
+    {
+        FindFolderWithWeaponStatsSO();
+        CreateWeaponStatsScriptableObjectInFolder();
     }
 
     private void OnValidate()
@@ -154,4 +155,6 @@ public class WeaponCard : ScriptableObject
     {
         return "/" + name + "Rang" + rang+".asset";
     }
+
+#endif
 }

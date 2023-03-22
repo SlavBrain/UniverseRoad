@@ -13,6 +13,7 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private List<Weapon> _selectedWeapon;
     [SerializeField] private int _maxHealth=100;
     [SerializeField] private int _startMoney = 100;
+    [SerializeReference] private LevelTask _levelTask;
     
     public IReadOnlyList<Weapon> SelectedWeapon => _selectedWeapon;
     public EnviromentConfig EnviromentConfig => _enveromentConfig;

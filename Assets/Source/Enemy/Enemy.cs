@@ -15,6 +15,16 @@ public class Enemy : MonoBehaviour
     public Health Health => _health;
     public int Reward => _reward;
 
+    private void OnEnable()
+    {
+        _health.Die += OnDie;
+    }
+
+    private void OnDisable()
+    {
+        _health.Die -= OnDie;
+    }
+
     private void Update()
     {
         if (Vector3.Distance(_target.transform.position, transform.position) > _minDistanseToTarget)
@@ -24,7 +34,7 @@ public class Enemy : MonoBehaviour
         else
         {
             TakeDamage();
-            Die();
+            OnDie();
         }
     }
 
@@ -38,7 +48,7 @@ public class Enemy : MonoBehaviour
         _target.ApplyDamage(_damage);
     }
 
-    private void Die()
+    private void OnDie()
     {
         Died?.Invoke(this);
         gameObject.SetActive(false);

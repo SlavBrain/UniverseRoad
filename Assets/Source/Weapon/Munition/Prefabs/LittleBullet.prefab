@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05a77f3b39dde142b7cd5a8dcbfd2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxNumberOfRebound: 3
+  _maxNumberOfRebound: 2
   _maxDistanceToNextTarget: 85.12
   _enemyLayer:
     serializedVersion: 2
