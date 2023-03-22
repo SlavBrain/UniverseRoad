@@ -23,6 +23,7 @@ public class GameLoader : MonoBehaviour
 
     private void StartGame(LevelConfig levelConfig)
     {
+        Debug.Log(levelConfig.name);
         levelConfig.SetWeapon(_inventory.SelectedWeapon);
         LevelTemplate.Load(levelConfig);
     }
