@@ -7,12 +7,12 @@ public class LevelConfigurator : MonoBehaviour, ISceneLoadHandler<LevelConfig>
     public static LevelConfigurator instanse=null;
 
     [SerializeField] private LevelGenerator _levelGenerator;
-    [SerializeField] private EnemySpawner _enemySpawner;
+    [SerializeField] private EnemyWaveController _waveController;
     [SerializeField] private UnitSpawner _unitSpawner;
     [SerializeField]private LevelConfig _config;
 
     public LevelGenerator LevelGenerator => _levelGenerator;
-    public EnemySpawner EnemySpawner => _enemySpawner;
+    public EnemySpawner EnemySpawner => _waveController.EnemySpawner;
     public UnitSpawner UnitSpawner => _unitSpawner;
 
     public void OnSceneLoaded(LevelConfig argument)
@@ -36,7 +36,7 @@ public class LevelConfigurator : MonoBehaviour, ISceneLoadHandler<LevelConfig>
     {
         _config = config;
         _unitSpawner.Initialize(_config);
-        _enemySpawner.Initialize(_config);
+        _waveController.Initialize(_config);
         _levelGenerator.Initialize(_config);
     }
 }

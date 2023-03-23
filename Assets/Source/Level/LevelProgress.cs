@@ -1,22 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelProgress : MonoBehaviour
 {
-    [SerializeField] private GameObject _endGamePanel;
-    [SerializeField] LevelTask _levelTask;
+    [SerializeField] private EnemyWaveController _waveController;
+    [SerializeField] private Health _health;
+    [SerializeField] private GameObject _successEndGamePanel;
+    [SerializeField] private GameObject _inGameUI;
+    [SerializeField] private GameObject _loseEndGamePanel;
+    [SerializeField] private TimeScaler _timeScaler;
 
     private void OnEnable()
     {
-        _endGamePanel.gameObject.SetActive(false);
-        _levelTask.StartTracking();
-        _levelTask.TaskComplited += EndLevel;
+        _waveController.WavesEnded += SuccessGameEnd;
+        _health.Die += LoseGameEnd;
     }
 
-    private void EndLevel()
+    private void OnDisable()
     {
-        Time.timeScale = 0;
-        _endGamePanel.gameObject.SetActive(true);
+        _waveController.WavesEnded -= SuccessGameEnd;
+        _health.Die -= LoseGameEnd;
+    }
+
+    private void SuccessGameEnd()
+    {
+        Debug.Log(" end "+Time.realtimeSinceStartup);
+        _successEndGamePanel.SetActive(true);
+        _inGameUI.SetActive(false);
+        _timeScaler.PauseGame();
+    }
+
+    private void LoseGameEnd()
+    {
+        _loseEndGamePanel.SetActive(true);
+        _inGameUI.SetActive(false);
+        _timeScaler.PauseGame();
     }
 }

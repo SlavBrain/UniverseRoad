@@ -22,10 +22,10 @@ public class EnemySpawner : Spawner
         }
     }
 
-    public void Initialize(LevelConfig config)
+    public void Initialize(EnemyWaveConfig config)
     {
-        SetTemplates(config.EnemyConfig.EnemysTemplates);
-        _spawningDelay = config.EnemyConfig.SpawnDelay;
+        SetTemplates(config.EnemysTemplates);
+        _spawningDelay = config.SpawnDelay;
     }
 
     private void SpawnEnemy()

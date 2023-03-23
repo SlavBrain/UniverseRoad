@@ -8,20 +8,19 @@ public class LevelConfig : ScriptableObject
 {
     [Header("Enviroment")]
     [SerializeField] private EnviromentConfig _enveromentConfig;
+    [FormerlySerializedAs("_enemyConfig")]
     [Header("Enemy")]
-    [SerializeField] private EnemyConfig _enemyConfig;
+    [SerializeField] private EnemyWaveConfig[] enemyWaveConfig;
     [Header("Player")]
     [SerializeField] private List<Weapon> _selectedWeapon;
     [SerializeField] private int _maxHealth=100;
-    [FormerlySerializedAs("_levelTask")]
     [Header("Level")]
-    [SerializeField] private LevelTaskList levelLevelTask;
 
     [SerializeField] private int _roadWidth = 30;
     
     public IReadOnlyList<Weapon> SelectedWeapon => _selectedWeapon;
     public EnviromentConfig EnviromentConfig => _enveromentConfig;
-    public EnemyConfig EnemyConfig => _enemyConfig;
+    public EnemyWaveConfig[] EnemyWaveConfig => enemyWaveConfig;
 
     public void SetWeapon(IReadOnlyCollection<WeaponCard> weaponCards)
     {

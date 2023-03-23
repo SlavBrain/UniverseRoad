@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: LevelConfig1
   m_EditorClassIdentifier: 
   _enveromentConfig: {fileID: 11400000, guid: b9249f92694c4414b92aeb6eb1a275af, type: 2}
-  _enemyConfig: {fileID: 11400000, guid: a5e6c9ebca9c62747bf6ec4b464362fa, type: 2}
-  _selectedWeapon: []
+  enemyWaveConfig:
+  - {fileID: 11400000, guid: 25f9abdc07584f9419b1f25de4e5ea4d, type: 2}
+  - {fileID: 11400000, guid: a5e6c9ebca9c62747bf6ec4b464362fa, type: 2}
+  - {fileID: 11400000, guid: 857a3725117abf54496d72ba691f80c7, type: 2}
+  _selectedWeapon:
+  - {fileID: 108029277354973760, guid: 5e4df8e47a8617640ad2ed513f77d571, type: 3}
+  - {fileID: 108029277354973760, guid: fcd73c869d3607c42ae054b334fe1e5d, type: 3}
+  - {fileID: 108029277354973760, guid: f36392582991e3e42af7420e28b87cd7, type: 3}
   _maxHealth: 100
-  _startMoney: 100
+  _roadWidth: 30

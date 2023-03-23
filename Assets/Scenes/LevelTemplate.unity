@@ -1440,7 +1440,6 @@ GameObject:
   - component: {fileID: 320785076}
   - component: {fileID: 320785078}
   - component: {fileID: 320785079}
-  - component: {fileID: 320785081}
   - component: {fileID: 320785080}
   m_Layer: 0
   m_Name: Level
@@ -1462,7 +1461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelGenerator: {fileID: 257480576}
-  _enemySpawner: {fileID: 564961475}
+  _waveController: {fileID: 564961478}
   _unitSpawner: {fileID: 257415142}
   _config: {fileID: 0}
 --- !u!4 &320785077
@@ -1510,9 +1509,6 @@ MonoBehaviour:
   _unitLayer:
     serializedVersion: 2
     m_Bits: 128
-  _isDragging: 0
-  _camera: {fileID: 0}
-  _selectedObject: {fileID: 0}
 --- !u!114 &320785080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1522,26 +1518,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 320785075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d7eccd7b15d99a4f8c3ee525fe4a240, type: 3}
+  m_Script: {fileID: 11500000, guid: aca237808bb9d6941907445a180fc5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfKills: 20
-  _enemySpawner: {fileID: 564961475}
-  _currentNumberOfKills: 0
---- !u!114 &320785081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320785075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 059a92e3198f82444afe545ca7f8eac7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _endGamePanel: {fileID: 1320301394}
-  _levelTask: {fileID: 320785080}
+  _waveController: {fileID: 564961478}
+  _health: {fileID: 600039863}
+  _successEndGamePanel: {fileID: 1320301394}
+  _inGameUI: {fileID: 1042649965}
+  _loseEndGamePanel: {fileID: 1917061308}
+  _timeScaler: {fileID: 320785078}
 --- !u!1 &432148052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,6 +1977,8 @@ GameObject:
   m_Component:
   - component: {fileID: 564961476}
   - component: {fileID: 564961475}
+  - component: {fileID: 564961478}
+  - component: {fileID: 564961477}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -2032,6 +2019,33 @@ Transform:
   m_Father: {fileID: 320785077}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &564961477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564961474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 059a92e3198f82444afe545ca7f8eac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &564961478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564961474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0565d4b24e8ad34ba3f23c9891a0e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _configs: []
+  _enemySpawner: {fileID: 564961475}
+  _waveProgress: {fileID: 564961477}
 --- !u!1001 &571239614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3259,7 +3273,7 @@ GameObject:
   - component: {fileID: 1320301397}
   - component: {fileID: 1320301396}
   m_Layer: 5
-  m_Name: TaskComplitedEndGamePanel
+  m_Name: SuccessEndGamePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

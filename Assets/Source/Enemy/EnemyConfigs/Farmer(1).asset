@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemysTemplates:
   - {fileID: 6277727085753241465, guid: 768580ec9ca60484bbfe6a110cbac3e0, type: 3}
+  _duration: 15
   _spawnDelay: 1
