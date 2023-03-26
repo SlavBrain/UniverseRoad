@@ -7,6 +7,7 @@ public class CaseShopViewer : MonoBehaviour
     [SerializeField] private List<CaseConfig> _cases;
     [SerializeField] private CaseView _caseViewTemplate;
     [SerializeField] private Transform _viewContainer;
+    [SerializeField] private CaseOpener _caseOpener;
     private List<CaseConfig> _createdViews;
 
     private void OnEnable()
