@@ -5,7 +5,7 @@ public class EnemySpawner : Spawner
 {
     [SerializeField] private float _spawningDelay=1;
     [SerializeField] private Health _target;
-    [SerializeField] private float _spawningWidth=1;
+    [SerializeField] private int _spawningWidth=1;
 
     private float _elapsedTime = 0;
 
@@ -26,6 +26,11 @@ public class EnemySpawner : Spawner
     {
         SetTemplates(config.EnemysTemplates);
         _spawningDelay = config.SpawnDelay;
+    }
+
+    public void SetSpawnWidth(int width)
+    {
+        _spawningWidth = width;
     }
 
     private void SpawnEnemy()

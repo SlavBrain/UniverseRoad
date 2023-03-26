@@ -32,6 +32,7 @@ public class LevelGenerator : MonoBehaviour
 
     public void Initialize(LevelConfig config)
     {
+        _roadWidth = config.RoadWidth;
         _roadGenerator.SetTemplates(config.EnviromentConfig.RoadTemplates);
         _offRoadGenerator.Initialize(config);
     }

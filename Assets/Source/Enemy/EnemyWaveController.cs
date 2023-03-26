@@ -17,12 +17,12 @@ public class EnemyWaveController : MonoBehaviour
     public void Initialize(LevelConfig levelConfig)
     {
         _configs = levelConfig.EnemyWaveConfig;
+        _enemySpawner.SetSpawnWidth(levelConfig.RoadWidth*2);
         StartWave();
     }
 
     private void StartWave()
     {
-        Debug.Log(_currentWave+" wave "+Time.realtimeSinceStartup);
         _enemySpawner.Initialize(_configs[_currentWave]);
         StartTrackingWaveProgress();
     }

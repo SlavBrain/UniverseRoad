@@ -22,4 +22,4 @@ MonoBehaviour:
   - {fileID: 108029277354973760, guid: fcd73c869d3607c42ae054b334fe1e5d, type: 3}
   - {fileID: 108029277354973760, guid: f36392582991e3e42af7420e28b87cd7, type: 3}
   _maxHealth: 100
-  _roadWidth: 30
+  _roadWidth: 50

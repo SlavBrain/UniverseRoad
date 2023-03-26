@@ -923,7 +923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roadWidth: 30
-  _offRoadWidth: 30
+  _offRoadWidth: 10
   _viewDistanceForward: 50
   _viewDistanceBackward: 250
   _viewPoint: {fileID: 600039861}
@@ -2046,6 +2046,7 @@ MonoBehaviour:
   _configs: []
   _enemySpawner: {fileID: 564961475}
   _waveProgress: {fileID: 564961477}
+  _currentWave: 0
 --- !u!1001 &571239614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3214,7 +3215,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1751936155}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -4140,7 +4141,7 @@ GameObject:
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!81 &1751936154
 AudioListener:
@@ -4174,7 +4175,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 500
+  far clip plane: 300
   field of view: 50
   orthographic: 0
   orthographic size: 5
@@ -4186,8 +4187,8 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
+  m_HDR: 0
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1

@@ -7,14 +7,12 @@ public class WeaponViewer : MonoBehaviour
     [SerializeField] private Inventory _playerInventory;
     [SerializeField] private List<WeaponCard> _allWeapon;
     [SerializeField] private WeaponViewWithButton _weapontViewTemplate;
-    [SerializeField] private GameObject _viewContainer;
+    [SerializeField] private Transform _viewContainer;
     [SerializeField] private SelectedWeaponViewer _seletedWeaponViewer;
-
-    public event Action<WeaponViewWithButton>  CreatedCardView;    
 
     private void OnEnable()
     {
-        _allWeapon.Clear();
+        Clear();
 
         for(int i = 0; i < _playerInventory.AvailableWeapon.Count; i++)
         {
@@ -25,8 +23,19 @@ public class WeaponViewer : MonoBehaviour
 
     private void CreateCardView(WeaponCard weaponCard)
     {
-        var newView=Instantiate(_weapontViewTemplate,_viewContainer.transform);
+        var newView=Instantiate(_weapontViewTemplate,_viewContainer);
         newView.Initialize(weaponCard);
-        CreatedCardView?.Invoke(newView);
+    }
+    
+    private void Clear()
+    {
+        _allWeapon.Clear();
+        if (_viewContainer.childCount > 0)
+        {
+            foreach (Transform view in _viewContainer)
+            {
+                Destroy(view.gameObject);
+            }
+        }
     }
 }

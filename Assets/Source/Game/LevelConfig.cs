@@ -15,12 +15,12 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private List<Weapon> _selectedWeapon;
     [SerializeField] private int _maxHealth=100;
     [Header("Level")]
-
     [SerializeField] private int _roadWidth = 30;
     
     public IReadOnlyList<Weapon> SelectedWeapon => _selectedWeapon;
     public EnviromentConfig EnviromentConfig => _enveromentConfig;
     public EnemyWaveConfig[] EnemyWaveConfig => enemyWaveConfig;
+    public int RoadWidth => _roadWidth;
 
     public void SetWeapon(IReadOnlyCollection<WeaponCard> weaponCards)
     {

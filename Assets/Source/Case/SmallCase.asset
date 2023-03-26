@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfc9bcf74b24ae4496e10939cc0dd6b, type: 3}
+  m_Name: SmallCase
+  m_EditorClassIdentifier: 
+  _name: SmallCase
+  _icon: {fileID: 21300000, guid: 272438f9e96396d46ae0edf3aaf4146d, type: 3}
+  _cost: 100
+  _items:
+  - _weaponCard: {fileID: 11400000, guid: 43e75d2b0f829434fa466ec5715184e4, type: 2}
+    _dropChance: 0
+    _minDropCount: 0
+    _maxDropCount: 0
+  - _weaponCard: {fileID: 11400000, guid: f675a81bf7786bc4fb887ce9a7c472f6, type: 2}
+    _dropChance: 0
+    _minDropCount: 0
+    _maxDropCount: 0
+  - _weaponCard: {fileID: 11400000, guid: 6750f264a2d8c864a8fccdef0e11eba9, type: 2}
+    _dropChance: 0
+    _minDropCount: 0
+    _maxDropCount: 0
+  - _weaponCard: {fileID: 11400000, guid: e007785f28c66254897dd78a0e27cfe7, type: 2}
+    _dropChance: 0
+    _minDropCount: 0
+    _maxDropCount: 0
