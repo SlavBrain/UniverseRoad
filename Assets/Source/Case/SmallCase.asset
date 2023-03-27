@@ -17,18 +17,18 @@ MonoBehaviour:
   _cost: 100
   _items:
   - _weaponCard: {fileID: 11400000, guid: 43e75d2b0f829434fa466ec5715184e4, type: 2}
-    _dropChance: 0
-    _minDropCount: 0
-    _maxDropCount: 0
+    _dropChance: 20
+    _minDropCount: 1
+    _maxDropCount: 1
   - _weaponCard: {fileID: 11400000, guid: f675a81bf7786bc4fb887ce9a7c472f6, type: 2}
-    _dropChance: 0
-    _minDropCount: 0
-    _maxDropCount: 0
+    _dropChance: 5
+    _minDropCount: 2
+    _maxDropCount: 2
   - _weaponCard: {fileID: 11400000, guid: 6750f264a2d8c864a8fccdef0e11eba9, type: 2}
-    _dropChance: 0
-    _minDropCount: 0
-    _maxDropCount: 0
+    _dropChance: 10
+    _minDropCount: 3
+    _maxDropCount: 3
   - _weaponCard: {fileID: 11400000, guid: e007785f28c66254897dd78a0e27cfe7, type: 2}
-    _dropChance: 0
-    _minDropCount: 0
-    _maxDropCount: 0
+    _dropChance: 30
+    _minDropCount: 4
+    _maxDropCount: 4

@@ -8,6 +8,8 @@ public class CaseShopViewer : MonoBehaviour
     [SerializeField] private CaseView _caseViewTemplate;
     [SerializeField] private Transform _viewContainer;
     [SerializeField] private CaseOpener _caseOpener;
+    [SerializeField] private Inventory _inventory;
+    [SerializeField] private Wallet _wallet;
     private List<CaseConfig> _createdViews;
 
     private void OnEnable()
@@ -23,7 +25,7 @@ public class CaseShopViewer : MonoBehaviour
     public void CreatedView(CaseConfig config)
     {
         CaseView newView = Instantiate(_caseViewTemplate, _viewContainer);
-        newView.Initialize(config);
+        newView.Initialize(config, _caseOpener, _wallet, _inventory);
     }
 
     private void Clear()

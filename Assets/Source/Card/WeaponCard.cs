@@ -30,6 +30,16 @@ public class WeaponCard : ScriptableObject
     public int Rang => _rang;
     public bool IsSelected => _isSelected;
 
+    public void AddCount(int count)
+    {
+        if (count <= 0)
+        {
+            Debug.LogWarning(name+": adding not correct count");
+        }
+        
+        _count += count;
+    }
+    
     public void TryingChangeSelect()
     {
         if (IsSelected)
@@ -54,6 +64,7 @@ public class WeaponCard : ScriptableObject
         _isSelected = false;
         SelectChanged?.Invoke(this);
     }
+
 #if UNITY_EDITOR
 
     public void CreateWeaponStatsSO()

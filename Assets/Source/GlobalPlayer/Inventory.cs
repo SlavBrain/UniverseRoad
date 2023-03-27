@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -36,6 +37,21 @@ public class Inventory : MonoBehaviour
         {
             card.TryingSelecting -= AddCardInSelected;
             card.TryingUnselecting -= RemoveCardFromSelected;
+        }
+    }
+
+    public void AddCardsInAvailable(WeaponCard addingCard, int count)
+    {
+        WeaponCard existCard = _availableWeapon.FirstOrDefault(weapon => weapon.Name == addingCard.Name);
+
+        if (existCard != null)
+        {
+            existCard.AddCount(count);
+        }
+        else
+        {
+            _availableWeapon.Add(addingCard);
+            _availableWeapon[_availableWeapon.Count-1].AddCount(count);
         }
     }
 

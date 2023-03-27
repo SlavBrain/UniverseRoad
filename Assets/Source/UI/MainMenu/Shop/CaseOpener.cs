@@ -10,9 +10,7 @@ public class CaseOpener : MonoBehaviour
     [SerializeField] private Button _caseIcon;
     [SerializeField] private Image _weaponIcon;
     [SerializeField] private TMP_Text _cardCountText;
-    private float _animationScaleMultiplyer = 1.3f;
-    private WeaponCard _weaponCard;
-    private int _weaponCardCount;
+    private float _animationScaleMultiplier = 1.3f;
     private Coroutine _animationPlaying;
 
     private void OnEnable()
@@ -28,8 +26,8 @@ public class CaseOpener : MonoBehaviour
     public void Initialize(Sprite caseIcon, WeaponCard weaponCard, int cardCount)
     {
         _caseIcon.image.sprite = caseIcon;
-        _weaponCard = weaponCard;
-        _weaponCardCount = cardCount;
+        _weaponIcon.sprite = weaponCard.Icon;
+        _cardCountText.text = cardCount.ToString();
         
         SetStartState();
     }
@@ -46,7 +44,6 @@ public class CaseOpener : MonoBehaviour
         _caseIcon.gameObject.SetActive(false);
         _weaponIcon.gameObject.SetActive(true);
         _cardCountText.gameObject.SetActive(true);
-        Debug.Log("finish");
     }
 
     private void OpeningAnimationStart()
@@ -59,7 +56,7 @@ public class CaseOpener : MonoBehaviour
 
     private IEnumerator PlayingAnimation()
     {
-        Tween tween=_caseIcon.transform.DOScale(new Vector3(_animationScaleMultiplyer, _animationScaleMultiplyer, _animationScaleMultiplyer), 0.5f).SetLoops(6, LoopType.Yoyo);
+        Tween tween=_caseIcon.transform.DOScale(new Vector3(_animationScaleMultiplier, _animationScaleMultiplier, _animationScaleMultiplier), 0.5f).SetLoops(6, LoopType.Yoyo);
         yield return tween.WaitForCompletion();
         SetFinishState();
     }
