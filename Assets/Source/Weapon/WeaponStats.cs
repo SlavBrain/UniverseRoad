@@ -17,4 +17,10 @@ public class WeaponStats : ScriptableObject
     [SerializeField] private float _speed = 1;
     [SerializeField] protected int _damage = 1;
     [SerializeField] private AfterHitAction _afterHitAction;
+
+    public int DPS => (int)(_damage * _shootDelay * _speed);
+    public float ReloadTime => _reloadTime;
+    public int MaxBulletCount => _maxBulletCount;
+    public TargetFind TargetFind => _targetFind;
+    public AfterHitAction Spell => _afterHitAction;
 }

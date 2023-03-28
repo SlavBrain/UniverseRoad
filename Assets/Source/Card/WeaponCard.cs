@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "ScriptableObject/Weapon", order = 1)]
 public class WeaponCard : ScriptableObject
@@ -16,7 +17,8 @@ public class WeaponCard : ScriptableObject
     [SerializeField] private int _count;
     [SerializeField] private int _rang;
     [SerializeField] private bool _isSelected = false;
-    [SerializeField] private List<WeaponStats> RankedStats=new List<WeaponStats>();
+    [FormerlySerializedAs("RankedStats")] [SerializeField] private List<WeaponStats> _rankedStats=new List<WeaponStats>();
+    
     private string _localPathToWeaponStatsSO;
 
     public event Action<WeaponCard> TryingSelecting;
@@ -26,6 +28,7 @@ public class WeaponCard : ScriptableObject
     public Weapon Weapon => _weapon;
     public Sprite Icon => _icon;
     public string Name => name;
+    public WeaponStats Stats => _rankedStats[_rang - 1];
     public int Count => _count;
     public int Rang => _rang;
     public bool IsSelected => _isSelected;
@@ -75,7 +78,7 @@ public class WeaponCard : ScriptableObject
 
     private void OnValidate()
     {
-        if (RankedStats.Count == 0)
+        if (_rankedStats.Count == 0)
         {
             Debug.LogWarning(this.name + ": RankedStats is empty");
         }
@@ -103,9 +106,9 @@ public class WeaponCard : ScriptableObject
 
         for (int i = 1; i <= MaxWeaponRang; i++)
         {
-            if (RankedStats.Count < i)
+            if (_rankedStats.Count < i)
             {
-                RankedStats.Add(null);
+                _rankedStats.Add(null);
             }
 
             if (!HasWeaponStatsSO(i))
@@ -114,11 +117,11 @@ public class WeaponCard : ScriptableObject
 
                 if (TryFindExistingFile(allFileInFolder, weaponStatSOName,out WeaponStats existWeaponStats))
                 {
-                    RankedStats[i - 1] = existWeaponStats;
+                    _rankedStats[i - 1] = existWeaponStats;
                 }
                 else
                 {
-                    RankedStats[i-1]=CreateNewWeaponStatsSO(i);
+                    _rankedStats[i-1]=CreateNewWeaponStatsSO(i);
                 }
             }
         }
@@ -148,7 +151,7 @@ public class WeaponCard : ScriptableObject
     private bool HasWeaponStatsSO(int rang)
     {
         Debug.Log(rang);
-        return RankedStats[rang - 1] != null;
+        return _rankedStats[rang - 1] != null;
     }
 
     private WeaponStats CreateNewWeaponStatsSO(int rang)
