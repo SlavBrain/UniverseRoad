@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +8,7 @@ public class WeaponViewer : MonoBehaviour
     [SerializeField] private WeaponViewWithButton _weapontViewTemplate;
     [SerializeField] private Transform _viewContainer;
     [SerializeField] private SelectedWeaponViewer _seletedWeaponViewer;
+    [SerializeField] private WeaponInfoView _weaponInfoView;
 
     private void OnEnable()
     {
@@ -24,7 +24,7 @@ public class WeaponViewer : MonoBehaviour
     private void CreateCardView(WeaponCard weaponCard)
     {
         var newView=Instantiate(_weapontViewTemplate,_viewContainer);
-        newView.Initialize(weaponCard);
+        newView.Initialize(weaponCard,_weaponInfoView);
     }
     
     private void Clear()

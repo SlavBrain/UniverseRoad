@@ -17,7 +17,7 @@ public class WeaponCard : ScriptableObject
     [SerializeField] private int _count;
     [SerializeField] private int _rang;
     [SerializeField] private bool _isSelected = false;
-    [FormerlySerializedAs("RankedStats")] [SerializeField] private List<WeaponStats> _rankedStats=new List<WeaponStats>();
+    [SerializeField] private List<WeaponStats> _rankedStats=new List<WeaponStats>();
     
     private string _localPathToWeaponStatsSO;
 
@@ -28,10 +28,21 @@ public class WeaponCard : ScriptableObject
     public Weapon Weapon => _weapon;
     public Sprite Icon => _icon;
     public string Name => name;
-    public WeaponStats Stats => _rankedStats[_rang - 1];
     public int Count => _count;
     public int Rang => _rang;
     public bool IsSelected => _isSelected;
+
+    public WeaponStats GetStats()
+    {
+        if (_rang == 0)
+        {
+            return _rankedStats[0];
+        }
+        else
+        {
+            return _rankedStats[_rang - 1];
+        }
+    }
 
     public void AddCount(int count)
     {

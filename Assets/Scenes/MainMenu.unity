@@ -3139,6 +3139,7 @@ MonoBehaviour:
   _weapontViewTemplate: {fileID: 6415355914858729888, guid: ee5ca96cd614ced499590ed86ec1118a, type: 3}
   _viewContainer: {fileID: 1634330442}
   _seletedWeaponViewer: {fileID: 1536869046}
+  _weaponInfoView: {fileID: 1691583653}
 --- !u!1 &1101921924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4363,7 +4364,7 @@ GameObject:
   - component: {fileID: 1507637886}
   - component: {fileID: 1507637885}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: NameValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5609,13 +5610,14 @@ GameObject:
   - component: {fileID: 1691583650}
   - component: {fileID: 1691583652}
   - component: {fileID: 1691583651}
+  - component: {fileID: 1691583653}
   m_Layer: 5
   m_Name: WeaponInfoMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1691583650
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5677,6 +5679,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691583649}
   m_CullTransparentMesh: 1
+--- !u!114 &1691583653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691583649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8774d9e0369fdbb41a85adb4ba75ce12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 1254665137}
+  _rang: {fileID: 867221478}
+  _name: {fileID: 1507637885}
+  _damageValueText: {fileID: 1949547958}
+  _reloadValueText: {fileID: 1363638334}
+  _bulletCountValueText: {fileID: 1503214715}
+  _targetNameText: {fileID: 820813532}
+  _spellNameText: {fileID: 515318298}
 --- !u!1 &1708773596
 GameObject:
   m_ObjectHideFlags: 0

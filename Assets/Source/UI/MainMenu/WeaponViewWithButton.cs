@@ -5,6 +5,9 @@ using TMPro;
 public class WeaponViewWithButton : WeaponView
 {
     [SerializeField] private Button _selectButton;
+    [SerializeField] private Button _infoButton;
+
+    private WeaponInfoView _weaponInfoView;
 
     private string _selectButtonText = "Select";
     private string _unselectButtonText = "Unselect";
@@ -12,12 +15,20 @@ public class WeaponViewWithButton : WeaponView
     private void OnEnable()
     {
         _selectButton.onClick.AddListener(InvokeSelect);
+        _infoButton.onClick.AddListener(OnInfoButtonClick);
     }
 
     private void OnDisable()
     {
         _selectButton.onClick.RemoveAllListeners();
+        _infoButton.onClick.RemoveAllListeners();
         _weaponCard.SelectChanged -= SelectButtonTextChange;
+    }
+
+    public override  void Initialize(WeaponCard weaponCard, WeaponInfoView weaponInfoView)
+    {
+        base.Initialize(weaponCard, weaponInfoView);
+        _weaponInfoView = weaponInfoView;
     }
 
     protected override void Refresh()
@@ -48,5 +59,16 @@ public class WeaponViewWithButton : WeaponView
     {
         base.SetWeaponCard(weaponCard);
         _weaponCard.SelectChanged += SelectButtonTextChange;
+    }
+    
+    private void OnInfoButtonClick()
+    {
+        if (_weaponInfoView == null)
+        {
+            Debug.Log(gameObject.name+": WeaponInfoView is null");
+        }
+        
+        _weaponInfoView.gameObject.SetActive(true);
+        _weaponInfoView.Initialize(_weaponCard);
     }
 }

@@ -17,7 +17,7 @@ public class WeaponInfoView : MonoBehaviour
     
     private WeaponCard _weaponCard;
 
-    private void Initialize(WeaponCard weaponCard)
+    public void Initialize(WeaponCard weaponCard)
     {
         _weaponCard = weaponCard;
         SetUIVAlues();
@@ -28,11 +28,11 @@ public class WeaponInfoView : MonoBehaviour
         _icon.sprite = _weaponCard.Icon;
         _rang.text = _weaponCard.Rang.ToString();
         _name.text = _weaponCard.Name;
-        _damageValueText.text = _weaponCard.Stats.DPS.ToString();
-        _reloadValueText.text = _weaponCard.Stats.ReloadTime.ToString();
-        _bulletCountValueText.text = _weaponCard.Stats.MaxBulletCount.ToString();
-        _targetNameText.text = _weaponCard.Stats.TargetFind.Name;
-        _spellNameText.text = _weaponCard.Stats.Spell.Name;
+        _damageValueText.text = _weaponCard.GetStats().DPS.ToString();
+        _reloadValueText.text = _weaponCard.GetStats().ReloadTime.ToString();
+        _bulletCountValueText.text = _weaponCard.GetStats().MaxBulletCount.ToString();
+        _targetNameText.text = _weaponCard.GetStats().TargetFind.Name;
+        _spellNameText.text = _weaponCard.GetStats().Spell.Name;
 
     }
 }

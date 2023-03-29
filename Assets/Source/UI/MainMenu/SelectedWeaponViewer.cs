@@ -37,7 +37,7 @@ public class SelectedWeaponViewer : MonoBehaviour
     {
         if (TryFindEmptyView(out WeaponView view))
         {
-            view.Initialize(weaponCard);
+            view.Initialize(weaponCard,null);
         }
     }
 

@@ -13,7 +13,6 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private EnemyWaveConfig[] enemyWaveConfig;
     [Header("Player")]
     [SerializeField] private List<Weapon> _selectedWeapon;
-    [SerializeField] private int _maxHealth=100;
     [Header("Level")]
     [SerializeField] private int _roadWidth = 30;
     

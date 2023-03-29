@@ -13,7 +13,7 @@ public class WeaponView : MonoBehaviour
 
     public WeaponCard WeaponCard => _weaponCard;
 
-    public void Initialize(WeaponCard weaponCard)
+    public virtual void Initialize(WeaponCard weaponCard, WeaponInfoView weaponInfoView)
     {
         if (weaponCard == null)
         {

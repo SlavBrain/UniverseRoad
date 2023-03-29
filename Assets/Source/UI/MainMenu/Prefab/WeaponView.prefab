@@ -135,6 +135,7 @@ MonoBehaviour:
   _weaponNameView: {fileID: 7128811828168546943}
   _weaponRangView: {fileID: 7498532487620200552}
   _selectButton: {fileID: 7375790431751435664}
+  _infoButton: {fileID: 3982348972890443452}
 --- !u!1 &5601211153052281532
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +499,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 26.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -697,7 +698,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.075, y: 0.48666668}
   m_AnchorMax: {x: 0.92, y: 0.897}
-  m_AnchoredPosition: {x: 0, y: 1.2753983}
+  m_AnchoredPosition: {x: 0, y: 1.2753906}
   m_SizeDelta: {x: 0, y: 2.5507002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2170670412566253396

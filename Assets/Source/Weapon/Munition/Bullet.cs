@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,12 +9,24 @@ public class Bullet : Munition
     [SerializeField] private AfterHitAction _afterHitAction;
     private Vector3 target;
 
-    private Coroutine _moving;
+    private void Update()
+    {
+        if (target != null)
+        {
+            if (Vector3.Distance(transform.position, target) < 0.01)
+            {
+                MovingToTarget();
+            }
+            else
+            {
+                Destroy();
+            }
+        }
+    }
 
     public void Initialization(Vector3 newTarget)
     {        
         target = newTarget+new Vector3(0,0.5f,0);
-        StartMoveToPoint();
     }
 
     public void Destroy()
@@ -21,33 +34,15 @@ public class Bullet : Munition
         gameObject.SetActive(false);
     }
 
-
-    private void StartMoveToPoint()
+    private void MovingToTarget()
     {
-        if (_moving != null)
-        {
-            StopCoroutine(_moving);
-        }
-
-        _moving = StartCoroutine(MovingToTarget());
-    }
-
-    private IEnumerator MovingToTarget()
-    {
-        while (Vector3.Distance(transform.position, target) >0.01)
-        {
-            transform.position = Vector3.MoveTowards(transform.position,target,_speed*Time.deltaTime);
-            yield return null;
-        }
-
-        Destroy();
+        transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            Debug.Log("hit");
             enemy.Health.ApplyDamage(_damage);
         }
         else
