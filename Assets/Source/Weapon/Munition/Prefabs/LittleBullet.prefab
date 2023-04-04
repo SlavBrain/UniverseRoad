@@ -112,9 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60765c14a6545114a80d7e0e925f54fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 100
+  _speed: 1
   _damage: 20
   _afterHitAction: {fileID: 9209762387522038366}
+  _target: {x: 0, y: 0, z: 0}
 --- !u!114 &9209762387522038366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05a77f3b39dde142b7cd5a8dcbfd2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: 
   _maxNumberOfRebound: 2
   _maxDistanceToNextTarget: 85.12
   _enemyLayer:

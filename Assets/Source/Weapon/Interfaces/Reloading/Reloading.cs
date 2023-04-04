@@ -1,38 +1,28 @@
 using System;
-using System.Collections;
-using UnityEngine;
+using System.Threading.Tasks;
 
-[RequireComponent(typeof(Weapon))]
-public class Reloading : MonoBehaviour, IReloading
+public class Reloading : IReloading
 {
-    private Weapon _weapon;
-    private Coroutine _reloading;
+    private readonly Weapon _weapon;
     public event Action Reloaded;
 
-    private void OnEnable()
+    private int count = 0;
+    
+    public Reloading(Weapon weapon)
     {
-        _weapon = GetComponent<Weapon>();
-        _weapon.BulletsEnded += Reload;
+        _weapon = weapon;
+        _weapon.BulletsEnded += () => Reload();
     }
 
-    private void OnDisable()
+    public async Task Reload()
     {
-        _weapon.BulletsEnded -= Reload;
+        int millisecondsInSecond = 1000;
+        await Task.Delay((int)_weapon.ReloadTime*millisecondsInSecond);
+        EndReload();
     }
 
-    public void Reload()
+    private void EndReload()
     {
-        if (_reloading != null)
-        {
-            StopCoroutine(_reloading);
-        }
-
-        _reloading = StartCoroutine(ReloadedWait());
-    }
-
-    private IEnumerator ReloadedWait()
-    {
-        yield return new WaitForSeconds(_weapon.ReloadTime);
         Reloaded?.Invoke();
     }
 }

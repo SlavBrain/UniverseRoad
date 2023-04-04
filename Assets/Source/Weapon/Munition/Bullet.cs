@@ -7,13 +7,17 @@ public class Bullet : Munition
     [SerializeField] private float _speed=1;
     [SerializeField] protected int _damage=1;
     [SerializeField] private AfterHitAction _afterHitAction;
-    private Vector3 target;
+    [SerializeField]private Vector3 _target;
 
+    public float Speed => _speed;
+    public float Damage => _damage;
+    public AfterHitAction AfterHitAction => _afterHitAction;
+    
     private void Update()
     {
-        if (target != null)
+        if (_target != null)
         {
-            if (Vector3.Distance(transform.position, target) < 0.01)
+            if (Vector3.Distance(transform.position, _target) > 0.01)
             {
                 MovingToTarget();
             }
@@ -26,7 +30,7 @@ public class Bullet : Munition
 
     public void Initialization(Vector3 newTarget)
     {        
-        target = newTarget+new Vector3(0,0.5f,0);
+        _target = newTarget+new Vector3(0,0.5f,0);
     }
 
     public void Destroy()
@@ -36,7 +40,7 @@ public class Bullet : Munition
 
     private void MovingToTarget()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision other)

@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Weapon))]
 public class BulletSpawner : Spawner
 {
-    [SerializeField] private Weapon Weapon;
+    private Weapon Weapon;
 
     private void OnDisable()
     {
@@ -13,7 +14,7 @@ public class BulletSpawner : Spawner
     protected override void GetExternalData()
     {
         Weapon = GetComponent<Weapon>();
-        Templates[0] = Weapon.Bullet.gameObject;
+        Templates= new List<GameObject>() {Weapon.Bullet.gameObject} ;
         Capacity = Weapon.MaxBulletCount;
         CreateContainer();
     }

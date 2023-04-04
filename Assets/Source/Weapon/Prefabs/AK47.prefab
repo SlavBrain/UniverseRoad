@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6882425461734977074}
   - component: {fileID: 6118674117258577869}
   - component: {fileID: 5832150279184996913}
-  - component: {fileID: 1233937973000125921}
   m_Layer: 0
   m_Name: AK47
   m_TagString: Untagged
@@ -50,15 +49,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootingPoint: {fileID: 6157148641658201351}
-  _targetFind: {fileID: 6882425461734977074}
-  _shooting: {fileID: 5832150279184996913}
-  _reloading: {fileID: 1233937973000125921}
-  _bullet: {fileID: -3084705155749706955, guid: bd5235c0ba135ea44bb2bea401df3248, type: 3}
-  _shootDelay: 0.15
-  _reloadTime: 1
-  _maxBulletCount: 5
-  _target: {fileID: 0}
-  _bulletsCountBeforeReload: 0
+  _currentRang: 0
+  _characteristics:
+  - _reloadTime: 1
+    _shootDelay: 1
+    _maxBulletCount: 5
+    _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+    _targetFind: {fileID: 6882425461734977074}
+    _shooting: {fileID: 5832150279184996913}
+  - _reloadTime: 1
+    _shootDelay: 1
+    _maxBulletCount: 5
+    _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+    _targetFind: {fileID: 6882425461734977074}
+    _shooting: {fileID: 5832150279184996913}
+  - _reloadTime: 1
+    _shootDelay: 1
+    _maxBulletCount: 5
+    _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+    _targetFind: {fileID: 6882425461734977074}
+    _shooting: {fileID: 5832150279184996913}
 --- !u!114 &6882425461734977074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7b6f9174fa5e74bb455d0aab1930da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: 
 --- !u!114 &6118674117258577869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +98,6 @@ MonoBehaviour:
   Capacity: 5
   Templates:
   - {fileID: 4443684983094370942, guid: bd5235c0ba135ea44bb2bea401df3248, type: 3}
-  Weapon: {fileID: -8116820981222715738}
 --- !u!114 &5832150279184996913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,18 +108,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7ede36e05251754aafbe48638e31d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1233937973000125921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6157645546612643188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 561f8505ef91c3a4a8a01acc03d30624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8658795986220267247

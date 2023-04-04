@@ -1,9 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "ScriptableObject/Weapon", order = 1)]
 public class WeaponCard : ScriptableObject
@@ -17,7 +13,6 @@ public class WeaponCard : ScriptableObject
     [SerializeField] private int _count;
     [SerializeField] private int _rang;
     [SerializeField] private bool _isSelected = false;
-    [SerializeField] private List<WeaponStats> _rankedStats=new List<WeaponStats>();
     
     private string _localPathToWeaponStatsSO;
 
@@ -31,18 +26,6 @@ public class WeaponCard : ScriptableObject
     public int Count => _count;
     public int Rang => _rang;
     public bool IsSelected => _isSelected;
-
-    public WeaponStats GetStats()
-    {
-        if (_rang == 0)
-        {
-            return _rankedStats[0];
-        }
-        else
-        {
-            return _rankedStats[_rang - 1];
-        }
-    }
 
     public void AddCount(int count)
     {
@@ -78,108 +61,4 @@ public class WeaponCard : ScriptableObject
         _isSelected = false;
         SelectChanged?.Invoke(this);
     }
-
-#if UNITY_EDITOR
-
-    public void CreateWeaponStatsSO()
-    {
-        FindFolderWithWeaponStatsSO();
-        CreateWeaponStatsScriptableObjectInFolder();
-    }
-
-    private void OnValidate()
-    {
-        if (_rankedStats.Count == 0)
-        {
-            Debug.LogWarning(this.name + ": RankedStats is empty");
-        }
-    }
-
-    private void FindFolderWithWeaponStatsSO()
-    {
-
-        SetPathToFolderWithWeaponStatsSO();
-        
-        if (!Directory.Exists(_localPathToWeaponStatsSO))
-        {
-            Directory.CreateDirectory(_localPathToWeaponStatsSO);
-        }
-    }
-
-    private void SetPathToFolderWithWeaponStatsSO()
-    {
-        _localPathToWeaponStatsSO = PathToWeaponCard + name;
-    }
-
-    private void CreateWeaponStatsScriptableObjectInFolder()
-    {
-        string[] allFileInFolder = Directory.GetFiles(_localPathToWeaponStatsSO);
-
-        for (int i = 1; i <= MaxWeaponRang; i++)
-        {
-            if (_rankedStats.Count < i)
-            {
-                _rankedStats.Add(null);
-            }
-
-            if (!HasWeaponStatsSO(i))
-            {
-                string weaponStatSOName = name + "Rang" + i+".asset";
-
-                if (TryFindExistingFile(allFileInFolder, weaponStatSOName,out WeaponStats existWeaponStats))
-                {
-                    _rankedStats[i - 1] = existWeaponStats;
-                }
-                else
-                {
-                    _rankedStats[i-1]=CreateNewWeaponStatsSO(i);
-                }
-            }
-        }
-    }
-
-    private bool TryFindExistingFile(string[] filesInFolder, string neсessaryFile,out WeaponStats weaponCard)
-    {
-        weaponCard = null;
-        
-        foreach (string file in filesInFolder)
-        {
-            if (file.Contains(neсessaryFile))
-            {
-                var necessaryWeaponStats = AssetDatabase.LoadAssetAtPath<WeaponStats>(_localPathToWeaponStatsSO + "/" + neсessaryFile);
-                
-                if (necessaryWeaponStats != null)
-                {
-                    weaponCard = necessaryWeaponStats;
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    private bool HasWeaponStatsSO(int rang)
-    {
-        Debug.Log(rang);
-        return _rankedStats[rang - 1] != null;
-    }
-
-    private WeaponStats CreateNewWeaponStatsSO(int rang)
-    {
-        WeaponStats newWeaponStats = ScriptableObject.CreateInstance<WeaponStats>();
-        Debug.Log(_localPathToWeaponStatsSO + SetWeaponStatsSOName(rang));
-        AssetDatabase.CreateAsset(newWeaponStats, _localPathToWeaponStatsSO + SetWeaponStatsSOName(rang));
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-        
-        return newWeaponStats;
-    }
-
-    private string SetWeaponStatsSOName(int rang)
-    {
-        return "/" + name + "Rang" + rang+".asset";
-    }
-
-#endif
 }

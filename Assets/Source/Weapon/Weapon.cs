@@ -1,36 +1,34 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private Transform _shootingPoint;
-
-    [SerializeField] private TargetFind _targetFind;
-    [SerializeField] private Shooting _shooting;
-    [SerializeField] private Reloading _reloading;
-    [SerializeField] private Bullet _bullet;
-
-    [SerializeField] private float _shootDelay = 0.5f;
-    [SerializeField] private float _reloadTime = 2;
-    [SerializeField] private int _maxBulletCount = 30;
+    [SerializeField] private int _currentRang;
+    [SerializeField] private WeaponСharacteristics[] _characteristics;
 
     [SerializeField]private GameObject _target;
-    [SerializeField]private int _bulletsCountBeforeReload;
+    private int _bulletsCountBeforeReload;
+    private Reloading _reloading;
 
     public event Action<Weapon> RequiredNewTarget;
     public event Action BulletsEnded;
     public event Action DoShoot;
     
-    public float ReloadTime => _reloadTime;
-    public float ShootDelay => _shootDelay;
-    public TargetFind TargetFind => _targetFind;
-    public Vector3 ShootingPoint => _shootingPoint.position;
-    public Bullet Bullet => _bullet;
     public Vector3 TargetPoint => _target.transform.position;
-    public int MaxBulletCount => _maxBulletCount;
+    public Vector3 ShootingPoint => _shootingPoint.position;
+    public float ReloadTime => _characteristics[_currentRang].ReloadTime;
+    public float ShootDelay => _characteristics[_currentRang].ShootDelay;
+    public int MaxBulletCount => _characteristics[_currentRang].MaxBulletCount;
+    public TargetFind TargetFind => _characteristics[_currentRang].TargetFind;
+    public Bullet Bullet => _characteristics[_currentRang].Bullet;
+    private Shooting _shooting => _characteristics[_currentRang].Shooting;
     private bool IsBulletsHave=>_bulletsCountBeforeReload > 0;
+
+    private void Awake()
+    {
+        _reloading = new Reloading(this);
+    }
 
     private void OnEnable()
     {
@@ -68,6 +66,11 @@ public class Weapon : MonoBehaviour
         _target = target;
     }
 
+    public void SetRang(int rang)
+    {
+        _currentRang = Mathf.Clamp(rang, 1, _characteristics.Length)-1;
+    }
+
     private void Reload()
     {
         BulletsEnded?.Invoke();
@@ -80,6 +83,35 @@ public class Weapon : MonoBehaviour
 
     private void FillOfBullet()
     {
-        _bulletsCountBeforeReload = _maxBulletCount;
+        _bulletsCountBeforeReload = MaxBulletCount;
+    }
+
+    private void OnValidate()
+    {
+        if (_characteristics.Length == 0)
+        {
+            Debug.LogError(gameObject.name+": not found WeaponCharacteristics");
+        }
+    }
+
+    [Serializable]
+    private struct WeaponСharacteristics
+    {
+        [SerializeField] private float _reloadTime;
+        [SerializeField] private float _shootDelay;
+        [SerializeField] private int _maxBulletCount;
+        [SerializeField] private Bullet _bullet;
+        [SerializeField] private TargetFind _targetFind;
+        [SerializeField] private Shooting _shooting;
+
+        public float ReloadTime => _reloadTime;
+        public float ShootDelay => _shootDelay;
+        public int MaxBulletCount => _maxBulletCount;
+        public Bullet Bullet => _bullet;
+        public TargetFind TargetFind => _targetFind;
+        public Shooting Shooting => _shooting;
+
     }
 }
+
+

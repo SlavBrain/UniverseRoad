@@ -24,7 +24,6 @@ public class LevelViewer : MonoBehaviour
         LevelView newView = Instantiate(_template, _viewContainer.transform);
         newView.Initialize(numberLevel+1, _levelConfigs[numberLevel]);
         LevelViewCreated?.Invoke(newView);
-        Debug.Log("signTo ");
     }
 
     private void ClearContainer()

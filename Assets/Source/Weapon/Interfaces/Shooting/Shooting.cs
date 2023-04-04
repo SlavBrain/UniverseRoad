@@ -1,11 +1,10 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Weapon))]
 [RequireComponent(typeof(BulletSpawner))]
-public class Shooting : MonoBehaviour, IShooting
+public class Shooting : MonoBehaviour,IShooting
 {
     private BulletSpawner _bulletSpawner;
     private Weapon _weapon;
@@ -16,7 +15,7 @@ public class Shooting : MonoBehaviour, IShooting
     private string HashAnimatorIsShoot = "IsShoot";
     public event Action ShootingEnded;
     public event Action TookBullet;
-
+    
     private void OnEnable()
     {
         GetComponentInParent<Unit>().TryGetComponent<Animator>(out _unitAnimator);
@@ -62,14 +61,11 @@ public class Shooting : MonoBehaviour, IShooting
             if (_weapon.TargetPoint != null)
             {
                 _bulletInQueue--;
+                Debug.Log("shoot");
                 Bullet bullet = _bulletSpawner.SpawnObject(_weapon.ShootingPoint).GetComponent<Bullet>();
                 bullet.Initialization(_weapon.TargetPoint);
                 PlayShootAnimation();
                 yield return delay;
-            }
-            else
-            {
-                yield return null;
             }
         }
 

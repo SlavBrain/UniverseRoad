@@ -17,9 +17,5 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _name: Famas
   _count: 0
-  _rang: 1
+  _rang: 5
   _isSelected: 1
-  RankedStats:
-  - {fileID: 11400000, guid: f41f4afb0035c6f4982efa23be7102d5, type: 2}
-  - {fileID: 11400000, guid: fd20571a8c585de4c9be90125d021414, type: 2}
-  - {fileID: 11400000, guid: acd96339c66b3d44d83ceb772dad6153, type: 2}
