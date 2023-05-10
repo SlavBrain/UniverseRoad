@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _reward;
+    [SerializeField] private int _globalReward=1;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private Health _health;
     [SerializeField] private int _damage = 1;
@@ -14,6 +15,7 @@ public class Enemy : MonoBehaviour
 
     public Health Health => _health;
     public int Reward => _reward;
+    public int GlobalReward => _globalReward;
 
     private void OnEnable()
     {

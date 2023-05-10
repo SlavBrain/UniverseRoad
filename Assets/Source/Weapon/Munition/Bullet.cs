@@ -1,17 +1,12 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
-public class Bullet : Munition
+public class Bullet : Munition,IAfterHitActionSelectionner
 {
-    [SerializeField] private float _speed=1;
-    [SerializeField] protected int _damage=1;
-    [SerializeField] private AfterHitAction _afterHitAction;
+    private float _speed=1;
+    private int _damage=1;
     [SerializeField]private Vector3 _target;
-
-    public float Speed => _speed;
-    public float Damage => _damage;
-    public AfterHitAction AfterHitAction => _afterHitAction;
+    private AfterHitActionVariation _afterHitActionVariant;
+    private IAfterHitAction _afterHitAction;
     
     private void Update()
     {
@@ -28,9 +23,18 @@ public class Bullet : Munition
         }
     }
 
-    public void Initialization(Vector3 newTarget)
-    {        
-        _target = newTarget+new Vector3(0,0.5f,0);
+    public void Initialization(Weapon weapon)
+    {
+        _speed = weapon.BulletSpeed;
+        _damage = weapon.BulletDamage;
+        IAfterHitActionSelectionner bulletSpellSelectionner = this as IAfterHitActionSelectionner;
+        bulletSpellSelectionner.SetAfterHitAction(_afterHitActionVariant);
+        SetTargetPoint(weapon.TargetPoint);
+    }
+
+    public void SetTargetPoint(Vector3 newPoint)
+    {
+        _target = newPoint+new Vector3(0,0.5f,0);
     }
 
     public void Destroy()
@@ -47,6 +51,7 @@ public class Bullet : Munition
     {
         if (other.collider.TryGetComponent<Enemy>(out Enemy enemy))
         {
+            Debug.Log("hit");
             enemy.Health.ApplyDamage(_damage);
         }
         else
@@ -55,5 +60,15 @@ public class Bullet : Munition
         }
 
         _afterHitAction.Action(this,enemy);
+    }
+
+    void IAfterHitActionSelectionner.OnReboundSelected()
+    {
+        _afterHitAction = new ReboundingAfterHitAction(this);
+    }
+
+    void IAfterHitActionSelectionner.OnNothingSelected()
+    {
+        _afterHitAction = new NothingAfterHitAction();
     }
 }

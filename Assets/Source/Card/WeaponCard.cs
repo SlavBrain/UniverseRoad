@@ -4,8 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObject/Weapon", order = 1)]
 public class WeaponCard : ScriptableObject
 {
-    private const int MaxWeaponRang = 3;
-    private const string PathToWeaponCard = "Assets/Source/Card/WeaponCards/";
     [SerializeField] private CardRarity _rarity;
     [SerializeField] private Weapon _weapon;
     [SerializeField] private Sprite _icon;

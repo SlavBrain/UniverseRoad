@@ -49,14 +49,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootingPoint: {fileID: 6581474628291359201}
-  _targetFind: {fileID: 5883890389392079572}
-  _shooting: {fileID: 6830689168865742551}
-  _bullet: {fileID: -3084705155749706955, guid: bd5235c0ba135ea44bb2bea401df3248, type: 3}
-  _shootDelay: 0.15
-  _reloadTime: 1
-  _maxBulletCount: 5
-  _target: {fileID: 0}
-  _bulletsCountBeforeReload: 0
+  _characteristics:
+  - _reloadTime: 1
+    _shootDelay: 0.5
+    _maxBulletCount: 5
+    _targetFind: {fileID: 5883890389392079572, guid: 0d9f13185dc955042a7c7300791422f6, type: 3}
+    _shooting: {fileID: 6830689168865742551, guid: 0d9f13185dc955042a7c7300791422f6, type: 3}
+    "_bullet\u0421haracteristics":
+      _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+      _speed: 20
+      _damage: 5
+      _afterHitActionVariant: 0
+  - _reloadTime: 0.7
+    _shootDelay: 0.3
+    _maxBulletCount: 6
+    _targetFind: {fileID: 5883890389392079572, guid: 0d9f13185dc955042a7c7300791422f6, type: 3}
+    _shooting: {fileID: 6830689168865742551, guid: 0d9f13185dc955042a7c7300791422f6, type: 3}
+    "_bullet\u0421haracteristics":
+      _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+      _speed: 30
+      _damage: 6
+      _afterHitActionVariant: 0
+  - _reloadTime: 0.5
+    _shootDelay: 0.2
+    _maxBulletCount: 10
+    _targetFind: {fileID: 5883890389392079572, guid: 0d9f13185dc955042a7c7300791422f6, type: 3}
+    _shooting: {fileID: 6830689168865742551, guid: 0d9f13185dc955042a7c7300791422f6, type: 3}
+    "_bullet\u0421haracteristics":
+      _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+      _speed: 30
+      _damage: 10
+      _afterHitActionVariant: 0
 --- !u!114 &5883890389392079572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +109,6 @@ MonoBehaviour:
   Capacity: 5
   Templates:
   - {fileID: 4443684983094370942, guid: bd5235c0ba135ea44bb2bea401df3248, type: 3}
-  Weapon: {fileID: 0}
 --- !u!114 &6830689168865742551
 MonoBehaviour:
   m_ObjectHideFlags: 0

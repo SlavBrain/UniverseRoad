@@ -63,7 +63,7 @@ public class Shooting : MonoBehaviour,IShooting
                 _bulletInQueue--;
                 Debug.Log("shoot");
                 Bullet bullet = _bulletSpawner.SpawnObject(_weapon.ShootingPoint).GetComponent<Bullet>();
-                bullet.Initialization(_weapon.TargetPoint);
+                bullet.Initialization(_weapon);
                 PlayShootAnimation();
                 yield return delay;
             }

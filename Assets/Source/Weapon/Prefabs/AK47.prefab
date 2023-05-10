@@ -49,26 +49,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootingPoint: {fileID: 6157148641658201351}
-  _currentRang: 0
   _characteristics:
   - _reloadTime: 1
     _shootDelay: 1
     _maxBulletCount: 5
-    _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
-    _targetFind: {fileID: 6882425461734977074}
+    _findTargetVariant: 1
     _shooting: {fileID: 5832150279184996913}
+    "_bullet\u0421haracteristics":
+      _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+      _speed: 20
+      _damage: 5
+      _afterHitActionVariant: 1
   - _reloadTime: 1
     _shootDelay: 1
     _maxBulletCount: 5
-    _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
-    _targetFind: {fileID: 6882425461734977074}
+    _findTargetVariant: 1
     _shooting: {fileID: 5832150279184996913}
+    "_bullet\u0421haracteristics":
+      _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+      _speed: 40
+      _damage: 10
+      _afterHitActionVariant: 0
   - _reloadTime: 1
     _shootDelay: 1
     _maxBulletCount: 5
-    _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
-    _targetFind: {fileID: 6882425461734977074}
+    _findTargetVariant: 0
     _shooting: {fileID: 5832150279184996913}
+    "_bullet\u0421haracteristics":
+      _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+      _speed: 50
+      _damage: 10
+      _afterHitActionVariant: 0
 --- !u!114 &6882425461734977074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7b6f9174fa5e74bb455d0aab1930da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
 --- !u!114 &6118674117258577869
 MonoBehaviour:
   m_ObjectHideFlags: 0

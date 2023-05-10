@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 108029277354973760}
   - component: {fileID: 6543004502198227755}
   - component: {fileID: 6830689168865742551}
-  - component: {fileID: 2130990421768764692}
   m_Layer: 0
   m_Name: Famas
   m_TagString: Untagged
@@ -49,26 +48,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootingPoint: {fileID: 6581474628291359201}
-  _currentRang: 1
   _characteristics:
   - _reloadTime: 2
     _shootDelay: 0.5
     _maxBulletCount: 5
-    _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
-    _targetFind: {fileID: 2130990421768764692}
+    _findTargetVariant: 3
     _shooting: {fileID: 6830689168865742551}
+    "_bullet\u0421haracteristics":
+      _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+      _speed: 20
+      _damage: 6
+      _afterHitActionVariant: 0
   - _reloadTime: 2
     _shootDelay: 0.4
     _maxBulletCount: 6
-    _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
-    _targetFind: {fileID: 2130990421768764692}
+    _findTargetVariant: 1
     _shooting: {fileID: 6830689168865742551}
+    "_bullet\u0421haracteristics":
+      _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+      _speed: 30
+      _damage: 8
+      _afterHitActionVariant: 0
   - _reloadTime: 1.5
     _shootDelay: 0.3
     _maxBulletCount: 7
-    _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
-    _targetFind: {fileID: 2130990421768764692}
+    _findTargetVariant: 0
     _shooting: {fileID: 6830689168865742551}
+    "_bullet\u0421haracteristics":
+      _bullet: {fileID: 4341065174899228425, guid: 8d3b6364a073d6446ad798a63b7c1eb1, type: 3}
+      _speed: 50
+      _damage: 10
+      _afterHitActionVariant: 0
 --- !u!114 &6543004502198227755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,19 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ede36e05251754aafbe48638e31d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2130990421768764692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6579992550013223314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4835c22a3d6403e439f0f1d6298488de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _name: 
 --- !u!1 &8506938292185408009
 GameObject:
   m_ObjectHideFlags: 0

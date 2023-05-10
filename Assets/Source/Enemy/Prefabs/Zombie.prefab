@@ -820,6 +820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: 10
+  _globalReward: 5
   _maxSpeed: 10
   _health: {fileID: 7210821869125752289}
   _damage: 1
@@ -866,6 +867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxValue: 10
+  _currentValue: 0
 --- !u!1 &7344808220598803454
 GameObject:
   m_ObjectHideFlags: 0

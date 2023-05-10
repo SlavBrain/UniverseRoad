@@ -1,6 +1,5 @@
 using UnityEngine;
 using IJunior.TypedScenes;
-using System.Collections.Generic;
 
 public class LevelConfigurator : MonoBehaviour, ISceneLoadHandler<LevelConfig>
 {
@@ -9,7 +8,7 @@ public class LevelConfigurator : MonoBehaviour, ISceneLoadHandler<LevelConfig>
     [SerializeField] private LevelGenerator _levelGenerator;
     [SerializeField] private EnemyWaveController _waveController;
     [SerializeField] private UnitSpawner _unitSpawner;
-    [SerializeField]private LevelConfig _config;
+    [SerializeField] private LevelConfig _config;
 
     public LevelGenerator LevelGenerator => _levelGenerator;
     public EnemySpawner EnemySpawner => _waveController.EnemySpawner;

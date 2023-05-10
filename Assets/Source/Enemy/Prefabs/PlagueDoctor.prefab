@@ -881,6 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: 10
+  _globalReward: 3
   _maxSpeed: 10
   _health: {fileID: -8732450178322702113}
   _damage: 1

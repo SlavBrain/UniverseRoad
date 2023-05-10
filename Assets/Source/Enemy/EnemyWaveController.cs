@@ -9,7 +9,6 @@ public class EnemyWaveController : MonoBehaviour
 
     [SerializeField]private int _currentWave = 0;
 
-    public event Action WaveChanged;
     public event Action WavesEnded;
     
     public EnemySpawner EnemySpawner => _enemySpawner;
@@ -35,7 +34,6 @@ public class EnemyWaveController : MonoBehaviour
         if (_currentWave < _configs.Length)
         {
             StartWave();
-            WaveChanged?.Invoke();
         }
         else
         {

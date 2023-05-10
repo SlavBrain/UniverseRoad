@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8182702197277925813}
   - component: {fileID: 7646229758124290184}
   - component: {fileID: -6849572052501914622}
-  - component: {fileID: -6670445953705308262}
   - component: {fileID: 4341065174899228425}
   m_Layer: 0
   m_Name: MiddleBullet
@@ -100,24 +99,6 @@ CapsuleCollider:
   m_Height: 0.24
   m_Direction: 1
   m_Center: {x: 0.022263378, y: -0.030517157, z: 0.027701639}
---- !u!114 &-6670445953705308262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2649826715428721017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b05a77f3b39dde142b7cd5a8dcbfd2e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _name: 
-  _maxNumberOfRebound: 3
-  _maxDistanceToNextTarget: 85.12
-  _enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &4341065174899228425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,5 +113,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 50
   _damage: 20
-  _afterHitAction: {fileID: -6670445953705308262}
   _target: {x: 0, y: 0, z: 0}
+  _afterHitActionVariant: 0

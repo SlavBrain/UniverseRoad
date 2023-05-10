@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelProgress : MonoBehaviour
@@ -27,7 +23,6 @@ public class LevelProgress : MonoBehaviour
 
     private void SuccessGameEnd()
     {
-        Debug.Log(" end "+Time.realtimeSinceStartup);
         _successEndGamePanel.SetActive(true);
         _inGameUI.SetActive(false);
         _timeScaler.PauseGame();

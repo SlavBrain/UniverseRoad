@@ -1,16 +1,17 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour,IFindTargetSelectioner
 {
     [SerializeField] private Transform _shootingPoint;
-    [SerializeField] private int _currentRang;
     [SerializeField] private WeaponСharacteristics[] _characteristics;
-
-    [SerializeField]private GameObject _target;
+    
+    private int _currentRang;
+    private GameObject _target;
     private int _bulletsCountBeforeReload;
     private Reloading _reloading;
-
+    private TargetFind _targetFind;
     public event Action<Weapon> RequiredNewTarget;
     public event Action BulletsEnded;
     public event Action DoShoot;
@@ -20,14 +21,23 @@ public class Weapon : MonoBehaviour
     public float ReloadTime => _characteristics[_currentRang].ReloadTime;
     public float ShootDelay => _characteristics[_currentRang].ShootDelay;
     public int MaxBulletCount => _characteristics[_currentRang].MaxBulletCount;
-    public TargetFind TargetFind => _characteristics[_currentRang].TargetFind;
-    public Bullet Bullet => _characteristics[_currentRang].Bullet;
+    public FindTargetVariations FindTargetVariant => _characteristics[_currentRang].FindTargetVariant;
     private Shooting _shooting => _characteristics[_currentRang].Shooting;
+    
+    public Bullet Bullet => _characteristics[_currentRang].BulletСharacteristics.Bullet;
+    public float BulletSpeed => _characteristics[_currentRang].BulletСharacteristics.Speed;
+    public int BulletDamage => _characteristics[_currentRang].BulletСharacteristics.Damage;
+    public AfterHitActionVariation BulletAfterHitActionVariation => _characteristics[_currentRang].BulletСharacteristics.AfterHitActionVariant;
+
+    public TargetFind TargetFind => _targetFind;
     private bool IsBulletsHave=>_bulletsCountBeforeReload > 0;
 
     private void Awake()
     {
         _reloading = new Reloading(this);
+        
+        IFindTargetSelectioner weaponFindTargetSelectioner =this as IFindTargetSelectioner;
+        weaponFindTargetSelectioner.SetFindTargetVariant(FindTargetVariant);
     }
 
     private void OnEnable()
@@ -100,17 +110,50 @@ public class Weapon : MonoBehaviour
         [SerializeField] private float _reloadTime;
         [SerializeField] private float _shootDelay;
         [SerializeField] private int _maxBulletCount;
-        [SerializeField] private Bullet _bullet;
-        [SerializeField] private TargetFind _targetFind;
+        [SerializeField] private FindTargetVariations _findTargetVariant;
         [SerializeField] private Shooting _shooting;
-
+        [SerializeField] private BulletСharacteristics _bulletСharacteristics;
+        
         public float ReloadTime => _reloadTime;
         public float ShootDelay => _shootDelay;
         public int MaxBulletCount => _maxBulletCount;
-        public Bullet Bullet => _bullet;
-        public TargetFind TargetFind => _targetFind;
+        public FindTargetVariations FindTargetVariant => _findTargetVariant;
         public Shooting Shooting => _shooting;
+        public BulletСharacteristics BulletСharacteristics => _bulletСharacteristics;
+    }
+    
+    [Serializable]
+    private struct BulletСharacteristics
+    {
+        [SerializeField] private Bullet _bullet;
+        [SerializeField] private float _speed;
+        [SerializeField] private int _damage;
+        [SerializeField] private AfterHitActionVariation _afterHitActionVariant;
+        
+        public Bullet Bullet => _bullet;
+        public AfterHitActionVariation AfterHitActionVariant => _afterHitActionVariant;
+        public float Speed => _speed;
+        public int Damage => _damage;
+    }
 
+    void IFindTargetSelectioner.OnRandomSelected()
+    {
+        _targetFind = gameObject.AddComponent(typeof(FindRandomTarget)) as TargetFind;
+    }
+
+    void IFindTargetSelectioner.OnNearSelected()
+    {
+        _targetFind = gameObject.AddComponent(typeof(FindNearTarget)) as TargetFind;
+    }
+
+    void IFindTargetSelectioner.OnLowHPSelected()
+    {
+        _targetFind = gameObject.AddComponent(typeof(FindLowHPTarget)) as TargetFind;
+    }
+
+    void IFindTargetSelectioner.OnHighHPSelected()
+    {
+        _targetFind = gameObject.AddComponent(typeof(FindHighHPTarget)) as TargetFind;
     }
 }
 

@@ -4,8 +4,10 @@ using UnityEngine;
 public class Wallet : MonoBehaviour
 {
     [SerializeField] private int _value=0;
-
+    
     public event Action<int> ValueChanged;
+
+    public int Value => _value;
 
     private void Start()
     {

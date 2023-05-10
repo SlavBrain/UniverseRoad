@@ -5,8 +5,6 @@ public class Reloading : IReloading
 {
     private readonly Weapon _weapon;
     public event Action Reloaded;
-
-    private int count = 0;
     
     public Reloading(Weapon weapon)
     {
