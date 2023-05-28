@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Unit : MonoBehaviour
 {
     [SerializeField] private GameObject _avatar;
@@ -11,9 +10,10 @@ public class Unit : MonoBehaviour
     [SerializeField] private LayerMask _unitLayer;
     [SerializeField] private int _level;
     private Weapon _weapon;
+    private Animator _animator;
     private EnemySpawner _enemySpawner;
     private GameObject _currentTarget;
-    private float _merdgeRadius = 1;
+    private readonly float _merdgeRadius = 1;
     private Collider[] nearUnits;
     private Unit _nearUnit;
     private bool _isCanUpgrade = true;
@@ -26,6 +26,7 @@ public class Unit : MonoBehaviour
     private void OnEnable()
     {
         _enemySpawner = GetComponentInParent<LevelConfigurator>().EnemySpawner;
+        _animator = GetComponent<Animator>();
     }
 
     private void OnDisable()
@@ -45,6 +46,7 @@ public class Unit : MonoBehaviour
         }
 
         _weapon = Instantiate(weapon, _rightHand.position, Quaternion.Euler(Vector3.zero), _rightHand);
+        ChangeAnimatorControllerByWeapon(_weapon);
         _weapon.RequiredNewTarget += FindTarget;
     }
 
@@ -59,7 +61,6 @@ public class Unit : MonoBehaviour
     public void Destoy()
     {
         Destroy(gameObject);
-
     }
 
     private bool HasSimilarUnitsAround(out Unit nearestUnit)
@@ -88,6 +89,12 @@ public class Unit : MonoBehaviour
         {
             weapon.SetTarget(_currentTarget);
         }
+    }
+
+    private void ChangeAnimatorControllerByWeapon(Weapon weapon)
+    {
+        if(weapon.AnimatorOverrideController!=null)
+            _animator.runtimeAnimatorController = _weapon.AnimatorOverrideController;
     }
 
     private void OnDrawGizmos()

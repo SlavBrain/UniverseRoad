@@ -5,6 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour,IFindTargetSelectioner
 {
     [SerializeField] private Transform _shootingPoint;
+    [SerializeField] private AnimatorOverrideController _animatorOverrideController;
     [SerializeField] private WeaponСharacteristics[] _characteristics;
     
     private int _currentRang;
@@ -17,6 +18,7 @@ public class Weapon : MonoBehaviour,IFindTargetSelectioner
     public event Action DoShoot;
     
     public Vector3 TargetPoint => _target.transform.position;
+    public AnimatorOverrideController AnimatorOverrideController => _animatorOverrideController;
     public Vector3 ShootingPoint => _shootingPoint.position;
     public float ReloadTime => _characteristics[_currentRang].ReloadTime;
     public float ShootDelay => _characteristics[_currentRang].ShootDelay;

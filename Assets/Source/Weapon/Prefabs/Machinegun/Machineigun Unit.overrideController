@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Machineigun Unit
+  m_Controller: {fileID: 9100000, guid: 07857ba1cf9210c44b8fa3d4e265d73d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ae7652f6d12e4e94781e974d0d378dba, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4af8ba91fa9084248b67aad8a5d17f89, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2da53c8a57e1c1f4bb13b1e4bc862b4d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4ec4449bac4eaa2418193f8e929ddfc9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fd5fcbf6852fb0a43ab46b4f0c24153e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 71ea7e80eb24eba43971f2438329bf92, type: 2}
