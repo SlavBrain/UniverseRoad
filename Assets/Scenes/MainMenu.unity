@@ -3474,6 +3474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInventory: {fileID: 229012317}
   _allWeapon: []
+  _sortedWeapon: []
   _weapontViewTemplate: {fileID: 6415355914858729888, guid: ee5ca96cd614ced499590ed86ec1118a, type: 3}
   _viewContainer: {fileID: 1634330442}
   _seletedWeaponViewer: {fileID: 1536869046}

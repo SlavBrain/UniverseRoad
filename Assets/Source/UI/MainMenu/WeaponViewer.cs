@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class WeaponViewer : MonoBehaviour
 {
     [SerializeField] private Inventory _playerInventory;
     [SerializeField] private List<WeaponCard> _allWeapon;
+    [SerializeField] private List<WeaponCard> _sortedWeapon;
     [SerializeField] private WeaponViewWithButton _weapontViewTemplate;
     [SerializeField] private Transform _viewContainer;
     [SerializeField] private SelectedWeaponViewer _seletedWeaponViewer;
@@ -14,11 +16,23 @@ public class WeaponViewer : MonoBehaviour
     {
         Clear();
 
-        for(int i = 0; i < _playerInventory.AvailableWeapon.Count; i++)
+        foreach (WeaponCard card in _playerInventory.AvailableWeapon)
         {
-            _allWeapon.Add(_playerInventory.AvailableWeapon[i]);
-            CreateCardView(_allWeapon[i]);
+            _allWeapon.Add(card);
         }
+        
+        _sortedWeapon = WeaponCardsSort(_allWeapon);
+        
+        foreach (WeaponCard card in _sortedWeapon)
+        {
+            CreateCardView(card);
+        }
+        
+    }
+
+    private List<WeaponCard> WeaponCardsSort(List<WeaponCard> weapons)
+    {
+        return weapons.OrderByDescending(weaponCard => weaponCard.Rang).ToList();
     }
 
     private void CreateCardView(WeaponCard weaponCard)
