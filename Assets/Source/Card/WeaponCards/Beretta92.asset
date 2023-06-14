@@ -17,9 +17,5 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _name: Beretta92
   _count: 0
-  _rang: 0
-  _isSelected: 0
-  RankedStats:
-  - {fileID: 11400000, guid: cf5e4b1d6e3dd3d429216571ca5a6e8a, type: 2}
-  - {fileID: 11400000, guid: cc2b22a1116e7b144861264e163174dd, type: 2}
-  - {fileID: 11400000, guid: b0f1257da1074a04e9eb22f489ccb50c, type: 2}
+  _rang: 1
+  _isSelected: 1
