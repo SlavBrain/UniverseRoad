@@ -9,6 +9,7 @@ public class LevelView : MonoBehaviour
     [SerializeField] private LevelConfig _levelConfig;
     [SerializeField] private Button _playButton;
 
+    private Color blockColor= Color.gray;
     public event Action<LevelConfig> PlayButtonClicked;
 
     private void OnEnable()
@@ -22,10 +23,15 @@ public class LevelView : MonoBehaviour
         PlayButtonClicked = null;
     }
 
-    public void Initialize(int levelNumber, LevelConfig levelConfig)
+    public void Initialize(int levelNumber, LevelConfig levelConfig, bool isAvailable)
     {
         _levelConfig = levelConfig;
         SetLevelNumberText(levelNumber);
+
+        if (!isAvailable)
+        {
+            SetViewUnavailable();
+        }
     }
 
     private void SetLevelNumberText(int levelNumber)
@@ -36,5 +42,16 @@ public class LevelView : MonoBehaviour
     private void OnPlayButtonClick()
     {
         PlayButtonClicked?.Invoke(_levelConfig);
+    }
+
+    private void SetViewUnavailable()
+    {
+        _playButton.onClick.RemoveAllListeners();
+        PlayButtonClicked = null;
+
+        if (_playButton.TryGetComponent<Image>(out Image buttonImage))
+        {
+            buttonImage.color = blockColor;
+        }
     }
 }

@@ -22,7 +22,7 @@ public class LevelViewer : MonoBehaviour
     private void CreateNewView(int numberLevel)
     {
         LevelView newView = Instantiate(_template, _viewContainer.transform);
-        newView.Initialize(numberLevel+1, _levelConfigs[numberLevel]);
+        newView.Initialize(numberLevel+1, _levelConfigs[numberLevel],IsLevelAvailable(numberLevel));
         LevelViewCreated?.Invoke(newView);
     }
 
@@ -34,6 +34,18 @@ public class LevelViewer : MonoBehaviour
             {
                 Destroy(view.gameObject);
             }
+        }
+    }
+
+    private bool IsLevelAvailable(int levelNumber)
+    {
+        if (levelNumber == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return _levelConfigs[levelNumber - 1].IsComplete;
         }
     }
 }

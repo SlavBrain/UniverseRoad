@@ -67,11 +67,12 @@ public class Unit : MonoBehaviour
     {
         nearUnits = Physics.OverlapSphere(transform.position, _merdgeRadius, _unitLayer);
 
-        var nearestUnitCollider = nearUnits.OrderBy(collider => Vector3.Distance(transform.position, collider.transform.position))
+        var nearestUnitCollider = nearUnits
+            .OrderBy(collider => Vector3.Distance(transform.position, collider.transform.position))
             .Where(collider => collider.TryGetComponent(out Unit nearUnits)).ToList()
             .Except(new Collider[] { this.GetComponent<Collider>() }).ToList()
-            .FirstOrDefault(unit => unit.GetComponent<Unit>().Level == _level);
-
+            .Where(unit => (unit.GetComponent<Unit>().Weapon.Id == _weapon.Id) && (unit.GetComponent<Unit>().Level == _level)).ToList()
+            .FirstOrDefault();
         if (nearestUnitCollider != null)
             nearestUnit = nearestUnitCollider.GetComponent<Unit>();
         else

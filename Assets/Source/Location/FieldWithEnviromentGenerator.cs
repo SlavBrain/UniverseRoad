@@ -9,9 +9,9 @@ public class FieldWithEnviromentGenerator : Spawner
 
     public void Initialize(LevelConfig config)
     {
-        SetTemplates(config.EnviromentConfig.OffRoadTemplates);
-        _bigObjectSpawner.SetTemplates(config.EnviromentConfig.BigObjectTemplates);
-        _smallObjectSpawner.SetTemplates(config.EnviromentConfig.SmallObjectTemplates);
+        SetTemplates(config.EnvironmentConfig.OffRoadTemplates);
+        _bigObjectSpawner.SetTemplates(config.EnvironmentConfig.BigObjectTemplates);
+        _smallObjectSpawner.SetTemplates(config.EnvironmentConfig.SmallObjectTemplates);
     }
 
     public override GameObject SpawnObject(Vector3 spawnPosition)

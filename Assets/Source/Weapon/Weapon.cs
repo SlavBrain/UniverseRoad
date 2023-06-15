@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour,IFindTargetSelectioner
@@ -7,7 +6,8 @@ public class Weapon : MonoBehaviour,IFindTargetSelectioner
     [SerializeField] private Transform _shootingPoint;
     [SerializeField] private AnimatorOverrideController _animatorOverrideController;
     [SerializeField] private WeaponСharacteristics[] _characteristics;
-    
+
+    [SerializeField]private string _id;
     private int _currentRang;
     private GameObject _target;
     private int _bulletsCountBeforeReload;
@@ -20,12 +20,14 @@ public class Weapon : MonoBehaviour,IFindTargetSelectioner
     public Vector3 TargetPoint => _target.transform.position;
     public AnimatorOverrideController AnimatorOverrideController => _animatorOverrideController;
     public Vector3 ShootingPoint => _shootingPoint.position;
+    public string Id => _id;
     public float ReloadTime => _characteristics[_currentRang].ReloadTime;
     public float ShootDelay => _characteristics[_currentRang].ShootDelay;
     public int MaxBulletCount => _characteristics[_currentRang].MaxBulletCount;
     public FindTargetVariations FindTargetVariant => _characteristics[_currentRang].FindTargetVariant;
     private Shooting _shooting => _characteristics[_currentRang].Shooting;
     
+
     public Bullet Bullet => _characteristics[_currentRang].BulletСharacteristics.Bullet;
     public float BulletSpeed => _characteristics[_currentRang].BulletСharacteristics.Speed;
     public int BulletDamage => _characteristics[_currentRang].BulletСharacteristics.Damage;
@@ -81,6 +83,11 @@ public class Weapon : MonoBehaviour,IFindTargetSelectioner
     public void SetRang(int rang)
     {
         _currentRang = Mathf.Clamp(rang, 1, _characteristics.Length)-1;
+    }
+
+    public void SetID(string name)
+    {
+        _id = name;
     }
 
     private void Reload()

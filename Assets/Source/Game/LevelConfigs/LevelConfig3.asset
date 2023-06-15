@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8948ba2d4b6c414383ae4b5aafc8c8a, type: 3}
   m_Name: LevelConfig3
   m_EditorClassIdentifier: 
-  _enveromentConfig: {fileID: 11400000, guid: b9249f92694c4414b92aeb6eb1a275af, type: 2}
+  _environmentConfig: {fileID: 11400000, guid: b9249f92694c4414b92aeb6eb1a275af, type: 2}
+  _roadWidth: 30
   enemyWaveConfig:
   - {fileID: 11400000, guid: 0a71dc4b4d0010d45b6157334bc9d1bb, type: 2}
   - {fileID: 11400000, guid: 0a71dc4b4d0010d45b6157334bc9d1bb, type: 2}
   - {fileID: 11400000, guid: b324731a6d2a7d6408e5edd5af083cc8, type: 2}
   _selectedWeapon: []
-  _maxHealth: 100
-  _roadWidth: 30
+  _isComplete: 0
