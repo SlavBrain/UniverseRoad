@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnviromentConfig", menuName = "Config/EnviromentConfig")]
-public class EnviromentConfig : ScriptableObject
+public class EnvironmentConfig : ScriptableObject
 {
     [SerializeField] private GameObject[] _roadTemplates;
     [SerializeField] private GameObject[] _offroadTemplates;
