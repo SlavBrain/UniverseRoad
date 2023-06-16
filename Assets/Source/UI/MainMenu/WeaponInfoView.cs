@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,12 +13,26 @@ public class WeaponInfoView : MonoBehaviour, IAfterHitActionSelectionner, IFindT
     [SerializeField] private TMP_Text _bulletCountValueText;
     [SerializeField] private TMP_Text _targetNameText;
     [SerializeField] private TMP_Text _spellNameText;
+    [SerializeField] private Button _upgradeButton;
     
+    private readonly Color _blockColor=Color.grey;
+    private readonly Color _unblockColor=Color.white;
     private WeaponCard _weaponCard;
+
+    private void OnEnable()
+    {
+        _upgradeButton.onClick.AddListener(OnUpgradeButtonClick);
+    }
+
+    private void OnDisable()
+    {
+        _upgradeButton.onClick.RemoveAllListeners();
+    }
 
     public void Initialize(WeaponCard weaponCard)
     {
         _weaponCard = weaponCard;
+        
         SetUIVAlues();
     }
 
@@ -30,11 +45,44 @@ public class WeaponInfoView : MonoBehaviour, IAfterHitActionSelectionner, IFindT
         _reloadValueText.text = _weaponCard.Weapon.ReloadTime.ToString();
         _bulletCountValueText.text = _weaponCard.Weapon.MaxBulletCount.ToString();
         
-        IAfterHitActionSelectionner bulletSpellSelectionner = this as IAfterHitActionSelectionner;
-        bulletSpellSelectionner.SetAfterHitAction(_weaponCard.Weapon.BulletAfterHitActionVariation);
+        SetUpgradeButtonAvailableState();
+        
+        IAfterHitActionSelectionner bulletSpellSelectioner = this as IAfterHitActionSelectionner;
+        bulletSpellSelectioner.SetAfterHitAction(_weaponCard.Weapon.BulletAfterHitActionVariation);
 
         IFindTargetSelectioner weaponFindTargetSelectioner=this as IFindTargetSelectioner;
         weaponFindTargetSelectioner.SetFindTargetVariant(_weaponCard.Weapon.FindTargetVariant);
+    }
+
+    private void OnUpgradeButtonClick()
+    {
+        if (_weaponCard.CanBeUpgrade())
+        {
+            _weaponCard.TryUpgrade();
+            SetUIVAlues();
+        }
+    }
+
+    private void SetUpgradeButtonAvailableState()
+    {
+        if (_upgradeButton == null)
+        {
+            return;
+        }
+        
+        if (_upgradeButton.TryGetComponent<Image>(out Image buttonImage))
+        {
+            if (_weaponCard.CanBeUpgrade())
+            {
+                buttonImage.color = _unblockColor;
+                _upgradeButton.interactable = true;
+            }
+            else
+            {
+                buttonImage.color = _blockColor;
+                _upgradeButton.interactable = false;
+            }
+        }
     }
 
     void IAfterHitActionSelectionner.OnReboundSelected()

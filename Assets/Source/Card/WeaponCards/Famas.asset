@@ -16,6 +16,6 @@ MonoBehaviour:
   _weapon: {fileID: 108029277354973760, guid: 5e4df8e47a8617640ad2ed513f77d571, type: 3}
   _icon: {fileID: 0}
   _name: Famas
-  _count: 0
+  _count: 50
   _rang: 5
   _isSelected: 1

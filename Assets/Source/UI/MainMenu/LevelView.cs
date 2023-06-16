@@ -9,7 +9,7 @@ public class LevelView : MonoBehaviour
     [SerializeField] private LevelConfig _levelConfig;
     [SerializeField] private Button _playButton;
 
-    private Color blockColor= Color.gray;
+    private Color _blockColor= Color.gray;
     public event Action<LevelConfig> PlayButtonClicked;
 
     private void OnEnable()
@@ -51,7 +51,7 @@ public class LevelView : MonoBehaviour
 
         if (_playButton.TryGetComponent<Image>(out Image buttonImage))
         {
-            buttonImage.color = blockColor;
+            buttonImage.color = _blockColor;
         }
     }
 }

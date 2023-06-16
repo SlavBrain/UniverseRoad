@@ -16,6 +16,6 @@ MonoBehaviour:
   _weapon: {fileID: 108029277354973760, guid: 0d9f13185dc955042a7c7300791422f6, type: 3}
   _icon: {fileID: 0}
   _name: Beretta92
-  _count: 0
-  _rang: 1
+  _count: 17
+  _rang: 5
   _isSelected: 1

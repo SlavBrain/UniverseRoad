@@ -12,6 +12,8 @@ public class WeaponCard : ScriptableObject
     [SerializeField] private int _rang;
     [SerializeField] private bool _isSelected = false;
 
+    private readonly int[] _cardCountsToUpgrade = {3, 5, 10, 15};
+    
     public event Action<WeaponCard> TryingSelecting;
     public event Action<WeaponCard> TryingUnselecting;
     public event Action<WeaponCard> SelectChanged;
@@ -22,6 +24,18 @@ public class WeaponCard : ScriptableObject
     public int Count => _count;
     public int Rang => _rang;
     public bool IsSelected => _isSelected;
+    
+    public bool CanBeUpgrade()
+    {
+        if (_rang <= 0||_rang-1>=_cardCountsToUpgrade.Length)
+        {
+            return false;
+        }
+        else
+        {
+            return _count >= _cardCountsToUpgrade[_rang - 1];
+        }
+    }
 
     public void AddCount(int count)
     {
@@ -29,8 +43,27 @@ public class WeaponCard : ScriptableObject
         {
             Debug.LogWarning(name+": adding not correct count");
         }
+
+        if (_rang == 0)
+        {
+            _rang = 1;
+        }
         
         _count += count;
+    }
+
+    public bool TryUpgrade()
+    {
+        if (_count >= _cardCountsToUpgrade[_rang - 1])
+        {
+            _count -= _cardCountsToUpgrade[_rang - 1];
+            _rang++;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     
     public void TryingChangeSelect()
